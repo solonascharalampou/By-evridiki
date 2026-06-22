@@ -622,6 +622,128 @@
     .nav-links.open .nav-portal{display:block;text-align:center;animation:none}
     .nav-links.open .nav-portal::after{display:none}
   }
+
+  /* ===== NEW CAKE CUSTOMIZER (.cb-*) ===== */
+  .cb-section{
+    padding:90px 0;
+    background:
+      radial-gradient(ellipse at 85% 8%,rgba(201,154,75,.07),transparent 40%),
+      radial-gradient(ellipse at 12% 92%,rgba(124,138,106,.09),transparent 40%),
+      radial-gradient(ellipse at 50% 50%,rgba(252,233,236,.35),transparent 60%),
+      var(--cream);
+  }
+  .cb-header{text-align:center;max-width:50rem;margin:0 auto 44px}
+  .cb-header h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4.5vw,3rem);margin-bottom:12px;font-weight:400}
+  .cb-header p{color:var(--cocoa-soft)}
+  .gf-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--sage);
+    margin-bottom:16px;background:rgba(124,138,106,.1);border:1px solid rgba(124,138,106,.3);
+    padding:6px 18px;border-radius:30px
+  }
+  .cb-progress{
+    display:flex;align-items:center;justify-content:center;
+    gap:0;margin:0 auto 48px;max-width:420px
+  }
+  .cb-dot{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--cream-deep);border:2px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:.78rem;color:var(--cocoa-soft);
+    transition:background .3s,border-color .3s,box-shadow .3s;
+    flex:none;position:relative;z-index:2
+  }
+  .cb-dot.active{background:var(--rose-deep);border-color:var(--rose-deep);color:#fff;box-shadow:0 4px 16px -4px rgba(189,90,126,.65)}
+  .cb-dot.done{background:var(--sage);border-color:var(--sage);color:#fff}
+  .cb-line{flex:1;height:2px;background:var(--line);transition:background .4s}
+  .cb-line.done{background:var(--sage)}
+  .cb-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:start}
+  .cb-preview-col{position:sticky;top:88px}
+  .cb-cake-scene{
+    background:linear-gradient(165deg,#fdf5e8,#f0dfc4);
+    border-radius:26px;padding:40px 24px 32px;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+    min-height:300px;display:flex;flex-direction:column;align-items:center;
+    justify-content:flex-end;margin-bottom:14px;position:relative;overflow:hidden
+  }
+  .cb-cake-scene::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 70% 20%,rgba(255,255,255,.22),transparent 55%);
+    pointer-events:none
+  }
+  .cb-cake-stack{display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:6px;position:relative;z-index:1}
+  .cb-ct{
+    border-radius:10px 10px 5px 5px;
+    transition:all .45s cubic-bezier(.2,.8,.2,1);
+    border:3px solid rgba(255,255,255,.55);
+    box-shadow:0 8px 20px -8px rgba(58,42,33,.3),inset 0 2px 5px rgba(255,255,255,.35);
+    background:#e9cf9c;position:relative
+  }
+  .cb-ct::after{content:'';position:absolute;top:3px;left:12%;right:12%;height:5px;border-radius:50%;background:rgba(255,255,255,.38);pointer-events:none}
+  .cb-ct.hidden{display:none}
+  .cb-ct1{width:200px;height:68px}
+  .cb-ct2{width:162px;height:58px;margin-bottom:2px}
+  .cb-ct3{width:124px;height:48px;margin-bottom:2px}
+  .cb-plate{width:240px;height:18px;background:radial-gradient(ellipse at 32% 40%,#ffffff,#ecdcc6);border-radius:50%;box-shadow:0 6px 18px -6px rgba(58,42,33,.28);position:relative;z-index:1}
+  .cb-live-summary{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.78rem;color:var(--cocoa-soft);text-align:center;line-height:1.7;min-height:46px}
+  .cb-wizard-col{display:flex;flex-direction:column;gap:0}
+  .cb-panel{display:none;flex-direction:column;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px}
+  .cb-panel.active{display:flex;animation:cbFadeIn .3s ease}
+  @keyframes cbFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .cb-step-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--rose-deep);margin-bottom:2px}
+  .cb-field-label{font-size:.84rem;font-weight:700;color:var(--cocoa);margin-bottom:4px;margin-top:10px}
+  .cb-field-label:first-of-type{margin-top:0}
+  .cb-cards{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px}
+  .cb-card{
+    cursor:pointer;background:var(--cream);border:2px solid var(--line);border-radius:12px;
+    padding:9px 13px;display:flex;align-items:center;gap:7px;
+    font-size:.83rem;font-weight:700;color:var(--cocoa-soft);
+    transition:border-color .18s,transform .18s,box-shadow .18s;user-select:none
+  }
+  .cb-card:hover{border-color:var(--rose);transform:translateY(-2px)}
+  .cb-card.on{border-color:var(--rose);background:#fff;color:var(--cocoa);box-shadow:0 4px 14px -6px rgba(189,90,126,.45)}
+  .cb-emoji{font-size:1.15rem}
+  .cb-swatch{width:16px;height:16px;border-radius:50%;border:2px solid rgba(0,0,0,.1);flex:none}
+  .cb-size-card{flex-direction:column;gap:5px;padding:12px 14px;min-width:78px;justify-content:center}
+  .cb-size-disc{border-radius:50%;flex:none;background:radial-gradient(circle at 32% 30%,var(--cream),var(--cocoa-soft))}
+  .cb-tier-card{flex-direction:column;gap:7px;padding:13px;min-width:86px;justify-content:center}
+  .cb-tier-vis{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .cb-tier-bar{background:linear-gradient(90deg,var(--rose-deep),var(--terra));border-radius:5px;opacity:.7}
+  .cb-deco-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .cb-deco-tab{cursor:pointer;background:transparent;border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.72rem;font-weight:700;color:var(--cocoa-soft);font-family:inherit;transition:.18s}
+  .cb-deco-tab.on{background:var(--cocoa);color:var(--paper);border-color:var(--cocoa)}
+  .cb-deco-grid{display:flex;gap:6px;flex-wrap:wrap;max-height:190px;overflow-y:auto;padding:8px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.5);margin-bottom:8px}
+  .cb-deco-item{cursor:pointer;border:1.5px solid var(--line);background:var(--paper);border-radius:20px;padding:5px 10px;font-size:.75rem;font-weight:700;color:var(--cocoa-soft);display:inline-flex;align-items:center;gap:5px;transition:.15s;font-family:inherit}
+  .cb-deco-item:hover{border-color:var(--rose);transform:translateY(-1px)}
+  .cb-deco-item.on{border-color:var(--rose);background:#fff;color:var(--cocoa);box-shadow:0 3px 10px -5px rgba(189,90,126,.4)}
+  .cb-deco-dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.1);flex:none}
+  .cb-chosen-wrap{display:flex;flex-wrap:wrap;gap:5px;align-items:center;min-height:24px}
+  .cb-chosen-pill{cursor:pointer;background:var(--rose);color:#fff;border:none;border-radius:18px;padding:4px 10px;font-size:.72rem;font-weight:700;font-family:inherit}
+  .cb-chosen-pill:hover{background:var(--rose-deep)}
+  .cb-hint{font-size:.8rem;color:var(--cocoa-soft);margin-bottom:4px}
+  .cb-nav{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)}
+  .cb-input,.cb-textarea{width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:11px;font-family:inherit;font-size:.9rem;background:var(--cream);color:#3A2A2A;-webkit-text-fill-color:#3A2A2A;margin-bottom:6px}
+  .cb-input:focus,.cb-textarea:focus{outline:2px solid var(--rose);border-color:var(--rose)}
+  .cb-textarea{resize:vertical;min-height:72px}
+  .cb-summary-card{background:rgba(255,255,255,.7);border:1px dashed var(--line);border-radius:14px;padding:16px;font-size:.84rem;line-height:1.85;color:var(--cocoa-soft);margin-bottom:12px}
+  .cb-summary-card b{color:var(--cocoa)}
+  .cb-cta-group{display:flex;flex-direction:column;gap:10px}
+  .cb-call-btn,.cb-form-btn{justify-content:center!important}
+  @media(max-width:900px){
+    .cb-grid{grid-template-columns:1fr;gap:30px}
+    .cb-preview-col{position:relative;top:0}
+  }
+  @media(max-width:620px){
+    .cb-section{padding:50px 0}
+    .cb-cake-scene{min-height:240px;padding:28px 18px 24px}
+    .cb-ct1{width:160px;height:58px}
+    .cb-ct2{width:130px;height:48px}
+    .cb-ct3{width:100px;height:40px}
+    .cb-plate{width:190px}
+    .cb-panel{padding:22px 18px}
+    .cb-progress{max-width:320px}
+    .cb-dot{width:32px;height:32px;font-size:.72rem}
+  }
 </style>
 </head>
 <body>
@@ -1034,14 +1156,20 @@
           <div class="cb-field-label" data-en>Sponge flavour (GF)</div>
           <div class="cb-field-label" data-el>Γεύση παντεσπάνι (χωρίς γλουτένη)</div>
           <div class="cb-cards" id="cbSponge">
-            <div class="cb-card" data-val="Chocolate" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#3d2314"></span><span>Chocolate</span></div>
-            <div class="cb-card" data-val="Vanilla" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f5e6c8"></span><span>Vanilla</span></div>
-            <div class="cb-card" data-val="Lemon" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f0e040"></span><span>Lemon</span></div>
-            <div class="cb-card" data-val="Orange" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f28c3a"></span><span>Orange</span></div>
-            <div class="cb-card" data-val="Carrot" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#d4793a"></span><span>Carrot</span></div>
-            <div class="cb-card" data-val="Red Velvet" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#9e1b32"></span><span>Red Velvet</span></div>
-            <div class="cb-card" data-val="Pistachio" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#8aa84a"></span><span>Pistachio</span></div>
-            <div class="cb-card" data-val="Almond" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#d4b882"></span><span>Almond</span></div>
+            <div class="cb-card" data-val="Chocolate" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#3d2314"></span><span data-en>Chocolate</span><span data-el>Σοκολάτα</span></div>
+            <div class="cb-card" data-val="Vanilla" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f5e6c8"></span><span data-en>Vanilla</span><span data-el>Βανίλια</span></div>
+            <div class="cb-card" data-val="Lemon" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#e8d24a"></span><span data-en>Lemon</span><span data-el>Λεμόνι</span></div>
+            <div class="cb-card" data-val="Orange" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f28c3a"></span><span data-en>Orange</span><span data-el>Πορτοκάλι</span></div>
+            <div class="cb-card" data-val="Carrot" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#d4793a"></span><span data-en>Carrot</span><span data-el>Καρότο</span></div>
+            <div class="cb-card" data-val="Red Velvet" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#9e1b32"></span><span data-en>Red Velvet</span><span data-el>Red Velvet</span></div>
+            <div class="cb-card" data-val="Pistachio" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#8aa84a"></span><span data-en>Pistachio</span><span data-el>Φιστίκι</span></div>
+            <div class="cb-card" data-val="Almond" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#d4b882"></span><span data-en>Almond</span><span data-el>Αμύγδαλο</span></div>
+            <div class="cb-card" data-val="Banana" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f5e05a"></span><span data-en>Banana</span><span data-el>Μπανάνα</span></div>
+            <div class="cb-card" data-val="Coconut" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f0ece0"></span><span data-en>Coconut</span><span data-el>Καρύδα</span></div>
+            <div class="cb-card" data-val="Cinnamon" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#a0522d"></span><span data-en>Cinnamon</span><span data-el>Κανέλα</span></div>
+            <div class="cb-card" data-val="Hazelnut" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#9a6a3a"></span><span data-en>Hazelnut</span><span data-el>Φουντούκι</span></div>
+            <div class="cb-card" data-val="Coffee" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#4a2c18"></span><span data-en>Coffee</span><span data-el>Καφές</span></div>
+            <div class="cb-card" data-val="Blueberry" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#4a5ba8"></span><span data-en>Blueberry</span><span data-el>Μύρτιλο</span></div>
           </div>
           <div class="cb-nav"><button class="btn ghost" onclick="cbBack()" data-en>← Back</button><button class="btn ghost" onclick="cbBack()" data-el>← Πίσω</button><button class="btn cb-btn-next" onclick="cbNext()" data-en>Next →</button><button class="btn cb-btn-next" onclick="cbNext()" data-el>Επόμενο →</button></div>
         </div>
@@ -1083,10 +1211,10 @@
           <textarea class="cb-textarea" id="cbNotes" rows="3" placeholder="e.g. No nuts, extra gold leaf, pale pink frosting…"></textarea>
           <div class="cb-summary-card" id="cbSummaryCard"></div>
           <div class="cb-cta-group">
-            <a class="btn cb-wa-btn" id="cbWaLink" href="#" target="_blank" rel="noopener" data-en>Send to Evridiki via WhatsApp →</a>
-            <a class="btn cb-wa-btn" id="cbWaLinkEl" href="#" target="_blank" rel="noopener" data-el>Στείλε στην Ευρυδίκη μέσω WhatsApp →</a>
-            <a class="btn ghost cb-email-btn" id="cbEmailLink" href="#" data-en>Or send via email</a>
-            <a class="btn ghost cb-email-btn" id="cbEmailLinkEl" href="#" data-el>Ή στείλε email</a>
+            <a class="btn cb-call-btn" href="tel:+35799299980" onclick="callNow(event)" data-en>Call Evridiki to order →</a>
+            <a class="btn cb-call-btn" href="tel:+35799299980" onclick="callNow(event)" data-el>Κάλεσε την Ευρυδίκη →</a>
+            <a class="btn ghost cb-form-btn" href="#custom" data-en>Or fill the online form</a>
+            <a class="btn ghost cb-form-btn" href="#custom" data-el>Ή συμπλήρωσε τη φόρμα</a>
           </div>
           <div class="cb-nav"><button class="btn ghost" onclick="cbBack()" data-en>← Back</button><button class="btn ghost" onclick="cbBack()" data-el>← Πίσω</button></div>
         </div>
@@ -1835,426 +1963,271 @@
 
   // (3D tilt on product cards removed — cards stay still on hover)
 
-  // ===== CAKE CUSTOMIZER =====
-  const FLAVOURS=[
-    {id:'choc', en:'Chocolate', el:'Σοκολάτα', c:'#5b3a23'},
-    {id:'vanilla', en:'Vanilla', el:'Βανίλια', c:'#e9cf9c'},
-    {id:'carrot', en:'Carrot', el:'Καρότο', c:'#c8854a'},
-    {id:'redvelvet', en:'Red velvet', el:'Red velvet', c:'#9e3b34'},
-    {id:'lemon', en:'Lemon', el:'Λεμόνι', c:'#e6d36a'},
-  ];
-  const FROSTINGS=[
-    {id:'cream', en:'Vanilla cream', el:'Κρέμα βανίλια', c:'#fff6ea'},
-    {id:'choc', en:'Chocolate', el:'Σοκολάτα', c:'#6b4326'},
-    {id:'pink', en:'Strawberry', el:'Φράουλα', c:'#f0c2c6'},
-    {id:'sage', en:'Pistachio', el:'Φιστίκι', c:'#cdd9b0'},
-    {id:'caramel', en:'Caramel', el:'Καραμέλα', c:'#d9a45e'},
-  ];
-  // ===== Gluten-free toppings — realistic items Evridiki actually uses =====
-  const TOP_CATS=[
-    {id:'fruit',   en:'Fruit',          el:'Φρούτα'},
-    {id:'cream',   en:'Creams',         el:'Κρέμες'},
-    {id:'nuts',    en:'Nuts',           el:'Ξηροί Καρποί'},
-    {id:'choc',    en:'Chocolate',      el:'Σοκολάτα'},
-    {id:'finish',  en:'Finishing',      el:'Διακόσμηση'},
-  ];
-  function T(id,en,el,c,type,cat){return {id,en,el,c,type,cat,gf:true};}
-  const BASE_TOPPINGS=[
-    // ---- FRUIT ----
-    T('strawberry','Strawberries','Φράουλες','#d22f4a','berry','fruit'),
-    T('raspberry','Raspberries','Σμέουρα','#c2305c','berry','fruit'),
-    T('blueberry','Blueberries','Μύρτιλα','#4a5ba8','berry','fruit'),
-    T('blackberry','Blackberries','Βατόμουρα','#3a2a44','berry','fruit'),
-    T('cherry','Cherries','Κεράσια','#9e1b2f','berry','fruit'),
-    T('mango','Mango','Μάνγκο','#f2a93a','dot','fruit'),
-    T('passion','Passion fruit','Παρφαί','#d8a83a','dot','fruit'),
-    T('orange','Candied orange slices','Ζαχαρωτό πορτοκάλι','#e8862a','dot','fruit'),
-    T('lemon','Lemon zest','Ξύσμα λεμονιού','#e8d24a','dot','fruit'),
-    T('kiwi','Kiwi','Ακτινίδιο','#7aa83a','dot','fruit'),
-    T('pomegranate','Pomegranate','Ρόδι','#b51f3a','berry','fruit'),
-    T('fig','Fig slices','Σύκο','#7a4a6a','dot','fruit'),
-    T('peach','Peach','Ροδάκινο','#f2b27a','dot','fruit'),
-    T('mint','Mint leaves','Φύλλα δυόσμου','#5a9a5a','leaf','fruit'),
-    // ---- CREAMS ----
-    T('pistcream','Pistachio cream','Κρέμα φιστικιού','#8aa84a','dot','cream'),
-    T('lemoncream','Lemon cream','Κρέμα λεμονιού','#e8d24a','swirl','cream'),
-    T('strawcream','Strawberry cream','Κρέμα φράουλας','#f0a0b0','swirl','cream'),
-    T('choccream','Chocolate cream','Κρέμα σοκολάτας','#6b4326','swirl','cream'),
-    T('caramelcream','Caramel cream','Κρέμα καραμέλας','#d9a45e','swirl','cream'),
-    T('vanillacream','Vanilla cream','Κρέμα βανίλιας','#fff0d8','swirl','cream'),
-    T('mascarpone','Mascarpone cream','Κρέμα mascarpone','#f5eed8','swirl','cream'),
-    // ---- NUTS ----
-    T('pistachio','Pistachio crumble','Τριμμένο φιστίκι','#8aa84a','nut','nuts'),
-    T('almond','Toasted almonds','Αμύγδαλα','#d9b889','nut','nuts'),
-    T('almondflake','Almond flakes','Φλούδες αμυγδάλου','#e8d4b0','shard','nuts'),
-    T('walnut','Walnuts','Καρύδια','#8a6a4a','nut','nuts'),
-    T('hazelnut','Hazelnuts','Φουντούκια','#9a6a3a','nut','nuts'),
-    T('coconut','Coconut flakes','Τριμμένη καρύδα','#f0ece0','shard','nuts'),
-    // ---- CHOCOLATE ----
-    T('darkshard','Dark chocolate shards','Μαύρη σοκολάτα','#2a1810','shard','choc'),
-    T('milkshard','Milk chocolate shards','Σοκολάτα γάλακτος','#6b4326','shard','choc'),
-    T('whiteshard','White chocolate shards','Λευκή σοκολάτα','#f3e9d6','shard','choc'),
-    T('choccurl','Chocolate curls','Μπούκλες σοκολάτας','#4a2c18','swirl','choc'),
-    T('chocdrip','Chocolate drip','Σταγόνες σοκολάτας','#4a2c18','swirl','choc'),
-    T('cocoadust','Cocoa dusting','Κακάο','#5a3a28','dot','choc'),
-    T('rubychoc','Ruby chocolate','Ruby σοκολάτα','#d97a8a','shard','choc'),
-    // ---- FINISHING ----
-    T('goldleaf','Gold leaf','Φύλλο χρυσού','#d8a93a','gold','finish'),
-    T('meringue','Meringue kisses','Μαρέγκες','#f4e8ee','swirl','finish'),
-    T('macaron','Macarons','Μακαρόν','#f2b8c6','macaron','finish'),
-    T('rose','Edible roses','Βρώσιμα τριαντάφυλλα','#e07a9a','flower','finish'),
-    T('rosepetal','Rose petals','Ροδοπέταλα','#e8a0b8','leaf','finish'),
-    T('sugarpearl','Sugar pearls','Ζαχαρόπερλες','#f0e8d8','pearl','finish'),
-    T('goldpearl','Gold pearls','Χρυσές πέρλες','#d8a93a','pearl','finish'),
-    T('freezeberry','Freeze-dried raspberry','Λυοφιλοποιημένο σμέουρο','#d2305c','dot','finish'),
-    T('isomalt','Isomalt decoration','Ισομάλτη','#e8dcc8','shard','finish'),
+  // ===== CAKE CUSTOMIZER (v2 — GF multi-step wizard) =====
+
+  // ---- Topping / decoration data (100% GF everyday items — no expensive finishing) ----
+  function T(id,en,el,c,cat){return{id,en,el,c,cat};}
+  const TOPPINGS=[
+    // FRUIT
+    T('strawberry','Strawberries','Φράουλες','#d22f4a','fruit'),
+    T('raspberry','Raspberries','Σμέουρα','#c2305c','fruit'),
+    T('blueberry','Blueberries','Μύρτιλα','#4a5ba8','fruit'),
+    T('blackberry','Blackberries','Βατόμουρα','#3a2a44','fruit'),
+    T('cherry','Cherries','Κεράσια','#9e1b2f','fruit'),
+    T('mango','Mango pieces','Κομμάτια μάνγκο','#f2a93a','fruit'),
+    T('kiwi','Kiwi slices','Ακτινίδιο','#7aa83a','fruit'),
+    T('peach','Peach slices','Ροδάκινο','#f2b27a','fruit'),
+    T('pomegranate','Pomegranate seeds','Ρόδι','#b51f3a','fruit'),
+    T('lemonzest','Lemon zest','Ξύσμα λεμονιού','#e8d24a','fruit'),
+    T('orangezest','Orange zest','Ξύσμα πορτοκαλιού','#f28c3a','fruit'),
+    T('fig','Fig slices','Σύκο','#7a4a6a','fruit'),
+    T('banana','Banana slices','Φέτες μπανάνας','#f5e05a','fruit'),
+    T('mint','Mint leaves','Φύλλα δυόσμου','#5a9a5a','fruit'),
+    // CREAMS
+    T('pistcream','Pistachio cream swirls','Στροβιλάκια φιστικιού','#8aa84a','cream'),
+    T('lemoncream','Lemon cream','Κρέμα λεμονιού','#e8d24a','cream'),
+    T('strawcream','Strawberry cream','Κρέμα φράουλας','#f0a0b0','cream'),
+    T('choccream','Chocolate cream','Κρέμα σοκολάτας','#6b4326','cream'),
+    T('caramelcream','Caramel cream','Κρέμα καραμέλας','#d9a45e','cream'),
+    T('vanillacream','Vanilla rosettes','Ροζέτες βανίλιας','#fff0d8','cream'),
+    T('mascar','Mascarpone cream','Κρέμα mascarpone','#f5eed8','cream'),
+    T('coconutcream','Coconut cream','Κρέμα καρύδας','#f0ece0','cream'),
+    // NUTS
+    T('pistachio','Pistachio crumble','Τριμμένο φιστίκι','#8aa84a','nuts'),
+    T('almond','Toasted almonds','Αμύγδαλα','#d9b889','nuts'),
+    T('almondflake','Almond flakes','Φλούδες αμυγδάλου','#e8d4b0','nuts'),
+    T('walnut','Walnuts','Καρύδια','#8a6a4a','nuts'),
+    T('hazelnut','Hazelnuts','Φουντούκια','#9a6a3a','nuts'),
+    T('coconut','Coconut flakes','Τριμμένη καρύδα','#f0ece0','nuts'),
+    // CHOCOLATE
+    T('darkshard','Dark choc. shards','Σοκολάτα μαύρη','#2a1810','choc'),
+    T('milkshard','Milk choc. shards','Σοκολάτα γάλακτος','#6b4326','choc'),
+    T('whiteshard','White choc. shards','Σοκολάτα λευκή','#f3e9d6','choc'),
+    T('choccurl','Chocolate curls','Μπούκλες σοκολάτας','#4a2c18','choc'),
+    T('chocdrip','Chocolate drip','Drip σοκολάτας','#4a2c18','choc'),
+    T('cocoadust','Cocoa dusting','Κακάο','#5a3a28','choc'),
+    // FINISHING
+    T('meringue','Meringue kisses','Μαρέγκες','#f4e8ee','finish'),
+    T('sugarpearl','Sugar pearls','Ζαχαρόπερλες','#f0e8d8','finish'),
+    T('freezeberry','Freeze-dried raspberry','Λυοφ. σμέουρο','#d2305c','finish'),
+    T('cinnsugar','Cinnamon sugar','Ζάχαρη κανέλας','#c8854a','finish'),
+    T('sprinkles','GF sprinkles','Sprinkles GF','#f4c5d4','finish'),
   ];
 
-  const TOPPINGS = BASE_TOPPINGS;
-  function tweakColor(hex,seed){
-    const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
-    const d=((seed*37)%34)-17;
-    r=Math.max(0,Math.min(255,r+d));g=Math.max(0,Math.min(255,g+Math.round(d*0.6)));b=Math.max(0,Math.min(255,b+Math.round(d*0.3)));
-    return`#${((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}`;
-  }
-  // TOPPINGS = BASE_TOPPINGS (already set above)
+  const CB_DECO_CATS=[
+    {id:'all',en:'All',el:'Όλα'},
+    {id:'fruit',en:'Fruit',el:'Φρούτα'},
+    {id:'cream',en:'Creams',el:'Κρέμες'},
+    {id:'nuts',en:'Nuts',el:'Ξηροί Καρποί'},
+    {id:'choc',en:'Chocolate',el:'Σοκολάτα'},
+    {id:'finish',en:'Finishing',el:'Διακόσμηση'},
+  ];
 
-  const state={tiers:1,flavour:FLAVOURS[0],frosting:FROSTINGS[0],toppings:[],msg:'',topCat:'all',topQuery:''};
+  const CB_FILLINGS=[
+    {id:'vanilla',en:'Vanilla cream',el:'Κρέμα βανίλιας',c:'#fff6ea'},
+    {id:'choc',en:'Chocolate ganache',el:'Γκανάς σοκολάτας',c:'#6b4326'},
+    {id:'strawberry',en:'Strawberry cream',el:'Κρέμα φράουλας',c:'#f4c2cb'},
+    {id:'pistachio',en:'Pistachio cream',el:'Κρέμα φιστικιού',c:'#cdd9b0'},
+    {id:'lemon',en:'Lemon cream',el:'Κρέμα λεμονιού',c:'#e8d24a'},
+    {id:'caramel',en:'Caramel cream',el:'Κρέμα καραμέλας',c:'#d9a45e'},
+    {id:'mascar',en:'Mascarpone cream',el:'Κρέμα mascarpone',c:'#f5eed8'},
+    {id:'banana',en:'Banana cream',el:'Κρέμα μπανάνας',c:'#f5e05a'},
+    {id:'coconut',en:'Coconut cream',el:'Κρέμα καρύδας',c:'#f0ece0'},
+    {id:'hazelnut',en:'Hazelnut cream',el:'Κρέμα φουντουκιού',c:'#9a6a3a'},
+  ];
 
-  function L(o){return document.body.classList.contains('el')?o.el:o.en;}
+  const CB_FROSTINGS=[
+    {id:'white',en:'White buttercream',el:'Λευκή κρέμα βουτύρου',c:'#fdf8f2'},
+    {id:'pink',en:'Blush pink',el:'Ρόδινο',c:'#f4c2cb'},
+    {id:'choc',en:'Chocolate',el:'Σοκολάτα',c:'#6b4326'},
+    {id:'sage',en:'Sage green',el:'Σάγκε πράσινο',c:'#cdd9b0'},
+    {id:'caramel',en:'Caramel',el:'Καραμέλα',c:'#d9a45e'},
+    {id:'ivory',en:'Ivory',el:'Ελεφαντόδοντο',c:'#f5ecd5'},
+    {id:'yellow',en:'Pastel yellow',el:'Παστέλ κίτρινο',c:'#f7e883'},
+    {id:'lavender',en:'Pastel lavender',el:'Λεβάντα',c:'#d9c8e8'},
+    {id:'blue',en:'Pastel blue',el:'Παστέλ μπλε',c:'#bdd5e8'},
+  ];
 
-  function buildSwatches(){
-    document.getElementById('flavours').innerHTML=FLAVOURS.map((f,i)=>
-      `<div class="sw ${i===0?'on':''}" data-k="flavour" data-i="${i}"><div class="dot" style="background:${f.c}"></div><span data-en>${f.en}</span><span data-el>${f.el}</span></div>`).join('');
-    document.getElementById('frostings').innerHTML=FROSTINGS.map((f,i)=>
-      `<div class="sw ${i===0?'on':''}" data-k="frosting" data-i="${i}"><div class="dot" style="background:${f.c}"></div><span data-en>${f.en}</span><span data-el>${f.el}</span></div>`).join('');
-    buildTopCats();
-    renderToppingList();
-  }
-
-  function buildTopCats(){
-    const el=document.body.classList.contains('el');
-    const cats=[{id:'all',en:'All',el:'Όλα'}].concat(TOP_CATS);
-    document.getElementById('topCats').innerHTML=cats.map(c=>
-      `<button class="topcat ${state.topCat===c.id?'on':''}" onclick="setTopCat('${c.id}')">${el?c.el:c.en}</button>`).join('');
-  }
-  function setTopCat(id){ state.topCat=id; buildTopCats(); renderToppingList(); }
-
-  function renderToppingList(){
-    const el=document.body.classList.contains('el');
-    const q=(document.getElementById('topSearch')?.value||'').trim().toLowerCase();
-    state.topQuery=q;
-    const list=TOPPINGS.filter(t=>{
-      const inCat = state.topCat==='all' || t.cat===state.topCat;
-      const inQ = !q || t.en.toLowerCase().includes(q) || (t.el||'').toLowerCase().includes(q);
-      return inCat && inQ;
-    });
-    const chosen=new Set(state.toppings.map(t=>t.id));
-    document.getElementById('toppings').innerHTML = list.length
-      ? list.map(t=>`<button class="tc ${chosen.has(t.id)?'on':''}" onclick="toggleTopping('${t.id}')" title="${el?t.el:t.en}">
-          <span class="tc-dot" style="background:${t.c}"></span>${el?t.el:t.en}${chosen.has(t.id)?' ✓':''}</button>`).join('')
-      : `<p class="top-empty">${el?'Δεν βρέθηκε — ζήτησέ το από την Ευρυδίκη!':'Not found — just ask Evridiki for it!'}</p>`;
-    // chosen summary
-    const cEl=document.getElementById('topChosen');
-    if(state.toppings.length){
-      cEl.innerHTML=`<span class="chosen-label">${el?'Επιλεγμένα:':'Chosen:'}</span> `+
-        state.toppings.map(t=>`<button class="chosen-pill" onclick="toggleTopping('${t.id}')">${el?t.el:t.en} ✕</button>`).join('');
-    } else { cEl.innerHTML=''; }
-    // count
-    const c=state.toppings.length;
-    const lbl=c?` (${c})`:'';
-    const tc=document.getElementById('tcount'); if(tc) tc.textContent=lbl;
-    const tce=document.getElementById('tcountEl'); if(tce) tce.textContent=lbl;
-  }
-
-  function toggleTopping(id){
-    const t=TOPPINGS.find(x=>x.id===id); if(!t) return;
-    const i=state.toppings.findIndex(x=>x.id===id);
-    if(i>-1) state.toppings.splice(i,1);
-    else { if(state.toppings.length>=12){ /* cap visual clutter */ state.toppings.shift(); } state.toppings.push(t); }
-    renderToppingList(); render();
-  }
-
-  buildSwatches();
-
-
-  // tier sizes (radius px, height px) bottom→top
-
-  // Tier widths (radius) bottom→top and body height
-  const TIER_DEF=[ {rx:118,h:78}, {rx:88,h:64}, {rx:60,h:52} ];
-  const ELL=0.30; // ellipse flatten ratio for perspective
-
-  function render(){
-    drawCake();
-    updateSummary();
-  }
-
-  function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-
-  // Build one elliptical-cylinder tier as SVG, centered base at (cx, baseY)
-  function tierSVG(cx, baseY, rx, h, body, frost, idx){
-    const ry=rx*ELL;
-    const topY=baseY-h;
-    const bodyDark=shade(body,-26);
-    const frostDark=shade(frost,-20), frostLite=shade(frost,18);
-    let s='';
-    // BACK rim of the top opening — makes the cake read as a full cylinder, not a half
-    s+=`<path d="M ${cx-rx} ${topY} A ${rx} ${ry} 0 0 1 ${cx+rx} ${topY}" fill="none" stroke="${frostDark}" stroke-opacity=".35" stroke-width="2"/>`;
-    // cake body (front face: straight sides + bottom arc)
-    s+=`<path d="M ${cx-rx} ${topY} L ${cx-rx} ${baseY} A ${rx} ${ry} 0 0 0 ${cx+rx} ${baseY} L ${cx+rx} ${topY} A ${rx} ${ry} 0 0 1 ${cx-rx} ${topY} Z" fill="url(#body${idx})"/>`;
-    // soft sponge layer lines
-    s+=`<path d="M ${cx-rx} ${topY+h*0.42} Q ${cx} ${topY+h*0.42+ry*0.5} ${cx+rx} ${topY+h*0.42}" stroke="${bodyDark}" stroke-opacity=".18" stroke-width="1.5" fill="none"/>`;
-    s+=`<path d="M ${cx-rx} ${topY+h*0.7} Q ${cx} ${topY+h*0.7+ry*0.5} ${cx+rx} ${topY+h*0.7}" stroke="${bodyDark}" stroke-opacity=".14" stroke-width="1.5" fill="none"/>`;
-    // frosting collar near the top of the body
-    s+=`<path d="M ${cx-rx} ${topY+4} L ${cx-rx} ${topY+15} A ${rx} ${ry} 0 0 0 ${cx+rx} ${topY+15} L ${cx+rx} ${topY+4} A ${rx} ${ry} 0 0 1 ${cx-rx} ${topY+4} Z" fill="${frost}" opacity=".92"/>`;
-    // frosting drips along the front edge
-    const drips=Math.max(5,Math.round(rx/14));
-    for(let d=0; d<=drips; d++){
-      const t=d/drips, x=cx-rx*0.96+t*rx*1.92;
-      const dy=topY+15+ry*Math.sin(Math.PI*Math.min(1,Math.max(0,t)))*0.9;
-      const len=8+((d*7)%13);
-      s+=`<path d="M ${(x-7).toFixed(1)} ${dy.toFixed(1)} q 7 ${len} 14 0 Z" fill="${frost}"/>`;
-    }
-    // frosting top ellipse (the cap) — soft swirl
-    s+=`<ellipse cx="${cx}" cy="${topY}" rx="${rx}" ry="${ry}" fill="url(#cap${idx})" stroke="${frostDark}" stroke-opacity=".35"/>`;
-    s+=`<ellipse cx="${cx-rx*0.18}" cy="${topY-ry*0.18}" rx="${rx*0.55}" ry="${ry*0.5}" fill="${frostLite}" opacity=".5"/>`;
-    return {s, topY, ry, rx, cx};
-  }
-
-  // elegant topping shapes
-  function toppingShape(type, x, y, c){
-    const hi=shade(c,45), lo=shade(c,-25);
-    if(type==='berry'){
-      return `<circle cx="${x}" cy="${y-2}" r="6.5" fill="${c}"/>
-        <circle cx="${x-2}" cy="${y-4}" r="2" fill="${hi}" opacity=".8"/>
-        <path d="M ${x-2} ${y-8} l 2 -3 l 2 3 Z" fill="#7a9a4e"/>`;
-    }
-    if(type==='macaron'){
-      return `<ellipse cx="${x}" cy="${y-4}" rx="8" ry="5" fill="${c}"/>
-        <ellipse cx="${x}" cy="${y+1}" rx="8" ry="5" fill="${c}"/>
-        <rect x="${x-8}" y="${y-2}" width="16" height="4" rx="2" fill="${shade(c,30)}"/>`;
-    }
-    if(type==='gold'){
-      return `<path d="M ${x-5} ${y} l 5 -7 l 5 7 l -3 6 l -4 0 Z" fill="${c}"/>
-        <path d="M ${x-2} ${y-3} l 3 -3 l 1 4 Z" fill="${hi}"/>`;
-    }
-    if(type==='flower'){
-      let p='';for(let i=0;i<5;i++){const a=i/5*Math.PI*2;p+=`<ellipse cx="${(x+Math.cos(a)*5).toFixed(1)}" cy="${(y+Math.sin(a)*4).toFixed(1)}" rx="4" ry="3" fill="${c}" transform="rotate(${(a*57).toFixed(0)} ${(x+Math.cos(a)*5).toFixed(1)} ${(y+Math.sin(a)*4).toFixed(1)})"/>`;}
-      return p+`<circle cx="${x}" cy="${y}" r="3" fill="#e8c14a"/>`;
-    }
-    if(type==='star'){
-      let pts='';for(let i=0;i<5;i++){const o=Math.PI/2; const ao=o+i*2*Math.PI/5; const ai=o+(i+0.5)*2*Math.PI/5;
-        pts+=`${(x+Math.cos(ao)*7).toFixed(1)},${(y-Math.sin(ao)*7).toFixed(1)} ${(x+Math.cos(ai)*3).toFixed(1)},${(y-Math.sin(ai)*3).toFixed(1)} `;}
-      return `<polygon points="${pts}" fill="${c}" stroke="${shade(c,-25)}" stroke-opacity=".4"/>`;
-    }
-    if(type==='heart'){
-      return `<path d="M ${x} ${y+5} C ${x-9} ${y-3} ${x-5} ${y-9} ${x} ${y-4} C ${x+5} ${y-9} ${x+9} ${y-3} ${x} ${y+5} Z" fill="${c}" stroke="${lo}" stroke-opacity=".3"/>`;
-    }
-    if(type==='leaf'){
-      return `<path d="M ${x} ${y-7} Q ${x+6} ${y} ${x} ${y+7} Q ${x-6} ${y} ${x} ${y-7} Z" fill="${c}"/>
-        <path d="M ${x} ${y-6} L ${x} ${y+6}" stroke="${shade(c,-25)}" stroke-opacity=".5" stroke-width="1"/>`;
-    }
-    if(type==='nut'){
-      return `<ellipse cx="${x}" cy="${y}" rx="6.5" ry="5.5" fill="${c}"/>
-        <path d="M ${x} ${y-5} Q ${x+3} ${y} ${x} ${y+5}" stroke="${shade(c,-30)}" stroke-opacity=".5" stroke-width="1" fill="none"/>
-        <ellipse cx="${x-2}" cy="${y-2}" rx="2" ry="1.5" fill="${hi}" opacity=".6"/>`;
-    }
-    if(type==='swirl'){
-      return `<path d="M ${x-6} ${y+3} q 3 -10 6 -5 q -3 3 0 5 q 3 2 5 -3" fill="none" stroke="${c}" stroke-width="3.4" stroke-linecap="round"/>`;
-    }
-    if(type==='pearl'){
-      return `<circle cx="${x}" cy="${y}" r="4" fill="${c}"/>
-        <circle cx="${x-1.2}" cy="${y-1.4}" r="1.3" fill="${hi}" opacity=".85"/>`;
-    }
-    if(type==='dot'){
-      return `<circle cx="${x}" cy="${y}" r="5.2" fill="${c}"/>
-        <circle cx="${x-1.6}" cy="${y-1.8}" r="1.6" fill="${hi}" opacity=".6"/>`;
-    }
-    // shard (chocolate / wafer) — default
-    return `<path d="M ${x-5} ${y+5} l 4 -13 l 6 4 l -2 10 Z" fill="${c}" stroke="${lo}" stroke-opacity=".4"/>`;
-  }
-
-  function drawCake(){
-    const W=360,H=340;
-    const cx=W/2, plateY=H-44;
-    const n=state.tiers;
-    const body=state.flavour.c, frost=state.frosting.c;
-    let defs='', shapes='';
-    for(let i=0;i<n;i++){
-      defs+=`<linearGradient id="body${i}" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="${shade(body,-32)}"/>
-        <stop offset="0.45" stop-color="${shade(body,18)}"/>
-        <stop offset="1" stop-color="${shade(body,-32)}"/></linearGradient>
-        <radialGradient id="cap${i}" cx="0.4" cy="0.32" r="0.85">
-        <stop offset="0" stop-color="${shade(frost,26)}"/>
-        <stop offset="1" stop-color="${shade(frost,-12)}"/></radialGradient>`;
-    }
-    defs+=`<radialGradient id="plateG" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ecdcc6"/></radialGradient>`;
-    // shadow + plate
-    shapes+=`<ellipse cx="${cx}" cy="${plateY+6}" rx="150" ry="30" fill="#3a2a21" opacity=".12"/>`;
-    shapes+=`<ellipse cx="${cx}" cy="${plateY}" rx="148" ry="30" fill="url(#plateG)"/>`;
-    shapes+=`<ellipse cx="${cx}" cy="${plateY-2}" rx="128" ry="24" fill="none" stroke="#d8c7ac" stroke-opacity=".5"/>`;
-
-    let baseY=plateY-8;
-    const placed=[];
-    for(let i=0;i<n;i++){
-      const def=TIER_DEF[i];
-      const t=tierSVG(cx, baseY, def.rx, def.h, body, frost, i);
-      t.h=def.h;
-      placed.push(t);
-      shapes+=t.s;
-      baseY=t.topY+t.ry*0.55;
-    }
-    const topTier=placed[placed.length-1];
-
-    // toppings: spread across the top cap AND down the front sides of the tiers
-    if(state.toppings.length){
-      const items=[];
-      // --- TOP CAP cluster ---
-      const capCx=topTier.cx, capCy=topTier.topY, rx=topTier.rx*0.72, ry=topTier.ry*0.74;
-      const capCount=Math.min(9, 4+state.toppings.length);
-      for(let k=0;k<capCount;k++){
-        const ang=(k*137.5)*Math.PI/180;
-        const rad=Math.sqrt((k+0.6)/capCount);
-        const x=capCx+Math.cos(ang)*rx*rad;
-        const y=capCy+Math.sin(ang)*ry*rad - 4;
-        items.push({x,y,tp:state.toppings[k%state.toppings.length],z:y});
-      }
-      // --- SIDE toppings: scatter on the visible front face of each tier ---
-      let ti=0;
-      placed.forEach((p)=>{
-        const faceTop=p.topY+22, faceBot=p.topY+p.h-6;
-        const rows=Math.max(1,Math.round((faceBot-faceTop)/22));
-        const perRow=Math.max(3,Math.round(p.rx/26));
-        for(let r=0;r<rows;r++){
-          const fy=faceTop+(r+0.5)*((faceBot-faceTop)/rows);
-          for(let cI=0;cI<perRow;cI++){
-            // only place on front-facing arc (avoid extreme edges)
-            const frac=(cI+0.5)/perRow;            // 0..1 across width
-            const ang=Math.PI*(0.16+0.68*frac);    // front arc
-            const fx=p.cx - Math.cos(ang)*p.rx*0.9;
-            const tp=state.toppings[ti%state.toppings.length]; ti++;
-            // skip some for a natural sparse look
-            if((r+cI)%2===0 || state.toppings.length>=5){
-              items.push({x:fx,y:fy,tp,z:fy,small:true});
-            }
-          }
-        }
-      });
-      // paint back-to-front
-      items.sort((a,b)=>a.z-b.z);
-      items.forEach(it=>{
-        const s=toppingShape(it.tp.type, +it.x.toFixed(1), +it.y.toFixed(1), it.tp.c);
-        shapes += it.small ? `<g transform="translate(${it.x.toFixed(1)} ${it.y.toFixed(1)}) scale(0.7) translate(${(-it.x).toFixed(1)} ${(-it.y).toFixed(1)})">${s}</g>` : s;
-      });
-    }
-
-    // message on the front of the bottom tier
-    if(state.msg.trim()){
-      const my=plateY-TIER_DEF[0].h*0.46;
-      shapes+=`<text x="${cx}" y="${my}" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="16" fill="#fff" stroke="${shade(body,-45)}" stroke-width="0.5" paint-order="stroke" opacity=".95">${esc(state.msg)}</text>`;
-    }
-
-    const svg=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
-      <defs>${defs}</defs>${shapes}</svg>`;
-    document.getElementById('cake').innerHTML=svg;
-  }
-
-  // color shade helper
-  function shade(hex,pct){
-    const n=parseInt(hex.slice(1),16);
-    let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
-    r=Math.max(0,Math.min(255,r+pct));g=Math.max(0,Math.min(255,g+pct));b=Math.max(0,Math.min(255,b+pct));
-    return`#${((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}`;
-  }
-
-  function updateSummary(){
-    const el=document.body.classList.contains('el');
-    const tops=state.toppings.length?state.toppings.map(t=>L(t)).join(', '):(el?'καθόλου':'none');
-    const s=document.getElementById('summary');
-    s.innerHTML = el
-      ? `<b>${state.tiers}</b> όροφος/οι · <b>${L(state.flavour)}</b> παντεσπάνι · <b>${L(state.frosting)}</b> κρέμα<br>Τόπινγκ: <b>${tops}</b>${state.msg?` · Μήνυμα: <b>"${state.msg}"</b>`:''}<br><span style="color:var(--sage);font-weight:700">100% χωρίς γλουτένη &amp; λακτόζη</span>`
-      : `<b>${state.tiers}</b> tier${state.tiers>1?'s':''} · <b>${L(state.flavour)}</b> sponge · <b>${L(state.frosting)}</b> frosting<br>Toppings: <b>${tops}</b>${state.msg?` · Message: <b>"${state.msg}"</b>`:''}<br><span style="color:var(--sage);font-weight:700">100% gluten-free &amp; lactose-free</span>`;
-  }
-
-  // wire controls
-  document.getElementById('tiers').addEventListener('click',e=>{
-    const b=e.target.closest('button');if(!b)return;
-    document.querySelectorAll('#tiers button').forEach(x=>x.classList.remove('on'));
-    b.classList.add('on');state.tiers=+b.dataset.v;render();
-  });
-  document.querySelector('.panel').addEventListener('click',e=>{
-    const sw=e.target.closest('.sw');
-    if(sw){
-      const k=sw.dataset.k, i=+sw.dataset.i;
-      sw.parentElement.querySelectorAll('.sw').forEach(x=>x.classList.remove('on'));
-      sw.classList.add('on');
-      state[k]=(k==='flavour'?FLAVOURS:FROSTINGS)[i];render();return;
-    }
-  });
-  document.getElementById('cakeMsg').addEventListener('input',e=>{state.msg=e.target.value;render();});
-
-  // spin toggle (gentle sway animation)
-  function toggleSpin(){
-    const st=document.getElementById('stage'), btn=document.getElementById('spinBtn');
-    st.classList.toggle('paused');
-    const el=document.body.classList.contains('el'),p=st.classList.contains('paused');
-    btn.innerHTML=p?(el?'▶ <span>Κίνηση</span>':'▶ <span>Animate</span>'):(el?'⏸ <span>Παύση</span>':'⏸ <span>Pause</span>');
-  }
-  // drag to tilt the cake left/right
-  (function dragTilt(){
-    const scene=document.querySelector('.scene'), cake=document.getElementById('cake');
-    let down=false,lastX=0,tilt=0;
-    function set(){cake.style.transform=`rotate(${tilt}deg)`;}
-    scene.addEventListener('pointerdown',e=>{down=true;lastX=e.clientX;scene.style.cursor='grabbing';
-      document.getElementById('stage').classList.add('paused');
-      const b=document.getElementById('spinBtn'),el=document.body.classList.contains('el');
-      b.innerHTML=el?'▶ <span>Κίνηση</span>':'▶ <span>Animate</span>';});
-    window.addEventListener('pointermove',e=>{if(!down)return;
-      tilt=Math.max(-16,Math.min(16,tilt+(e.clientX-lastX)*0.25));lastX=e.clientX;set();});
-    window.addEventListener('pointerup',()=>{down=false;scene.style.cursor='grab';});
-  })();
-
-  function randomCake(){
-    state.tiers=1+Math.floor(Math.random()*3);
-    state.flavour=FLAVOURS[Math.floor(Math.random()*FLAVOURS.length)];
-    state.frosting=FROSTINGS[Math.floor(Math.random()*FROSTINGS.length)];
-    // pick 3–6 random toppings
-    const shuffled=[...TOPPINGS].sort(()=>Math.random()-0.5);
-    state.toppings=shuffled.slice(0, 3+Math.floor(Math.random()*4));
-    // sync UI
-    document.querySelectorAll('#tiers button').forEach(x=>x.classList.toggle('on',+x.dataset.v===state.tiers));
-    document.querySelectorAll('#flavours .sw').forEach((x,i)=>x.classList.toggle('on',FLAVOURS[i]===state.flavour));
-    document.querySelectorAll('#frostings .sw').forEach((x,i)=>x.classList.toggle('on',FROSTINGS[i]===state.frosting));
-    renderToppingList();
-    render();
-  }
-
-  // push design into the request form + scroll
-  function sendToForm(){
-    const el=document.body.classList.contains('el');
-    const tops=state.toppings.map(t=>L(t)).join(', ')||(el?'καθόλου':'none');
-    const f=document.getElementById('cakeform');
-    f.flavour.value=L(state.flavour);
-    f.size.value=state.tiers+(el?' όροφος/οι':' tier'+(state.tiers>1?'s':''));
-    f.notes.value=(el
-      ?`Σχέδιο από τον customizer — Κρέμα: ${L(state.frosting)} · Τόπινγκ: ${tops}`
-      :`Designed in customizer — Frosting: ${L(state.frosting)} · Toppings: ${tops}`)
-      +(state.msg?(el?` · Μήνυμα: "${state.msg}"`:` · Message: "${state.msg}"`):'');
-    toast(el?'✓ Το σχέδιο μπήκε στη φόρμα':'✓ Design added to the form');
-    document.getElementById('custom').scrollIntoView({behavior:'smooth'});
-    setTimeout(()=>f.name.focus(),600);
-  }
-
-  render();
-
-  // keep summary/labels correct on language switch
-  const _setLang2=setLang;
-  setLang=function(l){_setLang2(l);updateSummary();
-    const st=document.getElementById('stage'),btn=document.getElementById('spinBtn'),p=st.classList.contains('paused'),el=l==='el';
-    btn.innerHTML=p?(el?'▶ <span>Κίνηση</span>':'▶ <span>Animate</span>'):(el?'⏸ <span>Παύση</span>':'⏸ <span>Pause</span>');
-    if(typeof buildTopCats==='function'){buildTopCats();renderToppingList();}
+  const CB_SPONGE_COLORS={
+    'Chocolate':'#3d2314','Vanilla':'#f5e6c8','Lemon':'#e8d24a',
+    'Orange':'#f28c3a','Carrot':'#d4793a','Red Velvet':'#9e1b32',
+    'Pistachio':'#8aa84a','Almond':'#d4b882','Banana':'#f5e05a',
+    'Coconut':'#f0ece0','Cinnamon':'#a0522d','Hazelnut':'#9a6a3a',
+    'Coffee':'#4a2c18','Blueberry':'#4a5ba8',
   };
+
+  const cbState={
+    step:1,occasion:'',size:'',tiers:'',sponge:'',
+    filling:'',frosting:'',decos:[],decoCat:'all',
+    msg:'',date:'',notes:'',
+  };
+
+  function cbLo(o){return document.body.classList.contains('el')?o.el:o.en;}
+  function cbIsEl(){return document.body.classList.contains('el');}
+
+  function cbInitStep3(){
+    document.getElementById('cbFilling').innerHTML=CB_FILLINGS.map(f=>
+      `<div class="cb-card" data-val="${f.id}" onclick="cbPickF('filling','${f.id}',this)">
+        <span class="cb-swatch" style="background:${f.c}"></span><span>${cbLo(f)}</span>
+      </div>`).join('');
+    document.getElementById('cbFrosting').innerHTML=CB_FROSTINGS.map(f=>
+      `<div class="cb-card" data-val="${f.id}" onclick="cbPickF('frosting','${f.id}',this)">
+        <span class="cb-swatch" style="background:${f.c}"></span><span>${cbLo(f)}</span>
+      </div>`).join('');
+    if(cbState.filling){const e=document.querySelector(`#cbFilling [data-val="${cbState.filling}"]`);if(e)e.classList.add('on');}
+    if(cbState.frosting){const e=document.querySelector(`#cbFrosting [data-val="${cbState.frosting}"]`);if(e)e.classList.add('on');}
+  }
+
+  function cbPickF(field,id,el){
+    cbState[field]=id;
+    el.closest('.cb-cards').querySelectorAll('.cb-card').forEach(c=>c.classList.remove('on'));
+    el.classList.add('on');
+    cbUpdatePreview();
+  }
+
+  function cbInitStep4(){cbBuildDecoTabs();cbRenderDecos();}
+
+  function cbBuildDecoTabs(){
+    document.getElementById('cbDecoTabs').innerHTML=CB_DECO_CATS.map(cat=>
+      `<button class="cb-deco-tab${cbState.decoCat===cat.id?' on':''}" onclick="cbSetDecoCat('${cat.id}')">${cbLo(cat)}</button>`
+    ).join('');
+  }
+
+  function cbSetDecoCat(id){cbState.decoCat=id;cbBuildDecoTabs();cbRenderDecos();}
+
+  function cbRenderDecos(){
+    const list=TOPPINGS.filter(t=>cbState.decoCat==='all'||t.cat===cbState.decoCat);
+    const chosen=new Set(cbState.decos);
+    document.getElementById('cbDecoGrid').innerHTML=list.map(t=>
+      `<button class="cb-deco-item${chosen.has(t.id)?' on':''}" onclick="cbToggleDeco('${t.id}')">
+        <span class="cb-deco-dot" style="background:${t.c}"></span>${cbLo(t)}${chosen.has(t.id)?' ✓':''}
+      </button>`).join('');
+    const items=TOPPINGS.filter(t=>chosen.has(t.id));
+    document.getElementById('cbChosenDecos').innerHTML=items.length
+      ?items.map(t=>`<button class="cb-chosen-pill" onclick="cbToggleDeco('${t.id}')">${cbLo(t)} ✕</button>`).join('')
+      :'';
+  }
+
+  function cbToggleDeco(id){
+    const idx=cbState.decos.indexOf(id);
+    if(idx>-1)cbState.decos.splice(idx,1);
+    else{if(cbState.decos.length>=12)cbState.decos.shift();cbState.decos.push(id);}
+    cbRenderDecos();cbUpdatePreview();
+  }
+
+  function cbPick(field,el){
+    cbState[field]=el.dataset.val;
+    el.closest('.cb-cards').querySelectorAll('.cb-card').forEach(c=>c.classList.remove('on'));
+    el.classList.add('on');
+    cbUpdatePreview();
+  }
+
+  function cbSetTiers(n){
+    document.getElementById('cbT1').classList.remove('hidden');
+    document.getElementById('cbT2').classList.toggle('hidden',n<2);
+    document.getElementById('cbT3').classList.toggle('hidden',n<3);
+    cbUpdatePreview();
+  }
+
+  function cbUpdatePreview(){
+    const spongeColor=CB_SPONGE_COLORS[cbState.sponge]||'#e9cf9c';
+    const frostObj=CB_FROSTINGS.find(f=>f.id===cbState.frosting);
+    const frostColor=frostObj?frostObj.c:'rgba(255,255,255,.55)';
+    ['cbT1','cbT2','cbT3'].forEach(id=>{
+      const e=document.getElementById(id);
+      if(e){e.style.background=spongeColor;e.style.borderColor=frostColor;}
+    });
+    const isEl=cbIsEl();
+    const parts=[];
+    if(cbState.occasion)parts.push(cbState.occasion);
+    if(cbState.size)parts.push(cbState.size);
+    if(cbState.tiers)parts.push(cbState.tiers+(isEl?' όροφος/οι':' tier'+(cbState.tiers>'1'?'s':'')));
+    if(cbState.sponge)parts.push(cbState.sponge);
+    const fil=CB_FILLINGS.find(f=>f.id===cbState.filling);
+    if(fil)parts.push(cbLo(fil));
+    const fro=CB_FROSTINGS.find(f=>f.id===cbState.frosting);
+    if(fro)parts.push(cbLo(fro));
+    if(cbState.decos.length){
+      const names=TOPPINGS.filter(t=>cbState.decos.includes(t.id)).map(cbLo);
+      parts.push(names.slice(0,4).join(', ')+(names.length>4?'…':''));
+    }
+    const sumEl=document.getElementById('cbLiveSummary');
+    if(sumEl){
+      sumEl.innerHTML=parts.length
+        ?`<strong style="color:var(--cocoa)">${parts.join(' · ')}</strong><br><span style="color:var(--sage);font-size:.72rem;font-weight:700">✦ 100% gluten-free &amp; lactose-free</span>`
+        :(isEl?'<span>Οι επιλογές σου θα εμφανιστούν εδώ</span>':'<span>Your selections will appear here</span>');
+    }
+  }
+
+  function cbUpdateProgress(){
+    document.querySelectorAll('.cb-dot').forEach((dot,i)=>{
+      dot.classList.remove('active','done');
+      if(i+1<cbState.step)dot.classList.add('done');
+      if(i+1===cbState.step)dot.classList.add('active');
+    });
+    document.querySelectorAll('.cb-line').forEach((line,i)=>{
+      line.classList.toggle('done',i+1<cbState.step);
+    });
+  }
+
+  function cbGoToStep(n){
+    document.querySelectorAll('.cb-panel').forEach(p=>p.classList.remove('active'));
+    const panel=document.querySelector(`.cb-panel[data-panel="${n}"]`);
+    if(panel)panel.classList.add('active');
+    cbState.step=n;
+    cbUpdateProgress();
+    if(n===3)cbInitStep3();
+    if(n===4)cbInitStep4();
+    if(n===5)cbBuildSummary();
+    if(window.innerWidth<900){
+      const sec=document.getElementById('builder');
+      if(sec)setTimeout(()=>sec.scrollIntoView({behavior:'smooth',block:'start'}),50);
+    }
+  }
+
+  function cbNext(){if(cbState.step<5)cbGoToStep(cbState.step+1);}
+  function cbBack(){if(cbState.step>1)cbGoToStep(cbState.step-1);}
+
+  function cbBuildSummary(){
+    const isEl=cbIsEl();
+    const fil=CB_FILLINGS.find(f=>f.id===cbState.filling);
+    const fro=CB_FROSTINGS.find(f=>f.id===cbState.frosting);
+    const decos=TOPPINGS.filter(t=>cbState.decos.includes(t.id));
+    const msg=document.getElementById('cbMsg')?.value||'';
+    const date=document.getElementById('cbDate')?.value||'';
+    const rows=[
+      [isEl?'Εκδήλωση':'Occasion',cbState.occasion],
+      [isEl?'Μέγεθος':'Size',cbState.size],
+      [isEl?'Όροφοι':'Tiers',cbState.tiers],
+      [isEl?'Παντεσπάνι':'Sponge',cbState.sponge],
+      [isEl?'Γέμιση':'Filling',fil?cbLo(fil):''],
+      [isEl?'Επικάλυψη':'Frosting',fro?cbLo(fro):''],
+      [isEl?'Διακόσμηση':'Decorations',decos.length?decos.map(cbLo).join(', '):(isEl?'Καμία':'None')],
+      [isEl?'Μήνυμα':'Message',msg?`"${msg}"`:null],
+      [isEl?'Ημερομηνία':'Date',date||null],
+    ].filter(r=>r[1]);
+    const card=document.getElementById('cbSummaryCard');
+    if(card){
+      card.innerHTML=rows.map(([k,v])=>`<b>${k}:</b> ${v}`).join('<br>')+
+        `<br><span style="color:var(--sage);font-weight:700;font-size:.78rem">✦ ${isEl?'100% χωρίς γλουτένη &amp; λακτόζη':'100% gluten-free &amp; lactose-free'}</span>`;
+    }
+  }
+
+  ['cbMsg','cbDate','cbNotes'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.addEventListener('input',()=>{if(cbState.step===5)cbBuildSummary();});
+  });
+
+  const _origSetLang=setLang;
+  setLang=function(l){
+    _origSetLang(l);
+    if(cbState.step===3)cbInitStep3();
+    if(cbState.step===4)cbInitStep4();
+    if(cbState.step===5)cbBuildSummary();
+    cbUpdatePreview();
+  };
+
+  cbGoToStep(1);
 
   // auto-generate test ids for interactive and key visible elements
   (function ensureTestIds(){
