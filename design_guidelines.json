@@ -1,0 +1,99 @@
+{
+  "theme": "LIGHT",
+  "archetype": "5 (Luxury)",
+  "colors": {
+    "primary": "var(--rose)",
+    "secondary": "var(--sage)",
+    "background": "var(--cream)",
+    "text_main": "var(--choc)",
+    "accent": "var(--gold)",
+    "definitions": {
+      "--cream": "#faf7f4",
+      "--rose": "#c8606a",
+      "--sage": "#8a9a72",
+      "--choc": "#4a2c18",
+      "--gold": "#c8a050"
+    }
+  },
+  "typography": {
+    "headings": "Playfair Display or Cormorant Garamond (Serif) for elegant luxury",
+    "body": "Lato, Montserrat, or similar clean sans-serif for legibility",
+    "hierarchy": {
+      "h1": "font-size: 2.5rem; letter-spacing: -0.02em; color: var(--choc); margin-bottom: 1rem;",
+      "h2": "font-size: 1.75rem; color: var(--choc); margin-bottom: 1.5rem;",
+      "h3": "font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage); margin-bottom: 0.5rem;",
+      "body": "font-size: 1rem; color: var(--choc); line-height: 1.6;"
+    }
+  },
+  "layout_and_spacing": {
+    "container": "max-width: 1200px; margin: 0 auto; padding: 2rem;",
+    "grid": "CSS Grid for overall layout: 1fr on mobile, 1fr 1fr on desktop (Left: Sticky Preview, Right: Steps Form)",
+    "options_grid": "display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem;",
+    "cards": "border: 1px solid rgba(200, 160, 80, 0.3); border-radius: 8px; padding: 1rem; cursor: pointer; transition: all 0.3s ease; background: #fff; text-align: center;",
+    "cards_active": "border-color: var(--rose); box-shadow: 0 4px 12px rgba(200, 96, 106, 0.15);"
+  },
+  "cake_preview_css_logic": {
+    "structure": "A relative container acting as a cake stand, with absolute positioned div elements representing tiers stacked on top of each other.",
+    "tier_styles": "border-radius: 8px 8px 3px 3px; box-shadow: inset 0 -5px 15px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.05); transition: background-color 0.5s ease, opacity 0.3s ease, transform 0.3s ease;",
+    "dynamic_updates": "JS updates background-color of tiers based on selected frosting. JS toggles display/opacity of tiers based on selected number of tiers. Toppings are small absolute positioned elements (CSS pseudo-elements or inner divs) on the top tier."
+  },
+  "step_by_step_wizard": {
+    "step_1": {
+      "id": "step-1",
+      "title": "Occasion & Size",
+      "occasion_options": ["Birthday", "Wedding", "Baptism", "Anniversary", "Other"],
+      "size_options": ["15cm", "20cm", "25cm", "30cm"]
+    },
+    "step_2": {
+      "id": "step-2",
+      "title": "Tiers & Sponge",
+      "tier_options": [1, 2, 3],
+      "sponge_options": ["Chocolate", "Vanilla", "Lemon", "Orange", "Carrot", "Red Velvet", "Pistachio", "Almond"]
+    },
+    "step_3": {
+      "id": "step-3",
+      "title": "Filling & Frosting",
+      "filling_options": ["Pistachio cream", "Lemon cream", "Strawberry cream", "Raspberry", "Chocolate ganache", "Vanilla", "Caramel", "No filling"],
+      "frosting_options": [
+        {"name": "Vanilla white", "color": "#fdfbf7"},
+        {"name": "Chocolate dark", "color": "#3b2f2f"},
+        {"name": "Strawberry blush", "color": "#ffb6c1"},
+        {"name": "Pistachio green", "color": "#93c572"},
+        {"name": "Lemon yellow", "color": "#fff700"},
+        {"name": "Caramel gold", "color": "#c68e17"}
+      ]
+    },
+    "step_4": {
+      "id": "step-4",
+      "title": "Decorations",
+      "decoration_categories": {
+        "fruits": ["Strawberries", "Raspberries", "Blueberries"],
+        "flowers": ["Edible Roses", "Rose Petals"],
+        "finishing": ["Gold leaf", "Macarons", "Meringue kisses", "Gold pearls", "Pistachio crumble", "Almond flakes"]
+      },
+      "note": "Allow multiple selections via checkboxes styled as cards."
+    },
+    "step_5": {
+      "id": "step-5",
+      "title": "Final Details",
+      "inputs": ["Personal Message (Textarea)", "Delivery Date (Date Input)"]
+    }
+  },
+  "interactions_and_js": {
+    "navigation": "Hide/show step containers by removing/adding a 'hidden' class. Animate opacity on entry. Update a visual progress bar width (e.g., 20%, 40%, 60%, 80%, 100%) and activate step indicators.",
+    "state_management": "Use a global JS object `let cakeState = {...}` to store current selections. Update this object via 'change' event listeners on inputs.",
+    "preview_sync": "On state update, immediately reflect changes in the visual preview (e.g., change tier height based on size, color based on frosting, number of elements based on tiers).",
+    "submission": "On the final step, format `cakeState` into a readable string and set `window.location.href = 'mailto:evridiki@example.com?subject=Custom Cake Order&body=' + encodeURIComponent(orderText);` or equivalent WhatsApp link."
+  },
+  "image_urls": [
+    {
+      "url": "https://images.pexels.com/photos/13692941/pexels-photo-13692941.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "category": "background_texture",
+      "description": "Elegant cake flatlay to use subtly in the background or final success state."
+    }
+  ],
+  "testing": {
+    "attributes": "Add data-testid attributes to ALL interactive elements (e.g., data-testid='step-1-next', data-testid='option-vanilla', data-testid='submit-order'). Add data-testid to step containers."
+  },
+  "instructions_to_main_agent": "Create a vanilla HTML/CSS/JS solution (no React). Build a 2-column layout on desktop (Sticky CSS visual cake preview on left, Scrolling wizard on right). Use the CSS variables explicitly requested (--cream, --rose, --sage, --choc, --gold). Build radio/checkbox inputs visually as clickable cards. Ensure a '100% Gluten-Free' badge is prominent. Make sure step transitions are smooth using CSS transitions. Implement logic to generate the summary text and trigger mailto/whatsapp link on submit."
+}
