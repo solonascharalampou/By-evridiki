@@ -1341,12 +1341,27 @@
     // --- POPULAR ---
     'Make Your Own GF Sandwich':   '/images/img01.png',
   };
-  function loadProducts(){
-    try{ const s=localStorage.getItem(PRODUCTS_KEY); if(s){ const a=JSON.parse(s); if(Array.isArray(a)&&a.length) return a; } }catch(e){}
-    return DEFAULT_PRODUCTS.map((p,i)=>({id:'seed'+i, ...p}));
+
+  // ===== API HELPERS =====
+  const API = '';  // same-origin, routes via /api prefix
+  const TOKEN_KEY = 'byevridiki_token';
+  const getToken = () => sessionStorage.getItem(TOKEN_KEY);
+  const authHeaders = () => ({ 'Authorization': 'Bearer ' + getToken(), 'Content-Type': 'application/json' });
+
+  // ===== PRODUCT STORE (loaded from backend API) =====
+  let products = [];
+
+  async function initProducts() {
+    try {
+      const resp = await fetch(API + '/api/products');
+      if (resp.ok) { products = await resp.json(); }
+      else { products = DEFAULT_PRODUCTS.map((p,i) => ({id:'seed'+i, ...p})); }
+    } catch(e) {
+      products = DEFAULT_PRODUCTS.map((p,i) => ({id:'seed'+i, ...p}));
+    }
+    refreshMenu();
+    renderProdList();
   }
-  function saveProducts(list){ try{ localStorage.setItem(PRODUCTS_KEY, JSON.stringify(list)); }catch(e){ alert('Could not save — image may be too large. Try a smaller photo.'); } }
-  let products = loadProducts();
 
   function escHtml(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
   function normalizeKey(v){ return String(v||'').trim().toLowerCase(); }
@@ -1417,7 +1432,8 @@
       </article>`;}).join('') || `<p class="top-empty">${el?'Δεν υπάρχουν προϊόντα εδώ.':'No products in this category yet.'}</p>`;
     hydrateCardPhotos();
   }
-  renderMenu('all');
+  // Initialize: load products from API then render
+  initProducts();
 
   document.getElementById('cattabs').addEventListener('click', e=>{
     const b = e.target.closest('button'); if(!b) return;
@@ -1518,11 +1534,16 @@
       </div>`;
     }).join('') || `<p class="top-empty">${el?'Δεν υπάρχουν προϊόντα.':'No products yet.'}</p>`;
   }
-  function togglePop(id){ const p=products.find(x=>x.id===id); if(p){p.pop=!p.pop; saveProducts(products); renderProdList(); refreshMenu();} }
+  function togglePop(id){
+    fetch(API+'/api/products/'+id+'/toggle-pop',{method:'PATCH',headers:authHeaders()})
+      .then(r=>r.ok?r.json():null)
+      .then(data=>{if(data){const p=products.find(x=>x.id===id);if(p){p.pop=data.pop;renderProdList();refreshMenu();}}});
+  }
   function deleteProduct(id){
     const el=document.body.classList.contains('el');
     if(!confirm(el?'Διαγραφή προϊόντος;':'Delete this product?')) return;
-    products=products.filter(x=>x.id!==id); saveProducts(products); renderProdList(); refreshMenu();
+    fetch(API+'/api/products/'+id,{method:'DELETE',headers:authHeaders()})
+      .then(r=>{if(r.ok){products=products.filter(x=>x.id!==id);renderProdList();refreshMenu();}});
   }
   function refreshMenu(){ const on=document.querySelector('#cattabs .on'); renderMenu(on?on.dataset.cat:'all'); }
 
@@ -1575,7 +1596,7 @@
     reader.readAsDataURL(file);
   }
 
-  function saveProductEditor(){
+  async function saveProductEditor(){
     const el=document.body.classList.contains('el');
     const en=document.getElementById('peEn').value.trim();
     const price=document.getElementById('pePrice').value.trim();
@@ -1588,21 +1609,35 @@
       del:document.getElementById('peDel').value.trim()||document.getElementById('peDen').value.trim(),
       lf:document.getElementById('peLf').checked,
       pop:document.getElementById('pePop').checked,
-      img:editingImg||null,
       g:'g2'
     };
-    if(editingId){ const i=products.findIndex(x=>x.id===editingId); if(i>-1) products[i]={...products[i],...data}; }
-    else { products.unshift({id:'p'+Date.now(), ...data}); }
-    saveProducts(products);
-    closeProductEditor(); renderProdList(); refreshMenu();
+    if(editingImg) data.img=editingImg;
+    try{
+      const url=editingId?API+'/api/products/'+editingId:API+'/api/products';
+      const method=editingId?'PUT':'POST';
+      const resp=await fetch(url,{method,headers:authHeaders(),body:JSON.stringify(data)});
+      if(!resp.ok) throw new Error('Server error');
+      const saved=await resp.json();
+      if(editingId){const i=products.findIndex(x=>x.id===editingId);if(i>-1)products[i]=saved;}
+      else{products.unshift(saved);}
+      closeProductEditor(); renderProdList(); refreshMenu();
+    }catch(e){alert('Error saving product. Please try again.');}
   }
 
-  function portalLogin(){
+  async function portalLogin(){
     const v=document.getElementById('portalPw').value;
-    if(v===PORTAL_PW){ sessionStorage.setItem('byevridiki_admin','1'); document.getElementById('portalErr').style.display='none'; portalGate(); }
-    else { document.getElementById('portalErr').style.display='block'; }
+    try{
+      const resp=await fetch(API+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:v})});
+      if(resp.ok){
+        const data=await resp.json();
+        sessionStorage.setItem(TOKEN_KEY,data.token);
+        sessionStorage.setItem('byevridiki_admin','1');
+        document.getElementById('portalErr').style.display='none';
+        portalGate();
+      } else { document.getElementById('portalErr').style.display='block'; }
+    }catch(e){ document.getElementById('portalErr').style.display='block'; }
   }
-  function portalLogout(){ sessionStorage.removeItem('byevridiki_admin'); portalGate(); }
+  function portalLogout(){ sessionStorage.removeItem('byevridiki_admin'); sessionStorage.removeItem(TOKEN_KEY); portalGate(); }
   function setStatus(id,status){ const l=loadOrders(); const o=l.find(x=>x.id===id); if(o){o.status=status; saveOrders(l); renderOrders();} }
   function deleteOrder(id){ if(!confirm('Delete this order?')) return; saveOrders(loadOrders().filter(x=>x.id!==id)); renderOrders(); }
   function renderOrders(){
