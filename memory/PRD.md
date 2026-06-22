@@ -40,7 +40,15 @@ The user has a bakery website and wants to fix layout/design issues, mobile view
 - Products now persist across devices and browsers via MongoDB
 - Chef's Portal: login, product list with thumbnails, add/edit/delete — all working
 
-### Session 4 (June 22, 2026 — Cake Customizer v2)
+### Session 5 (June 22, 2026 — Portal Customizer + UI Cleanup)
+- Removed 2 SVG cake illustrations (hero section + intro/about section) — layout goes full-width text
+- Added **Customizer tab** in Chef's Portal with 4 sub-tabs: Sponge Flavours, Fillings, Frostings, Decorations
+- Backend: New `customizer_opts` MongoDB collection, seeded with all 73 default GF options
+- Backend: New API endpoints — `GET /api/customizer`, `POST /api/customizer`, `DELETE /api/customizer/{id}`
+- Portal allows adding (name EN, name EL, colour picker, category for decos) and deleting any customizer option
+- Cake customizer now loads options dynamically from API at page load, overriding hardcoded defaults
+- Sponge flavours in Step 2 are now dynamically generated from API data via `cbInitStep2()`
+- Removed "Custom & celebration cakes" card from the Find Us / Locations section
 - Completely redesigned Cake Customizer to a 5-step wizard at `#builder`
 - Removed ALL old customizer code (SVG drawing, FLAVOURS, FROSTINGS, old event listeners)
 - Added full CSS for `.cb-*` classes: progress bar, selection cards, cake preview, navigation
