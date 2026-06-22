@@ -994,7 +994,7 @@
         </div>
         <div class="opt-group">
           <h4 data-en>Toppings <span class="tcount" id="tcount"></span></h4><h4 data-el>Τόπινγκ <span class="tcount" id="tcountEl"></span></h4>
-          <input class="top-search" id="topSearch" placeholder="Search 500+ gluten-free toppings…" oninput="renderToppingList()">
+          <input class="top-search" id="topSearch" placeholder="Search toppings…" oninput="renderToppingList()">
           <div class="top-cats" id="topCats"></div>
           <div class="top-list" id="toppings"></div>
           <div class="top-chosen" id="topChosen"></div>
@@ -1772,229 +1772,74 @@
     {id:'sage', en:'Pistachio', el:'Φιστίκι', c:'#cdd9b0'},
     {id:'caramel', en:'Caramel', el:'Καραμέλα', c:'#d9a45e'},
   ];
-  // ===== 100+ gluten-free toppings, organised by category =====
-  // render types map to drawn shapes: dot, berry, flower, gold, shard, macaron, star, heart, leaf, nut, swirl, pearl
+  // ===== Gluten-free toppings — realistic items Evridiki actually uses =====
   const TOP_CATS=[
-    {id:'fruit', en:'Fruit', el:'Φρούτα'},
-    {id:'choc', en:'Chocolate', el:'Σοκολάτα'},
-    {id:'nuts', en:'Nuts & seeds', el:'Ξηροί καρποί'},
-    {id:'floral', en:'Floral & sugar', el:'Άνθη & ζάχαρη'},
-    {id:'candy', en:'Sweets & sprinkles', el:'Γλυκά & τρουφάκια'},
-    {id:'luxe', en:'Luxe & finishing', el:'Πολυτελείας'},
+    {id:'fruit',   en:'Fruit',          el:'Φρούτα'},
+    {id:'cream',   en:'Creams',         el:'Κρέμες'},
+    {id:'nuts',    en:'Nuts',           el:'Ξηροί Καρποί'},
+    {id:'choc',    en:'Chocolate',      el:'Σοκολάτα'},
+    {id:'finish',  en:'Finishing',      el:'Διακόσμηση'},
   ];
   function T(id,en,el,c,type,cat){return {id,en,el,c,type,cat,gf:true};}
   const BASE_TOPPINGS=[
-    // ---- FRUIT (berry/dot/leaf) ----
+    // ---- FRUIT ----
     T('strawberry','Strawberries','Φράουλες','#d22f4a','berry','fruit'),
     T('raspberry','Raspberries','Σμέουρα','#c2305c','berry','fruit'),
     T('blueberry','Blueberries','Μύρτιλα','#4a5ba8','berry','fruit'),
     T('blackberry','Blackberries','Βατόμουρα','#3a2a44','berry','fruit'),
-    T('redcurrant','Redcurrants','Φραγκοστάφυλα','#cc2436','berry','fruit'),
     T('cherry','Cherries','Κεράσια','#9e1b2f','berry','fruit'),
-    T('grape','Grapes','Σταφύλια','#6b4a8a','berry','fruit'),
-    T('fig','Fig slices','Σύκα','#7a4a6a','dot','fruit'),
-    T('kiwi','Kiwi','Ακτινίδιο','#7aa83a','dot','fruit'),
     T('mango','Mango','Μάνγκο','#f2a93a','dot','fruit'),
-    T('peach','Peach','Ροδάκινο','#f2b27a','dot','fruit'),
-    T('orange','Orange slices','Πορτοκάλι','#e8862a','dot','fruit'),
-    T('lemon','Lemon zest','Λεμόνι','#e8d24a','dot','fruit'),
-    T('lime','Lime zest','Λάιμ','#9ac23a','dot','fruit'),
-    T('passion','Passion fruit','Πάθος','#d8a83a','dot','fruit'),
+    T('passion','Passion fruit','Παρφαί','#d8a83a','dot','fruit'),
+    T('orange','Candied orange slices','Ζαχαρωτό πορτοκάλι','#e8862a','dot','fruit'),
+    T('lemon','Lemon zest','Ξύσμα λεμονιού','#e8d24a','dot','fruit'),
+    T('kiwi','Kiwi','Ακτινίδιο','#7aa83a','dot','fruit'),
     T('pomegranate','Pomegranate','Ρόδι','#b51f3a','berry','fruit'),
-    T('banana','Banana','Μπανάνα','#ead74a','dot','fruit'),
-    T('pineapple','Pineapple','Ανανάς','#e8c83a','dot','fruit'),
-    T('apricot','Apricot','Βερίκοκο','#e8a85a','dot','fruit'),
-    T('cranberry','Cranberries','Κράνμπερι','#b8243a','berry','fruit'),
-    T('mint','Mint leaves','Δυόσμος','#5a9a5a','leaf','fruit'),
-    T('basil','Basil leaves','Βασιλικός','#4a8a4a','leaf','fruit'),
-    // ---- CHOCOLATE (shard/dot/swirl) ----
+    T('fig','Fig slices','Σύκο','#7a4a6a','dot','fruit'),
+    T('peach','Peach','Ροδάκινο','#f2b27a','dot','fruit'),
+    T('mint','Mint leaves','Φύλλα δυόσμου','#5a9a5a','leaf','fruit'),
+    // ---- CREAMS ----
+    T('pistcream','Pistachio cream','Κρέμα φιστικιού','#8aa84a','dot','cream'),
+    T('lemoncream','Lemon cream','Κρέμα λεμονιού','#e8d24a','swirl','cream'),
+    T('strawcream','Strawberry cream','Κρέμα φράουλας','#f0a0b0','swirl','cream'),
+    T('choccream','Chocolate cream','Κρέμα σοκολάτας','#6b4326','swirl','cream'),
+    T('caramelcream','Caramel cream','Κρέμα καραμέλας','#d9a45e','swirl','cream'),
+    T('vanillacream','Vanilla cream','Κρέμα βανίλιας','#fff0d8','swirl','cream'),
+    T('mascarpone','Mascarpone cream','Κρέμα mascarpone','#f5eed8','swirl','cream'),
+    // ---- NUTS ----
+    T('pistachio','Pistachio crumble','Τριμμένο φιστίκι','#8aa84a','nut','nuts'),
+    T('almond','Toasted almonds','Αμύγδαλα','#d9b889','nut','nuts'),
+    T('almondflake','Almond flakes','Φλούδες αμυγδάλου','#e8d4b0','shard','nuts'),
+    T('walnut','Walnuts','Καρύδια','#8a6a4a','nut','nuts'),
+    T('hazelnut','Hazelnuts','Φουντούκια','#9a6a3a','nut','nuts'),
+    T('coconut','Coconut flakes','Τριμμένη καρύδα','#f0ece0','shard','nuts'),
+    // ---- CHOCOLATE ----
     T('darkshard','Dark chocolate shards','Μαύρη σοκολάτα','#2a1810','shard','choc'),
     T('milkshard','Milk chocolate shards','Σοκολάτα γάλακτος','#6b4326','shard','choc'),
     T('whiteshard','White chocolate shards','Λευκή σοκολάτα','#f3e9d6','shard','choc'),
     T('choccurl','Chocolate curls','Μπούκλες σοκολάτας','#4a2c18','swirl','choc'),
-    T('chocchip','Chocolate chips','Σταγόνες σοκολάτας','#3a2418','dot','choc'),
-    T('choctruffle','Chocolate truffles','Τρούφες','#3a241a','dot','choc'),
+    T('chocdrip','Chocolate drip','Σταγόνες σοκολάτας','#4a2c18','swirl','choc'),
     T('cocoadust','Cocoa dusting','Κακάο','#5a3a28','dot','choc'),
-    T('chocdrip','Chocolate drip','Σταγόνες','#4a2c18','swirl','choc'),
-    T('whitedrip','White choc drip','Λευκές σταγόνες','#f0e4d2','swirl','choc'),
-    T('chochearts','Chocolate hearts','Σοκολατένιες καρδιές','#4a2c18','heart','choc'),
-    T('chocstars','Chocolate stars','Σοκολατένια αστέρια','#3a2418','star','choc'),
-    T('chocpearl','Crispy chocolate pearls','Πέρλες σοκολάτας','#4a3020','pearl','choc'),
     T('rubychoc','Ruby chocolate','Ruby σοκολάτα','#d97a8a','shard','choc'),
-    T('hazelchoc','Hazelnut praline','Πραλίνα','#8a5a32','dot','choc'),
-    T('mochabean','Mocha beans','Κόκκοι μόκα','#3a2418','dot','choc'),
-    // ---- NUTS & SEEDS (nut/dot) ----
-    T('almond','Toasted almonds','Αμύγδαλα','#d9b889','nut','nuts'),
-    T('almondflake','Almond flakes','Φλούδες αμυγδάλου','#e8d4b0','shard','nuts'),
-    T('pistachio','Pistachios','Φιστίκια','#8aa84a','nut','nuts'),
-    T('pistdust','Pistachio crumble','Τρίμμα φιστικιού','#9ab85a','dot','nuts'),
-    T('hazelnut','Hazelnuts','Φουντούκια','#9a6a3a','nut','nuts'),
-    T('walnut','Walnuts','Καρύδια','#8a6a4a','nut','nuts'),
-    T('pecan','Pecans','Πεκάν','#9a5a3a','nut','nuts'),
-    T('cashew','Cashews','Κάσιους','#e0c89a','nut','nuts'),
-    T('macadamia','Macadamia','Μακαντάμια','#e8dcc0','nut','nuts'),
-    T('peanut','Peanuts','Φιστίκια αράπικα','#c8a05a','nut','nuts'),
-    T('coconut','Coconut flakes','Καρύδα','#f0ece0','shard','nuts'),
-    T('pinekernel','Pine kernels','Κουκουνάρι','#e0d0a0','nut','nuts'),
-    T('sesame','Sesame brittle','Παστέλι','#d8b87a','shard','nuts'),
-    T('pumpkin','Pumpkin seeds','Κολοκυθόσπορος','#7a9a4a','leaf','nuts'),
-    T('sunflower','Sunflower seeds','Ηλιόσπορος','#b8985a','dot','nuts'),
-    T('chia','Chia seeds','Σπόροι chia','#3a3028','dot','nuts'),
-    // ---- FLORAL & SUGAR (flower/leaf) ----
-    T('rose','Edible roses','Τριαντάφυλλα','#e07a9a','flower','floral'),
-    T('rosepetal','Rose petals','Ροδοπέταλα','#e8a0b8','leaf','floral'),
-    T('lavender','Lavender','Λεβάντα','#9a7ac2','flower','floral'),
-    T('violet','Crystallised violets','Βιολέτες','#8a6ac2','flower','floral'),
-    T('pansy','Pansies','Πανσέδες','#c27ad9','flower','floral'),
-    T('cornflower','Cornflowers','Κενταυρίδες','#5a7ac2','flower','floral'),
-    T('chamomile','Chamomile','Χαμομήλι','#f0e8b0','flower','floral'),
-    T('marigold','Marigold petals','Καλέντουλα','#e8a83a','leaf','floral'),
-    T('hibiscus','Hibiscus','Ιβίσκος','#c2304a','flower','floral'),
-    T('jasmine','Jasmine','Γιασεμί','#f0ece0','flower','floral'),
-    T('sugarrose','Sugar roses','Ζαχαρωτά τριαντάφυλλα','#f0b8c8','flower','floral'),
-    T('sugarflower','Sugar blossoms','Ζαχαρένια άνθη','#f8d0dc','flower','floral'),
-    T('fondantbow','Fondant bows','Φιόγκοι','#f0c2d0','heart','floral'),
-    T('buttercreamrose','Buttercream rosettes','Ροζέτες','#f4d8e0','swirl','floral'),
-    T('icingleaf','Icing leaves','Φύλλα γλάσου','#a8c87a','leaf','floral'),
-    // ---- SWEETS & SPRINKLES (dot/star/heart/pearl) ----
-    T('rainbowsprinkle','Rainbow sprinkles','Τρουφάκια','#e0506a','dot','candy'),
-    T('chocsprinkle','Chocolate sprinkles','Σοκολατένια τρουφάκια','#4a2c18','dot','candy'),
-    T('nonpareil','Nonpareils','Μπιλάκια','#e89ab8','pearl','candy'),
-    T('sugarpearl','Sugar pearls','Ζαχαρόπερλες','#f0e8d8','pearl','candy'),
-    T('goldpearl','Gold pearls','Χρυσές πέρλες','#d8a93a','pearl','candy'),
-    T('silverpearl','Silver pearls','Ασημί πέρλες','#cfd2d8','pearl','candy'),
-    T('heartsprinkle','Heart sprinkles','Καρδούλες','#e2506a','heart','candy'),
-    T('starsprinkle','Star sprinkles','Αστεράκια','#f2c84b','star','candy'),
-    T('confetti','Confetti quins','Κονφετί','#6ab0d8','dot','candy'),
-    T('jellybean','Jelly beans','Ζελεδάκια','#d85a8a','dot','candy'),
-    T('gummybear','Gummy bears','Αρκουδάκια ζελέ','#e8703a','dot','candy'),
-    T('marshmallow','Mini marshmallows','Marshmallows','#f6e2e8','dot','candy'),
-    T('meringue','Meringue kisses','Μαρέγκες','#f4e8ee','swirl','candy'),
-    T('honeycomb','Honeycomb crunch','Μέλι crunch','#e0a83a','shard','candy'),
-    T('toffee','Toffee pieces','Καραμέλα','#b87a32','dot','candy'),
-    T('fudge','Fudge cubes','Φοντάν','#a06840','dot','candy'),
-    T('caramelpopcorn','Caramel popcorn','Καραμελωμένο ποπ κορν','#e8c87a','dot','candy'),
-    T('lollipop','Mini lollipops','Γλειφιτζούρια','#e0607a','dot','candy'),
-    T('candycane','Candy cane bits','Candy cane','#d83a4a','shard','candy'),
-    T('liquorice','Liquorice drops','Γλυκόριζα','#2a2228','dot','candy'),
-    // ---- LUXE & FINISHING (gold/pearl/swirl) ----
-    T('goldleaf','Gold leaf','Φύλλο χρυσού','#d8a93a','gold','luxe'),
-    T('silverleaf','Silver leaf','Φύλλο ασημιού','#cfd2d8','gold','luxe'),
-    T('rosegold','Rose gold flakes','Rose gold','#d99a8a','gold','luxe'),
-    T('goldspray','Gold sparkle dust','Χρυσόσκονη','#e0b84a','dot','luxe'),
-    T('lustre','Pearl lustre','Μαργαριταρένια λάμψη','#f0e8e0','pearl','luxe'),
-    T('macaron','Macarons','Μακαρόν','#f2b8c6','macaron','luxe'),
-    T('macaronpink','Pink macarons','Ροζ μακαρόν','#f0a8c0','macaron','luxe'),
-    T('macarongreen','Pistachio macarons','Πράσινα μακαρόν','#bcd49a','macaron','luxe'),
-    T('macaronchoc','Chocolate macarons','Σοκολατένια μακαρόν','#8a5a3a','macaron','luxe'),
-    T('cakepop','Cake pops','Cake pops','#e88aa8','dot','luxe'),
-    T('wafer','Wafer rolls','Γκοφρέτες','#d8b888','shard','luxe'),
-    T('pirouette','Pirouette wafers','Πιρουέτες','#c8a878','swirl','luxe'),
-    T('biscoff','Biscoff crumble','Biscoff','#b87a42','dot','luxe'),
-    T('brownie','Brownie chunks','Brownie','#3a241a','dot','luxe'),
-    T('cookiedough','Cookie dough bites','Cookie dough','#c8a058','dot','luxe'),
-    T('caramelshard','Caramel shards','Καραμέλα shards','#c8852a','shard','luxe'),
-    T('isomalt','Isomalt sails','Isomalt','#e8dcc8','shard','luxe'),
-    T('chocsphere','Chocolate spheres','Σφαίρες σοκολάτας','#4a2c18','pearl','luxe'),
-    T('candiedorange','Candied orange','Ζαχαρωμένο πορτοκάλι','#e08a2a','dot','luxe'),
-    T('candiedginger','Candied ginger','Ζαχαρωμένο τζίντζερ','#d8a85a','dot','luxe'),
-    T('espresso','Espresso dusting','Εσπρέσο','#3a281a','dot','luxe'),
-    T('matcha','Matcha dusting','Matcha','#7a9a4a','dot','luxe'),
-    T('freezeberry','Freeze-dried raspberry','Λυοφιλ. σμέουρο','#d2305c','dot','luxe'),
-    T('popcandy','Popping candy','Popping candy','#e05a8a','dot','luxe'),
+    // ---- FINISHING ----
+    T('goldleaf','Gold leaf','Φύλλο χρυσού','#d8a93a','gold','finish'),
+    T('meringue','Meringue kisses','Μαρέγκες','#f4e8ee','swirl','finish'),
+    T('macaron','Macarons','Μακαρόν','#f2b8c6','macaron','finish'),
+    T('rose','Edible roses','Βρώσιμα τριαντάφυλλα','#e07a9a','flower','finish'),
+    T('rosepetal','Rose petals','Ροδοπέταλα','#e8a0b8','leaf','finish'),
+    T('sugarpearl','Sugar pearls','Ζαχαρόπερλες','#f0e8d8','pearl','finish'),
+    T('goldpearl','Gold pearls','Χρυσές πέρλες','#d8a93a','pearl','finish'),
+    T('freezeberry','Freeze-dried raspberry','Λυοφιλοποιημένο σμέουρο','#d2305c','dot','finish'),
+    T('isomalt','Isomalt decoration','Ισομάλτη','#e8dcc8','shard','finish'),
   ];
 
-  // ===== Expand to 500+ gluten-free toppings via real variant forms =====
-  // Each base topping spawns several genuine preparation variants.
-  const VARIANTS={
-    fruit:[
-      ['','',''],
-      ['sliced',' slices',' σε φέτες'],
-      ['halved',' halves',' στη μέση'],
-      ['whole','whole ','ολόκληρα '],
-      ['fresh','fresh ','φρέσκα '],
-      ['glazed','glazed ','γλασαρισμένα '],
-      ['compote',' compote',' κομπόστα'],
-      ['dried','dried ','αποξηραμένα '],
-      ['candied','candied ','ζαχαρωμένα '],
-      ['coulis',' coulis',' κουλί'],
-    ],
-    choc:[
-      ['','',''],
-      ['dark','dark ','μαύρη '],
-      ['milk','milk ','γάλακτος '],
-      ['white','white ','λευκή '],
-      ['ruby','ruby ','ruby '],
-      ['curls',' curls',' μπούκλες'],
-      ['shaved','shaved ','τριμμένη '],
-      ['dipped','dipped ','βουτηγμένα '],
-    ],
-    nuts:[
-      ['','',''],
-      ['toasted','toasted ','καβουρδισμένα '],
-      ['caramelised','caramelised ','καραμελωμένα '],
-      ['chopped','chopped ','ψιλοκομμένα '],
-      ['crushed','crushed ','θρυμματισμένα '],
-      ['praline',' praline',' πραλίνα'],
-      ['flaked','flaked ','σε νιφάδες '],
-      ['honeyed','honeyed ','μελωμένα '],
-    ],
-    floral:[
-      ['','',''],
-      ['fresh','fresh ','φρέσκα '],
-      ['crystallised','crystallised ','κρυσταλλωμένα '],
-      ['petals',' petals',' πέταλα'],
-      ['sugared','sugared ','ζαχαρωμένα '],
-      ['pressed','pressed ','πρεσαριστά '],
-      ['buds',' buds',' μπουμπούκια'],
-    ],
-    candy:[
-      ['','',''],
-      ['mini','mini ','μίνι '],
-      ['rainbow','rainbow ','πολύχρωμα '],
-      ['pastel','pastel ','παστέλ '],
-      ['metallic','metallic ','μεταλλικά '],
-      ['pearl',' pearls',' πέρλες'],
-      ['mix',' mix',' μείγμα'],
-      ['crunch',' crunch',' crunch'],
-    ],
-    luxe:[
-      ['','',''],
-      ['gold','gold-dusted ','με χρυσόσκονη '],
-      ['edible','edible ','βρώσιμα '],
-      ['hand-piped','hand-piped ','χειροποίητα '],
-      ['mirror',' mirror glaze',' mirror glaze'],
-      ['shards',' shards',' shards'],
-      ['spheres',' spheres',' σφαίρες'],
-      ['brittle',' brittle',' πραλίνα'],
-    ],
-  };
+  const TOPPINGS = BASE_TOPPINGS;
   function tweakColor(hex,seed){
     const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;
     const d=((seed*37)%34)-17;
     r=Math.max(0,Math.min(255,r+d));g=Math.max(0,Math.min(255,g+Math.round(d*0.6)));b=Math.max(0,Math.min(255,b+Math.round(d*0.3)));
     return`#${((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}`;
   }
-  const TOPPINGS=(function(){
-    const out=[]; const seen=new Set();
-    const push=(t)=>{ if(!seen.has(t.id)){seen.add(t.id);out.push(t);} };
-    // featured base first
-    BASE_TOPPINGS.forEach(b=>push(b));
-    // generate variants until we pass 500
-    let vi=0;
-    BASE_TOPPINGS.forEach((b,bi)=>{
-      const vs=VARIANTS[b.cat]||VARIANTS.luxe;
-      vs.forEach((v,k)=>{
-        if(!v[0]) return; // skip the empty (base already added)
-        const pre=v[1], preEl=v[2];
-        const isSuffix=pre.startsWith(' ');
-        const en = isSuffix ? (b.en+pre) : (pre+b.en.toLowerCase());
-        const el = isSuffix ? (b.el+preEl) : (preEl+b.el.toLowerCase());
-        push(T(b.id+'_'+v[0], en.charAt(0).toUpperCase()+en.slice(1), el.charAt(0).toUpperCase()+el.slice(1), tweakColor(b.c,k+bi), b.type, b.cat));
-      });
-    });
-    return out;
-  })();
+  // TOPPINGS = BASE_TOPPINGS (already set above)
 
   const state={tiers:1,flavour:FLAVOURS[0],frosting:FROSTINGS[0],toppings:[],msg:'',topCat:'all',topQuery:''};
 
