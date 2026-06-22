@@ -102,7 +102,7 @@
 
   /* ---------- HERO ---------- */
   .hero{padding:54px 0 30px;overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:0;max-width:56rem;margin-left:0}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--rose-deep);margin-bottom:22px}
   .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--rose)}
   .hero h1{font-size:clamp(2.7rem,6vw,4.3rem);margin-bottom:18px;font-weight:400;letter-spacing:-.02em}
@@ -138,7 +138,7 @@
 
   /* ---------- INTRO ---------- */
   .intro{padding:84px 0}
-  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .intro-grid{display:grid;grid-template-columns:1fr;gap:0;max-width:56rem}
   .sec-eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--rose-deep);margin-bottom:16px}
   .intro h2{font-size:clamp(2rem,4vw,2.8rem);line-height:1.16;margin-bottom:26px}
   .intro p{color:var(--cocoa-soft);margin-bottom:18px;line-height:1.7}
@@ -729,6 +729,19 @@
   .cb-summary-card b{color:var(--cocoa)}
   .cb-cta-group{display:flex;flex-direction:column;gap:10px}
   .cb-call-btn,.cb-form-btn{justify-content:center!important}
+  /* Portal Customizer Tab */
+  .custab-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .custab{cursor:pointer;background:transparent;border:1px solid var(--line);border-radius:20px;padding:5px 13px;font-size:.74rem;font-weight:700;color:var(--cocoa-soft);font-family:inherit;transition:.18s}
+  .custab.on{background:var(--cocoa);color:var(--paper);border-color:var(--cocoa)}
+  .cust-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin-bottom:6px;background:var(--cream)}
+  .cust-swatch{width:20px;height:20px;border-radius:50%;border:2px solid rgba(0,0,0,.1);flex:none}
+  .cust-name{flex:1;font-size:.83rem;font-weight:700;color:var(--cocoa)}
+  .cust-name small{font-weight:400;color:var(--cocoa-soft);margin-left:4px;font-size:.78rem}
+  .cust-cat-badge{font-size:.68rem;background:var(--line);border-radius:10px;padding:2px 7px;color:var(--cocoa-soft);white-space:nowrap}
+  .cust-add-form{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+  .cust-color-row{display:flex;align-items:center;gap:10px}
+  .cust-color-row input[type="color"]{width:42px;height:34px;border:1px solid var(--line);border-radius:8px;cursor:pointer;padding:2px;background:var(--cream)}
+  .cust-color-row span{font-size:.8rem;color:var(--cocoa-soft);font-family:monospace}
   @media(max-width:900px){
     .cb-grid{grid-template-columns:1fr;gap:30px}
     .cb-preview-col{position:relative;top:0}
@@ -835,39 +848,6 @@
         <span data-el>Χωρίς κοινό εξοπλισμό. Χωρίς επιμόλυνση. Ασφαλές για κοιλιοκάκη.</span>
       </div>
     </div>
-    <div class="hero-art">
-      <div class="hero-photo"><svg viewBox="0 0 360 340" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
-      <defs><linearGradient id="body0" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#7e1b14"/>
-        <stop offset="0.45" stop-color="#b04d46"/>
-        <stop offset="1" stop-color="#7e1b14"/></linearGradient>
-        <radialGradient id="cap0" cx="0.4" cy="0.32" r="0.85">
-        <stop offset="0" stop-color="#fff3fa"/>
-        <stop offset="1" stop-color="#ebcdd4"/></radialGradient><linearGradient id="body1" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#7e1b14"/>
-        <stop offset="0.45" stop-color="#b04d46"/>
-        <stop offset="1" stop-color="#7e1b14"/></linearGradient>
-        <radialGradient id="cap1" cx="0.4" cy="0.32" r="0.85">
-        <stop offset="0" stop-color="#fff3fa"/>
-        <stop offset="1" stop-color="#ebcdd4"/></radialGradient><radialGradient id="plateG" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ecdcc6"/></radialGradient></defs><ellipse cx="180" cy="302" rx="150" ry="30" fill="#3a2a21" opacity=".12"/><ellipse cx="180" cy="296" rx="148" ry="30" fill="url(#plateG)"/><ellipse cx="180" cy="294" rx="128" ry="24" fill="none" stroke="#d8c7ac" stroke-opacity=".5"/><path d="M 62 210 A 118 35.4 0 0 1 298 210" fill="none" stroke="#e3c5cc" stroke-opacity=".35" stroke-width="2"/><path d="M 62 210 L 62 288 A 118 35.4 0 0 0 298 288 L 298 210 A 118 35.4 0 0 1 62 210 Z" fill="url(#body0)"/><path d="M 62 242.76 Q 180 260.46 298 242.76" stroke="#84211a" stroke-opacity=".18" stroke-width="1.5" fill="none"/><path d="M 62 264.6 Q 180 282.3 298 264.6" stroke="#84211a" stroke-opacity=".14" stroke-width="1.5" fill="none"/><path d="M 62 214 L 62 225 A 118 35.4 0 0 0 298 225 L 298 214 A 118 35.4 0 0 1 62 214 Z" fill="#f7d9e0" opacity=".92"/><path d="M 59.7 225.0 q 7 8 14 0 Z" fill="#f7d9e0"/><path d="M 88.0 237.2 q 7 15 14 0 Z" fill="#f7d9e0"/><path d="M 116.4 247.5 q 7 9 14 0 Z" fill="#f7d9e0"/><path d="M 144.7 254.4 q 7 16 14 0 Z" fill="#f7d9e0"/><path d="M 173.0 256.9 q 7 10 14 0 Z" fill="#f7d9e0"/><path d="M 201.3 254.4 q 7 17 14 0 Z" fill="#f7d9e0"/><path d="M 229.6 247.5 q 7 11 14 0 Z" fill="#f7d9e0"/><path d="M 258.0 237.2 q 7 18 14 0 Z" fill="#f7d9e0"/><path d="M 286.3 225.0 q 7 12 14 0 Z" fill="#f7d9e0"/><ellipse cx="180" cy="210" rx="118" ry="35.4" fill="url(#cap0)" stroke="#e3c5cc" stroke-opacity=".35"/><ellipse cx="158.76" cy="203.628" rx="64.9" ry="17.7" fill="#ffebf2" opacity=".5"/><path d="M 92 165.47 A 88 26.4 0 0 1 268 165.47" fill="none" stroke="#e3c5cc" stroke-opacity=".35" stroke-width="2"/><path d="M 92 165.47 L 92 229.47 A 88 26.4 0 0 0 268 229.47 L 268 165.47 A 88 26.4 0 0 1 92 165.47 Z" fill="url(#body1)"/><path d="M 92 192.35 Q 180 205.54999999999998 268 192.35" stroke="#84211a" stroke-opacity=".18" stroke-width="1.5" fill="none"/><path d="M 92 210.26999999999998 Q 180 223.46999999999997 268 210.26999999999998" stroke="#84211a" stroke-opacity=".14" stroke-width="1.5" fill="none"/><path d="M 92 169.47 L 92 180.47 A 88 26.4 0 0 0 268 180.47 L 268 169.47 A 88 26.4 0 0 1 92 169.47 Z" fill="#f7d9e0" opacity=".92"/><path d="M 88.5 180.5 q 7 8 14 0 Z" fill="#f7d9e0"/><path d="M 116.7 192.3 q 7 15 14 0 Z" fill="#f7d9e0"/><path d="M 144.8 201.0 q 7 9 14 0 Z" fill="#f7d9e0"/><path d="M 173.0 204.2 q 7 16 14 0 Z" fill="#f7d9e0"/><path d="M 201.2 201.0 q 7 10 14 0 Z" fill="#f7d9e0"/><path d="M 229.3 192.3 q 7 17 14 0 Z" fill="#f7d9e0"/><path d="M 257.5 180.5 q 7 11 14 0 Z" fill="#f7d9e0"/><ellipse cx="180" cy="165.47" rx="88" ry="26.4" fill="url(#cap1)" stroke="#e3c5cc" stroke-opacity=".35"/><ellipse cx="164.16" cy="160.718" rx="48.400000000000006" ry="13.2" fill="#ffebf2" opacity=".5"/><ellipse cx="183.4" cy="145.6" rx="8" ry="5" fill="#f2b8c6"/>
-        <ellipse cx="183.4" cy="150.6" rx="8" ry="5" fill="#f2b8c6"/>
-        <rect x="175.4" y="147.6" width="16" height="4" rx="2" fill="#ffd6e4"/><ellipse cx="227.8" cy="148.1" rx="8" ry="5" fill="#f2b8c6"/>
-        <ellipse cx="227.8" cy="153.1" rx="8" ry="5" fill="#f2b8c6"/>
-        <rect x="219.8" y="150.1" width="16" height="4" rx="2" fill="#ffd6e4"/><ellipse cx="134.4" cy="158.7" rx="4" ry="3" fill="#e58aa6" transform="rotate(0 134.4 158.7)"/><ellipse cx="130.9" cy="162.5" rx="4" ry="3" fill="#e58aa6" transform="rotate(72 130.9 162.5)"/><ellipse cx="125.4" cy="161.1" rx="4" ry="3" fill="#e58aa6" transform="rotate(143 125.4 161.1)"/><ellipse cx="125.4" cy="156.3" rx="4" ry="3" fill="#e58aa6" transform="rotate(215 125.4 156.3)"/><ellipse cx="130.9" cy="154.9" rx="4" ry="3" fill="#e58aa6" transform="rotate(287 130.9 154.9)"/><circle cx="129.4" cy="158.7" r="3" fill="#e8c14a"/><circle cx="198.5" cy="159.5" r="6.5" fill="#c0314a"/>
-        <circle cx="196.5" cy="157.5" r="2" fill="#ed5e77" opacity=".8"/>
-        <path d="M 196.5 153.5 l 2 -3 l 2 3 Z" fill="#7a9a4e"/><ellipse cx="162.7" cy="167.8" rx="4" ry="3" fill="#e58aa6" transform="rotate(0 162.7 167.8)"/><ellipse cx="159.2" cy="171.6" rx="4" ry="3" fill="#e58aa6" transform="rotate(72 159.2 171.6)"/><ellipse cx="153.7" cy="170.2" rx="4" ry="3" fill="#e58aa6" transform="rotate(143 153.7 170.2)"/><ellipse cx="153.7" cy="165.4" rx="4" ry="3" fill="#e58aa6" transform="rotate(215 153.7 165.4)"/><ellipse cx="159.2" cy="164.0" rx="4" ry="3" fill="#e58aa6" transform="rotate(287 159.2 164.0)"/><circle cx="157.7" cy="167.8" r="3" fill="#e8c14a"/><circle cx="207.7" cy="170.6" r="6.5" fill="#c0314a"/>
-        <circle cx="205.7" cy="168.6" r="2" fill="#ed5e77" opacity=".8"/>
-        <path d="M 205.7 164.6 l 2 -3 l 2 3 Z" fill="#7a9a4e"/><circle cx="164.1" cy="177.8" r="6.5" fill="#c0314a"/>
-        <circle cx="162.1" cy="175.8" r="2" fill="#ed5e77" opacity=".8"/>
-        <path d="M 162.1 171.8 l 2 -3 l 2 3 Z" fill="#7a9a4e"/></svg>
-        <div class="ph-label" data-en>Made fresh, every single morning</div>
-        <div class="ph-label" data-el>Φρέσκα, κάθε πρωί</div>
-      </div>
-      <div class="float-badge">
-        <span class="big">4.7</span>
-        <div><span class="stars">★★★★★</span><br><small data-en>~15 reviews</small><small data-el>~15 κριτικές</small></div>
-      </div>
-    </div>
   </div>
   <a href="#menu" class="scroll-cue" aria-label="Scroll to explore">
     <span data-en>Scroll to explore</span><span data-el>Δες περισσότερα</span>
@@ -931,34 +911,6 @@
         <span class="pill"><span class="dot"></span><span data-en>Made fresh daily</span><span data-el>Φρέσκα κάθε μέρα</span></span>
       </div>
     </div>
-    <div class="intro-photo"><svg viewBox="0 0 360 340" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
-      <defs><linearGradient id="body0" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#dfd0d4"/>
-        <stop offset="0.45" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#dfd0d4"/></linearGradient>
-        <radialGradient id="cap0" cx="0.4" cy="0.32" r="0.85">
-        <stop offset="0" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#f3f3f3"/></radialGradient><linearGradient id="body1" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#dfd0d4"/>
-        <stop offset="0.45" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#dfd0d4"/></linearGradient>
-        <radialGradient id="cap1" cx="0.4" cy="0.32" r="0.85">
-        <stop offset="0" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#f3f3f3"/></radialGradient><linearGradient id="body2" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#dfd0d4"/>
-        <stop offset="0.45" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#dfd0d4"/></linearGradient>
-        <radialGradient id="cap2" cx="0.4" cy="0.32" r="0.85">
-        <stop offset="0" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#f3f3f3"/></radialGradient><radialGradient id="plateG" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ecdcc6"/></radialGradient></defs><ellipse cx="180" cy="302" rx="150" ry="30" fill="#3a2a21" opacity=".12"/><ellipse cx="180" cy="296" rx="148" ry="30" fill="url(#plateG)"/><ellipse cx="180" cy="294" rx="128" ry="24" fill="none" stroke="#d8c7ac" stroke-opacity=".5"/><path d="M 62 210 A 118 35.4 0 0 1 298 210" fill="none" stroke="#ebebeb" stroke-opacity=".35" stroke-width="2"/><path d="M 62 210 L 62 288 A 118 35.4 0 0 0 298 288 L 298 210 A 118 35.4 0 0 1 62 210 Z" fill="url(#body0)"/><path d="M 62 242.76 Q 180 260.46 298 242.76" stroke="#e5d6da" stroke-opacity=".18" stroke-width="1.5" fill="none"/><path d="M 62 264.6 Q 180 282.3 298 264.6" stroke="#e5d6da" stroke-opacity=".14" stroke-width="1.5" fill="none"/><path d="M 62 214 L 62 225 A 118 35.4 0 0 0 298 225 L 298 214 A 118 35.4 0 0 1 62 214 Z" fill="#ffffff" opacity=".92"/><path d="M 59.7 225.0 q 7 8 14 0 Z" fill="#ffffff"/><path d="M 88.0 237.2 q 7 15 14 0 Z" fill="#ffffff"/><path d="M 116.4 247.5 q 7 9 14 0 Z" fill="#ffffff"/><path d="M 144.7 254.4 q 7 16 14 0 Z" fill="#ffffff"/><path d="M 173.0 256.9 q 7 10 14 0 Z" fill="#ffffff"/><path d="M 201.3 254.4 q 7 17 14 0 Z" fill="#ffffff"/><path d="M 229.6 247.5 q 7 11 14 0 Z" fill="#ffffff"/><path d="M 258.0 237.2 q 7 18 14 0 Z" fill="#ffffff"/><path d="M 286.3 225.0 q 7 12 14 0 Z" fill="#ffffff"/><ellipse cx="180" cy="210" rx="118" ry="35.4" fill="url(#cap0)" stroke="#ebebeb" stroke-opacity=".35"/><ellipse cx="158.76" cy="203.628" rx="64.9" ry="17.7" fill="#ffffff" opacity=".5"/><path d="M 92 165.47 A 88 26.4 0 0 1 268 165.47" fill="none" stroke="#ebebeb" stroke-opacity=".35" stroke-width="2"/><path d="M 92 165.47 L 92 229.47 A 88 26.4 0 0 0 268 229.47 L 268 165.47 A 88 26.4 0 0 1 92 165.47 Z" fill="url(#body1)"/><path d="M 92 192.35 Q 180 205.54999999999998 268 192.35" stroke="#e5d6da" stroke-opacity=".18" stroke-width="1.5" fill="none"/><path d="M 92 210.26999999999998 Q 180 223.46999999999997 268 210.26999999999998" stroke="#e5d6da" stroke-opacity=".14" stroke-width="1.5" fill="none"/><path d="M 92 169.47 L 92 180.47 A 88 26.4 0 0 0 268 180.47 L 268 169.47 A 88 26.4 0 0 1 92 169.47 Z" fill="#ffffff" opacity=".92"/><path d="M 88.5 180.5 q 7 8 14 0 Z" fill="#ffffff"/><path d="M 116.7 192.3 q 7 15 14 0 Z" fill="#ffffff"/><path d="M 144.8 201.0 q 7 9 14 0 Z" fill="#ffffff"/><path d="M 173.0 204.2 q 7 16 14 0 Z" fill="#ffffff"/><path d="M 201.2 201.0 q 7 10 14 0 Z" fill="#ffffff"/><path d="M 229.3 192.3 q 7 17 14 0 Z" fill="#ffffff"/><path d="M 257.5 180.5 q 7 11 14 0 Z" fill="#ffffff"/><ellipse cx="180" cy="165.47" rx="88" ry="26.4" fill="url(#cap1)" stroke="#ebebeb" stroke-opacity=".35"/><ellipse cx="164.16" cy="160.718" rx="48.400000000000006" ry="13.2" fill="#ffffff" opacity=".5"/><path d="M 120 127.99000000000001 A 60 18 0 0 1 240 127.99000000000001" fill="none" stroke="#ebebeb" stroke-opacity=".35" stroke-width="2"/><path d="M 120 127.99000000000001 L 120 179.99 A 60 18 0 0 0 240 179.99 L 240 127.99000000000001 A 60 18 0 0 1 120 127.99000000000001 Z" fill="url(#body2)"/><path d="M 120 149.83 Q 180 158.83 240 149.83" stroke="#e5d6da" stroke-opacity=".18" stroke-width="1.5" fill="none"/><path d="M 120 164.39000000000001 Q 180 173.39000000000001 240 164.39000000000001" stroke="#e5d6da" stroke-opacity=".14" stroke-width="1.5" fill="none"/><path d="M 120 131.99 L 120 142.99 A 60 18 0 0 0 240 142.99 L 240 131.99 A 60 18 0 0 1 120 131.99 Z" fill="#ffffff" opacity=".92"/><path d="M 115.4 143.0 q 7 8 14 0 Z" fill="#ffffff"/><path d="M 138.4 152.5 q 7 15 14 0 Z" fill="#ffffff"/><path d="M 161.5 158.4 q 7 9 14 0 Z" fill="#ffffff"/><path d="M 184.5 158.4 q 7 16 14 0 Z" fill="#ffffff"/><path d="M 207.6 152.5 q 7 10 14 0 Z" fill="#ffffff"/><path d="M 230.6 143.0 q 7 17 14 0 Z" fill="#ffffff"/><ellipse cx="180" cy="127.99000000000001" rx="60" ry="18" fill="url(#cap2)" stroke="#ebebeb" stroke-opacity=".35"/><ellipse cx="169.2" cy="124.75000000000001" rx="33" ry="9" fill="#ffffff" opacity=".5"/><path d="M 177.3 115.9 l 5 -7 l 5 7 l -3 6 l -4 0 Z" fill="#d8a93a"/>
-        <path d="M 180.3 112.9 l 3 -3 l 1 4 Z" fill="#ffd667"/><path d="M 207.6 117.6 l 5 -7 l 5 7 l -3 6 l -4 0 Z" fill="#d8a93a"/>
-        <path d="M 210.6 114.6 l 3 -3 l 1 4 Z" fill="#ffd667"/><ellipse cx="150.5" cy="122.1" rx="4" ry="3" fill="#e58aa6" transform="rotate(0 150.5 122.1)"/><ellipse cx="147.0" cy="125.9" rx="4" ry="3" fill="#e58aa6" transform="rotate(72 147.0 125.9)"/><ellipse cx="141.5" cy="124.5" rx="4" ry="3" fill="#e58aa6" transform="rotate(143 141.5 124.5)"/><ellipse cx="141.5" cy="119.7" rx="4" ry="3" fill="#e58aa6" transform="rotate(215 141.5 119.7)"/><ellipse cx="147.0" cy="118.3" rx="4" ry="3" fill="#e58aa6" transform="rotate(287 147.0 118.3)"/><circle cx="145.5" cy="122.1" r="3" fill="#e8c14a"/><circle cx="192.6" cy="122" r="6.5" fill="#c0314a"/>
-        <circle cx="190.6" cy="120" r="2" fill="#ed5e77" opacity=".8"/>
-        <path d="M 190.6 116 l 2 -3 l 2 3 Z" fill="#7a9a4e"/><ellipse cx="169.8" cy="128.3" rx="4" ry="3" fill="#e58aa6" transform="rotate(0 169.8 128.3)"/><ellipse cx="166.3" cy="132.1" rx="4" ry="3" fill="#e58aa6" transform="rotate(72 166.3 132.1)"/><ellipse cx="160.8" cy="130.7" rx="4" ry="3" fill="#e58aa6" transform="rotate(143 160.8 130.7)"/><ellipse cx="160.8" cy="125.9" rx="4" ry="3" fill="#e58aa6" transform="rotate(215 160.8 125.9)"/><ellipse cx="166.3" cy="124.5" rx="4" ry="3" fill="#e58aa6" transform="rotate(287 166.3 124.5)"/><circle cx="164.8" cy="128.3" r="3" fill="#e8c14a"/><circle cx="198.9" cy="129.6" r="6.5" fill="#c0314a"/>
-        <circle cx="196.9" cy="127.6" r="2" fill="#ed5e77" opacity=".8"/>
-        <path d="M 196.9 123.6 l 2 -3 l 2 3 Z" fill="#7a9a4e"/><circle cx="169.1" cy="134.5" r="6.5" fill="#c0314a"/>
-        <circle cx="167.1" cy="132.5" r="2" fill="#ed5e77" opacity=".8"/>
-        <path d="M 167.1 128.5 l 2 -3 l 2 3 Z" fill="#7a9a4e"/></svg></div>
   </div>
 </section>
 
@@ -1409,6 +1361,7 @@
       <div class="portal-tabs">
         <button class="ptab on" data-ptab="orders" onclick="switchPortalTab('orders')">📋 <span data-en>Orders</span><span data-el>Παραγγελίες</span> (<span id="orderCount">0</span>)</button>
         <button class="ptab" data-ptab="products" onclick="switchPortalTab('products')">🧁 <span data-en>Products</span><span data-el>Προϊόντα</span> (<span id="prodCount">0</span>)</button>
+        <button class="ptab" data-ptab="customizer" onclick="switchPortalTab('customizer')">🎂 <span data-en>Customizer</span><span data-el>Customizer</span></button>
       </div>
 
       <div id="ptab-orders">
@@ -1418,6 +1371,36 @@
       <div id="ptab-products" style="display:none">
         <button class="btn" style="width:100%;justify-content:center;margin-bottom:14px" onclick="openProductEditor()">＋ <span data-en>Add new product</span><span data-el>Νέο προϊόν</span></button>
         <div id="prodList" class="prod-list"></div>
+      </div>
+
+      <div id="ptab-customizer" style="display:none">
+        <div class="custab-bar">
+          <button class="custab on" data-ctype="sponge" onclick="switchCustTab('sponge')">Sponge Flavours</button>
+          <button class="custab" data-ctype="filling" onclick="switchCustTab('filling')">Fillings</button>
+          <button class="custab" data-ctype="frosting" onclick="switchCustTab('frosting')">Frostings</button>
+          <button class="custab" data-ctype="deco" onclick="switchCustTab('deco')">Decorations</button>
+        </div>
+        <div id="custList"></div>
+        <div class="cust-add-form">
+          <div style="font-size:.78rem;font-weight:700;color:var(--cocoa-soft);letter-spacing:.1em;text-transform:uppercase" data-en>Add new option</div>
+          <input class="portal-input" id="custEn" placeholder="Name in English (e.g. Strawberry)">
+          <input class="portal-input" id="custEl" placeholder="Όνομα στα Ελληνικά (π.χ. Φράουλα)">
+          <div class="cust-color-row">
+            <input type="color" id="custColor" value="#e9cf9c" oninput="document.getElementById('custColorVal').textContent=this.value">
+            <span id="custColorVal">#e9cf9c</span>
+            <small style="color:var(--cocoa-soft)" data-en>Pick colour</small>
+          </div>
+          <div id="custCatWrap" style="display:none">
+            <select class="portal-input" id="custCat">
+              <option value="fruit" data-en>Fruit</option>
+              <option value="cream" data-en>Creams</option>
+              <option value="nuts" data-en>Nuts</option>
+              <option value="choc" data-en>Chocolate</option>
+              <option value="finish" data-en>Finishing</option>
+            </select>
+          </div>
+          <button class="btn" style="width:100%;justify-content:center" onclick="addCustOpt()">＋ <span data-en>Add</span><span data-el>Προσθήκη</span></button>
+        </div>
       </div>
     </div>
   </div>
@@ -1713,10 +1696,114 @@
     document.querySelectorAll('.ptab').forEach(b=>b.classList.toggle('on',b.dataset.ptab===t));
     document.getElementById('ptab-orders').style.display=t==='orders'?'block':'none';
     document.getElementById('ptab-products').style.display=t==='products'?'block':'none';
+    document.getElementById('ptab-customizer').style.display=t==='customizer'?'block':'none';
     if(t==='products') renderProdList();
+    if(t==='customizer') loadCustomizerOpts(true);
   }
 
-  // ===== PRODUCT MANAGER =====
+  // ===== PORTAL CUSTOMIZER MANAGER =====
+  let custType='sponge';
+  let customizerOpts={sponges:[],fillings:[],frostings:[],decos:[]};
+  let cbSpongeList=[];
+
+  function switchCustTab(type){
+    custType=type;
+    document.querySelectorAll('.custab').forEach(b=>b.classList.toggle('on',b.dataset.ctype===type));
+    document.getElementById('custCatWrap').style.display=type==='deco'?'block':'none';
+    renderCustList();
+  }
+
+  function renderCustList(){
+    const key=custType==='sponge'?'sponges':custType==='filling'?'fillings':custType==='frosting'?'frostings':'decos';
+    const items=customizerOpts[key]||[];
+    const el=document.getElementById('custList');
+    if(!el)return;
+    el.innerHTML=items.length
+      ?items.map(item=>`<div class="cust-item">
+          <span class="cust-swatch" style="background:${item.color}"></span>
+          <span class="cust-name">${escHtml(item.name_en)}<small>${escHtml(item.name_el||'')}</small></span>
+          ${item.category?`<span class="cust-cat-badge">${item.category}</span>`:''}
+          <button onclick="deleteCustOpt('${item.id}')" class="del" title="Delete">✕</button>
+        </div>`).join('')
+      :'<p class="top-empty">No items yet. Add one below.</p>';
+  }
+
+  async function loadCustomizerOpts(forPortal=false){
+    try{
+      const r=await fetch(API+'/api/customizer');
+      if(!r.ok)return;
+      const data=await r.json();
+      customizerOpts=data;
+      // Update JS arrays used by the cake customizer
+      if(data.fillings?.length){
+        CB_FILLINGS.length=0;
+        data.fillings.forEach(f=>CB_FILLINGS.push({id:f.id,en:f.name_en,el:f.name_el||f.name_en,c:f.color}));
+      }
+      if(data.frostings?.length){
+        CB_FROSTINGS.length=0;
+        data.frostings.forEach(f=>CB_FROSTINGS.push({id:f.id,en:f.name_en,el:f.name_el||f.name_en,c:f.color}));
+      }
+      if(data.sponges?.length){
+        Object.keys(CB_SPONGE_COLORS).forEach(k=>delete CB_SPONGE_COLORS[k]);
+        data.sponges.forEach(s=>{CB_SPONGE_COLORS[s.name_en]=s.color;});
+        cbSpongeList=data.sponges;
+      }
+      if(data.decos?.length){
+        TOPPINGS.length=0;
+        data.decos.forEach(d=>TOPPINGS.push({id:d.id,en:d.name_en,el:d.name_el||d.name_en,c:d.color,cat:d.category||'finish'}));
+      }
+      if(forPortal)renderCustList();
+    }catch(e){console.log('Using default customizer data');}
+  }
+
+  async function addCustOpt(){
+    const en=(document.getElementById('custEn').value||'').trim();
+    const el=(document.getElementById('custEl').value||'').trim();
+    const color=document.getElementById('custColor').value;
+    const category=custType==='deco'?document.getElementById('custCat').value:null;
+    if(!en){toast('Enter a name first');return;}
+    try{
+      const r=await fetch(API+'/api/customizer',{
+        method:'POST',
+        headers:{...authHeaders(),'Content-Type':'application/json'},
+        body:JSON.stringify({type:custType,name_en:en,name_el:el,color,...(category&&{category})})
+      });
+      if(!r.ok){toast('Error saving');return;}
+      document.getElementById('custEn').value='';
+      document.getElementById('custEl').value='';
+      await loadCustomizerOpts(true);
+      toast('Added!');
+    }catch(e){toast('Error saving');}
+  }
+
+  async function deleteCustOpt(id){
+    const isEl=document.body.classList.contains('el');
+    if(!confirm(isEl?'Διαγραφή;':'Remove this option?'))return;
+    try{
+      const r=await fetch(API+'/api/customizer/'+id,{method:'DELETE',headers:authHeaders()});
+      if(r.ok){await loadCustomizerOpts(true);toast(isEl?'Αφαιρέθηκε':'Removed');}
+    }catch(e){toast('Error');}
+  }
+
+  // ===== DYNAMIC SPONGE CARDS =====
+  function cbInitStep2(){
+    const el=document.getElementById('cbSponge');
+    if(!el)return;
+    const list=cbSpongeList.length?cbSpongeList
+      :Object.entries(CB_SPONGE_COLORS).map(([name,color],i)=>({
+        id:'sponge_'+i, name_en:name, color,
+        name_el:{'Chocolate':'Σοκολάτα','Vanilla':'Βανίλια','Lemon':'Λεμόνι','Orange':'Πορτοκάλι','Carrot':'Καρότο','Red Velvet':'Red Velvet','Pistachio':'Φιστίκι','Almond':'Αμύγδαλο','Banana':'Μπανάνα','Coconut':'Καρύδα','Cinnamon':'Κανέλα','Hazelnut':'Φουντούκι','Coffee':'Καφές','Blueberry':'Μύρτιλο'}[name]||name
+      }));
+    const isEl=cbIsEl();
+    el.innerHTML=list.map(s=>`<div class="cb-card" data-val="${s.name_en}" onclick="cbPick('sponge',this)">
+      <span class="cb-swatch" style="background:${s.color}"></span>
+      <span>${isEl?(s.name_el||s.name_en):s.name_en}</span>
+    </div>`).join('');
+    if(cbState.sponge){const sel=el.querySelector(`[data-val="${cbState.sponge}"]`);if(sel)sel.classList.add('on');}
+  }
+
+  // Load customizer data on page load
+  loadCustomizerOpts(false);
   let editingId=null, editingImg=null;
   function renderProdList(){
     const el=document.body.classList.contains('el');
@@ -2176,6 +2263,7 @@
     if(panel)panel.classList.add('active');
     cbState.step=n;
     cbUpdateProgress();
+    if(n===2)cbInitStep2();
     if(n===3)cbInitStep3();
     if(n===4)cbInitStep4();
     if(n===5)cbBuildSummary();
@@ -2221,6 +2309,7 @@
   const _origSetLang=setLang;
   setLang=function(l){
     _origSetLang(l);
+    if(cbState.step===2)cbInitStep2();
     if(cbState.step===3)cbInitStep3();
     if(cbState.step===4)cbInitStep4();
     if(cbState.step===5)cbBuildSummary();

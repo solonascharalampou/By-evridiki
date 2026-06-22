@@ -76,6 +76,13 @@ class ProductPatch(BaseModel):
     g: Optional[str] = None
     model_config = {"populate_by_name": True}
 
+class CustomizerOptionIn(BaseModel):
+    type: str  # sponge | filling | frosting | deco
+    name_en: str
+    name_el: str = ""
+    color: str = "#e9cf9c"
+    category: Optional[str] = None  # for deco only
+
 # ─────────────── Auth helpers ───────────────
 
 def create_admin_token() -> str:
@@ -99,6 +106,97 @@ async def require_admin(request: Request):
         raise HTTPException(status_code=401, detail="Token expired — please log in again")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=401, detail="Invalid token")
+
+# ─────────────── Default customizer options for seeding ───────────────
+
+def _co(type, name_en, name_el, color, category=None):
+    d = {"type": type, "name_en": name_en, "name_el": name_el, "color": color}
+    if category:
+        d["category"] = category
+    return d
+
+DEFAULT_CUSTOMIZER_OPTIONS = [
+    # SPONGE
+    _co("sponge","Chocolate","Σοκολάτα","#3d2314"),
+    _co("sponge","Vanilla","Βανίλια","#f5e6c8"),
+    _co("sponge","Lemon","Λεμόνι","#e8d24a"),
+    _co("sponge","Orange","Πορτοκάλι","#f28c3a"),
+    _co("sponge","Carrot","Καρότο","#d4793a"),
+    _co("sponge","Red Velvet","Red Velvet","#9e1b32"),
+    _co("sponge","Pistachio","Φιστίκι","#8aa84a"),
+    _co("sponge","Almond","Αμύγδαλο","#d4b882"),
+    _co("sponge","Banana","Μπανάνα","#f5e05a"),
+    _co("sponge","Coconut","Καρύδα","#f0ece0"),
+    _co("sponge","Cinnamon","Κανέλα","#a0522d"),
+    _co("sponge","Hazelnut","Φουντούκι","#9a6a3a"),
+    _co("sponge","Coffee","Καφές","#4a2c18"),
+    _co("sponge","Blueberry","Μύρτιλο","#4a5ba8"),
+    # FILLING
+    _co("filling","Vanilla cream","Κρέμα βανίλιας","#fff6ea"),
+    _co("filling","Chocolate ganache","Γκανάς σοκολάτας","#6b4326"),
+    _co("filling","Strawberry cream","Κρέμα φράουλας","#f4c2cb"),
+    _co("filling","Pistachio cream","Κρέμα φιστικιού","#cdd9b0"),
+    _co("filling","Lemon cream","Κρέμα λεμονιού","#e8d24a"),
+    _co("filling","Caramel cream","Κρέμα καραμέλας","#d9a45e"),
+    _co("filling","Mascarpone cream","Κρέμα mascarpone","#f5eed8"),
+    _co("filling","Banana cream","Κρέμα μπανάνας","#f5e05a"),
+    _co("filling","Coconut cream","Κρέμα καρύδας","#f0ece0"),
+    _co("filling","Hazelnut cream","Κρέμα φουντουκιού","#9a6a3a"),
+    # FROSTING
+    _co("frosting","White buttercream","Λευκή κρέμα βουτύρου","#fdf8f2"),
+    _co("frosting","Blush pink","Ρόδινο","#f4c2cb"),
+    _co("frosting","Chocolate","Σοκολάτα","#6b4326"),
+    _co("frosting","Sage green","Σάγκε πράσινο","#cdd9b0"),
+    _co("frosting","Caramel","Καραμέλα","#d9a45e"),
+    _co("frosting","Ivory","Ελεφαντόδοντο","#f5ecd5"),
+    _co("frosting","Pastel yellow","Παστέλ κίτρινο","#f7e883"),
+    _co("frosting","Pastel lavender","Λεβάντα","#d9c8e8"),
+    _co("frosting","Pastel blue","Παστέλ μπλε","#bdd5e8"),
+    # DECO – fruit
+    _co("deco","Strawberries","Φράουλες","#d22f4a","fruit"),
+    _co("deco","Raspberries","Σμέουρα","#c2305c","fruit"),
+    _co("deco","Blueberries","Μύρτιλα","#4a5ba8","fruit"),
+    _co("deco","Blackberries","Βατόμουρα","#3a2a44","fruit"),
+    _co("deco","Cherries","Κεράσια","#9e1b2f","fruit"),
+    _co("deco","Mango pieces","Κομμάτια μάνγκο","#f2a93a","fruit"),
+    _co("deco","Kiwi slices","Ακτινίδιο","#7aa83a","fruit"),
+    _co("deco","Peach slices","Ροδάκινο","#f2b27a","fruit"),
+    _co("deco","Pomegranate seeds","Ρόδι","#b51f3a","fruit"),
+    _co("deco","Lemon zest","Ξύσμα λεμονιού","#e8d24a","fruit"),
+    _co("deco","Orange zest","Ξύσμα πορτοκαλιού","#f28c3a","fruit"),
+    _co("deco","Fig slices","Σύκο","#7a4a6a","fruit"),
+    _co("deco","Banana slices","Φέτες μπανάνας","#f5e05a","fruit"),
+    _co("deco","Mint leaves","Φύλλα δυόσμου","#5a9a5a","fruit"),
+    # DECO – cream
+    _co("deco","Pistachio cream swirls","Στροβιλάκια φιστικιού","#8aa84a","cream"),
+    _co("deco","Lemon cream","Κρέμα λεμονιού","#e8d24a","cream"),
+    _co("deco","Strawberry cream","Κρέμα φράουλας","#f0a0b0","cream"),
+    _co("deco","Chocolate cream","Κρέμα σοκολάτας","#6b4326","cream"),
+    _co("deco","Caramel cream","Κρέμα καραμέλας","#d9a45e","cream"),
+    _co("deco","Vanilla rosettes","Ροζέτες βανίλιας","#fff0d8","cream"),
+    _co("deco","Mascarpone cream","Κρέμα mascarpone","#f5eed8","cream"),
+    _co("deco","Coconut cream","Κρέμα καρύδας","#f0ece0","cream"),
+    # DECO – nuts
+    _co("deco","Pistachio crumble","Τριμμένο φιστίκι","#8aa84a","nuts"),
+    _co("deco","Toasted almonds","Αμύγδαλα","#d9b889","nuts"),
+    _co("deco","Almond flakes","Φλούδες αμυγδάλου","#e8d4b0","nuts"),
+    _co("deco","Walnuts","Καρύδια","#8a6a4a","nuts"),
+    _co("deco","Hazelnuts","Φουντούκια","#9a6a3a","nuts"),
+    _co("deco","Coconut flakes","Τριμμένη καρύδα","#f0ece0","nuts"),
+    # DECO – choc
+    _co("deco","Dark choc. shards","Σοκολάτα μαύρη","#2a1810","choc"),
+    _co("deco","Milk choc. shards","Σοκολάτα γάλακτος","#6b4326","choc"),
+    _co("deco","White choc. shards","Σοκολάτα λευκή","#f3e9d6","choc"),
+    _co("deco","Chocolate curls","Μπούκλες σοκολάτας","#4a2c18","choc"),
+    _co("deco","Chocolate drip","Drip σοκολάτας","#4a2c18","choc"),
+    _co("deco","Cocoa dusting","Κακάο","#5a3a28","choc"),
+    # DECO – finish
+    _co("deco","Meringue kisses","Μαρέγκες","#f4e8ee","finish"),
+    _co("deco","Sugar pearls","Ζαχαρόπερλες","#f0e8d8","finish"),
+    _co("deco","Freeze-dried raspberry","Λυοφ. σμέουρο","#d2305c","finish"),
+    _co("deco","Cinnamon sugar","Ζάχαρη κανέλας","#c8854a","finish"),
+    _co("deco","GF sprinkles","Sprinkles GF","#f4c5d4","finish"),
+]
 
 # ─────────────── Default products for seeding ───────────────
 
@@ -153,6 +251,13 @@ async def startup():
         docs = [{"id": f"seed{i}", "order": i, **p} for i, p in enumerate(DEFAULT_PRODUCTS)]
         await db.products.insert_many(docs)
         logger.info(f"Seeded {len(docs)} default products")
+    # Seed customizer options
+    await db.customizer_opts.create_index("id", unique=True)
+    co_count = await db.customizer_opts.count_documents({})
+    if co_count == 0:
+        co_docs = [{"id": f"co{i}", "order": i, **o} for i, o in enumerate(DEFAULT_CUSTOMIZER_OPTIONS)]
+        await db.customizer_opts.insert_many(co_docs)
+        logger.info(f"Seeded {len(co_docs)} customizer options")
 
 @app.on_event("shutdown")
 async def shutdown():
@@ -217,6 +322,42 @@ async def toggle_pop(pid: str):
     new_pop = not doc.get("pop", False)
     await db.products.update_one({"id": pid}, {"$set": {"pop": new_pop}})
     return {"id": pid, "pop": new_pop}
+
+# ─────────────── Customizer options routes ───────────────
+
+@api_router.get("/customizer")
+async def get_customizer():
+    docs = await db.customizer_opts.find({}, {"_id": 0}).sort("order", 1).to_list(2000)
+    result: dict = {"sponges": [], "fillings": [], "frostings": [], "decos": []}
+    type_map = {"sponge": "sponges", "filling": "fillings", "frosting": "frostings", "deco": "decos"}
+    for doc in docs:
+        key = type_map.get(doc.get("type", ""), "decos")
+        result[key].append(doc)
+    return result
+
+@api_router.post("/customizer", dependencies=[Depends(require_admin)])
+async def add_customizer_opt(opt: CustomizerOptionIn):
+    count = await db.customizer_opts.count_documents({"type": opt.type})
+    doc = {
+        "id": "co" + uuid.uuid4().hex[:8],
+        "type": opt.type,
+        "name_en": opt.name_en,
+        "name_el": opt.name_el,
+        "color": opt.color,
+        "order": count,
+    }
+    if opt.category:
+        doc["category"] = opt.category
+    await db.customizer_opts.insert_one(doc)
+    doc.pop("_id", None)
+    return doc
+
+@api_router.delete("/customizer/{opt_id}", dependencies=[Depends(require_admin)])
+async def delete_customizer_opt(opt_id: str):
+    result = await db.customizer_opts.delete_one({"id": opt_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Option not found")
+    return {"deleted": opt_id}
 
 app.include_router(api_router)
 
