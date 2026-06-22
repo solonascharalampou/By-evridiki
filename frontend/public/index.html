@@ -1321,9 +1321,17 @@
   // ===== PRODUCT STORE (editable from portal, persists) =====
   const PRODUCTS_KEY='byevridiki_products';
   const MENU_IMAGE_OVERRIDES = {
-    // Add menu photos here when provided by name/id:
-    // 'Chocolate Cake 150g': 'https://example.com/chocolate.jpg',
-    // 'seed0': 'https://example.com/item0.jpg'
+    // --- CAKES (your photos) ---
+    'Geography Cake 150g': '/images/img06.png',
+    // --- DESSERTS (your photos) ---
+    'Apple Pie 180g': '/images/img10.png',
+    'Profiterole Dubai 180g': '/images/img12.png',
+    'Duchess Milk Chocolate 180g': '/images/img14.png',
+    // --- SAVOURY (your photos) ---
+    'Sausage Pie Kourou w/ Philadelphia 140g': '/images/img02.png',
+    'Tahini Pie 270g': '/images/img04.png',
+    // --- POPULAR ---
+    'Make Your Own GF Sandwich': '/images/img01.png',
   };
   function loadProducts(){
     try{ const s=localStorage.getItem(PRODUCTS_KEY); if(s){ const a=JSON.parse(s); if(Array.isArray(a)&&a.length) return a; } }catch(e){}
@@ -1339,6 +1347,7 @@
     if(!s) return '';
     if(/^data:image\//i.test(s)) return s;
     if(/^https?:\/\//i.test(s)) return s;
+    if(s.startsWith('/')) return s;
     return '';
   }
   function resolveImage(product){
