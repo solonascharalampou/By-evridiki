@@ -957,60 +957,138 @@
 </section>
 
 <!-- CAKE CUSTOMIZER -->
-<section class="builder" id="builder">
+<section class="cb-section" id="builder">
   <div class="wrap">
-    <div class="builder-head">
-      <div class="sec-eyebrow" style="text-align:center" data-en>Design your cake</div>
-      <div class="sec-eyebrow" style="text-align:center" data-el>Σχεδίασε την τούρτα σου</div>
-      <h2 data-en>Build it, then <em>send it to Evridiki.</em></h2>
-      <h2 data-el>Φτιάξ' την, μετά <em>στείλ' την στην Ευρυδίκη.</em></h2>
-      <p data-en>Spin the cake, pick your tiers, flavour, frosting and toppings — all gluten-free &amp; lactose-free, of course. Your design fills in the request form below.</p>
-      <p data-el>Γύρνα την τούρτα, διάλεξε ορόφους, γεύση, κρέμα και τόπινγκ — όλα χωρίς γλουτένη &amp; λακτόζη φυσικά. Το σχέδιό σου συμπληρώνει τη φόρμα παρακάτω.</p>
+    <div class="cb-header">
+      <div class="gf-badge" data-en>✦ 100% Gluten-Free & Lactose-Free ✦</div>
+      <div class="gf-badge" data-el>✦ 100% Χωρίς Γλουτένη & Λακτόζη ✦</div>
+      <h2 data-en>Design Your <em>Dream Cake</em></h2>
+      <h2 data-el>Σχεδίασε την <em>Τούρτα των Ονείρων σου</em></h2>
+      <p data-en>Choose every detail — Evridiki will make it exactly as you imagined.</p>
+      <p data-el>Διάλεξε κάθε λεπτομέρεια — η Ευρυδίκη θα τη φτιάξει ακριβώς όπως τη φαντάστηκες.</p>
     </div>
-    <div class="builder-grid">
-      <div class="stage" id="stage">
-        <div class="scene"><div class="cake" id="cake"></div></div>
-        <div class="stage-bar">
-          <button class="chip" id="spinBtn" onclick="toggleSpin()">⏸ <span data-en>Pause</span><span data-el>Παύση</span></button>
-          <button class="chip" onclick="randomCake()">🎲 <span data-en>Surprise me</span><span data-el>Έκπληξη</span></button>
+    <div class="cb-progress" id="cbProgress">
+      <div class="cb-dot active" data-step="1"><span>1</span></div>
+      <div class="cb-line"></div>
+      <div class="cb-dot" data-step="2"><span>2</span></div>
+      <div class="cb-line"></div>
+      <div class="cb-dot" data-step="3"><span>3</span></div>
+      <div class="cb-line"></div>
+      <div class="cb-dot" data-step="4"><span>4</span></div>
+      <div class="cb-line"></div>
+      <div class="cb-dot" data-step="5"><span>5</span></div>
+    </div>
+    <div class="cb-grid">
+      <!-- LEFT: live cake preview -->
+      <div class="cb-preview-col">
+        <div class="cb-cake-scene">
+          <div class="cb-cake-stack" id="cbCakeStack">
+            <div class="cb-ct cb-ct3 hidden" id="cbT3"></div>
+            <div class="cb-ct cb-ct2 hidden" id="cbT2"></div>
+            <div class="cb-ct cb-ct1" id="cbT1"></div>
+          </div>
+          <div class="cb-plate"></div>
+          <div class="cb-deco-layer" id="cbDecoLayer"></div>
+        </div>
+        <div class="cb-live-summary" id="cbLiveSummary">
+          <span data-en>Your selections will appear here</span>
+          <span data-el>Οι επιλογές σου θα εμφανιστούν εδώ</span>
         </div>
       </div>
-      <div class="panel">
-        <div class="opt-group">
-          <h4 data-en>Tiers</h4><h4 data-el>Όροφοι</h4>
-          <div class="seg" id="tiers">
-            <button class="on" data-v="1">1</button>
-            <button data-v="2">2</button>
-            <button data-v="3">3</button>
+      <!-- RIGHT: step wizard -->
+      <div class="cb-wizard-col">
+        <!-- STEP 1: Occasion & Size -->
+        <div class="cb-panel active" data-panel="1">
+          <div class="cb-step-label" data-en>Step 1 of 5 — Occasion & Size</div>
+          <div class="cb-step-label" data-el>Βήμα 1 από 5 — Εκδήλωση & Μέγεθος</div>
+          <div class="cb-field-label" data-en>What's the occasion?</div>
+          <div class="cb-field-label" data-el>Ποια η εκδήλωση;</div>
+          <div class="cb-cards" id="cbOccasion">
+            <div class="cb-card" data-val="Birthday" onclick="cbPick('occasion',this)"><span class="cb-emoji">🎂</span><span data-en>Birthday</span><span data-el>Γενέθλια</span></div>
+            <div class="cb-card" data-val="Wedding" onclick="cbPick('occasion',this)"><span class="cb-emoji">💍</span><span data-en>Wedding</span><span data-el>Γάμος</span></div>
+            <div class="cb-card" data-val="Baptism" onclick="cbPick('occasion',this)"><span class="cb-emoji">✨</span><span data-en>Baptism</span><span data-el>Βάφτιση</span></div>
+            <div class="cb-card" data-val="Anniversary" onclick="cbPick('occasion',this)"><span class="cb-emoji">🥂</span><span data-en>Anniversary</span><span data-el>Επέτειος</span></div>
+            <div class="cb-card" data-val="Other" onclick="cbPick('occasion',this)"><span class="cb-emoji">🎀</span><span data-en>Other</span><span data-el>Άλλο</span></div>
           </div>
+          <div class="cb-field-label" data-en>Size (diameter)</div>
+          <div class="cb-field-label" data-el>Μέγεθος (διάμετρος)</div>
+          <div class="cb-cards cb-size-grid" id="cbSize">
+            <div class="cb-card cb-size-card" data-val="15cm (~8 servings)" onclick="cbPick('size',this)"><span class="cb-size-disc" style="width:36px;height:36px"></span><b>15 cm</b><small>~8 portions</small></div>
+            <div class="cb-card cb-size-card" data-val="20cm (~14 servings)" onclick="cbPick('size',this)"><span class="cb-size-disc" style="width:48px;height:48px"></span><b>20 cm</b><small>~14 portions</small></div>
+            <div class="cb-card cb-size-card" data-val="25cm (~20 servings)" onclick="cbPick('size',this)"><span class="cb-size-disc" style="width:60px;height:60px"></span><b>25 cm</b><small>~20 portions</small></div>
+            <div class="cb-card cb-size-card" data-val="30cm (~30 servings)" onclick="cbPick('size',this)"><span class="cb-size-disc" style="width:72px;height:72px"></span><b>30 cm</b><small>~30 portions</small></div>
+          </div>
+          <div class="cb-nav"><span></span><button class="btn cb-btn-next" onclick="cbNext()" data-en>Next →</button><button class="btn cb-btn-next" onclick="cbNext()" data-el>Επόμενο →</button></div>
         </div>
-        <div class="opt-group">
-          <h4 data-en>Sponge flavour</h4><h4 data-el>Γεύση παντεσπάνι</h4>
-          <div class="swatches" id="flavours"></div>
+        <!-- STEP 2: Tiers & Sponge -->
+        <div class="cb-panel" data-panel="2">
+          <div class="cb-step-label" data-en>Step 2 of 5 — Tiers & Sponge</div>
+          <div class="cb-step-label" data-el>Βήμα 2 από 5 — Όροφοι & Παντεσπάνι</div>
+          <div class="cb-field-label" data-en>Number of tiers</div>
+          <div class="cb-field-label" data-el>Αριθμός ορόφων</div>
+          <div class="cb-cards cb-tier-grid" id="cbTiersCards">
+            <div class="cb-card cb-tier-card" data-val="1" onclick="cbPick('tiers',this);cbSetTiers(1)"><div class="cb-tier-vis"><div class="cb-tier-bar" style="width:60px;height:22px"></div></div><b>1 Tier</b></div>
+            <div class="cb-card cb-tier-card" data-val="2" onclick="cbPick('tiers',this);cbSetTiers(2)"><div class="cb-tier-vis"><div class="cb-tier-bar" style="width:44px;height:14px;margin-bottom:3px"></div><div class="cb-tier-bar" style="width:60px;height:18px"></div></div><b>2 Tiers</b></div>
+            <div class="cb-card cb-tier-card" data-val="3" onclick="cbPick('tiers',this);cbSetTiers(3)"><div class="cb-tier-vis"><div class="cb-tier-bar" style="width:32px;height:10px;margin-bottom:2px"></div><div class="cb-tier-bar" style="width:46px;height:14px;margin-bottom:2px"></div><div class="cb-tier-bar" style="width:60px;height:18px"></div></div><b>3 Tiers</b></div>
+          </div>
+          <div class="cb-field-label" data-en>Sponge flavour (GF)</div>
+          <div class="cb-field-label" data-el>Γεύση παντεσπάνι (χωρίς γλουτένη)</div>
+          <div class="cb-cards" id="cbSponge">
+            <div class="cb-card" data-val="Chocolate" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#3d2314"></span><span>Chocolate</span></div>
+            <div class="cb-card" data-val="Vanilla" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f5e6c8"></span><span>Vanilla</span></div>
+            <div class="cb-card" data-val="Lemon" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f0e040"></span><span>Lemon</span></div>
+            <div class="cb-card" data-val="Orange" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#f28c3a"></span><span>Orange</span></div>
+            <div class="cb-card" data-val="Carrot" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#d4793a"></span><span>Carrot</span></div>
+            <div class="cb-card" data-val="Red Velvet" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#9e1b32"></span><span>Red Velvet</span></div>
+            <div class="cb-card" data-val="Pistachio" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#8aa84a"></span><span>Pistachio</span></div>
+            <div class="cb-card" data-val="Almond" onclick="cbPick('sponge',this)"><span class="cb-swatch" style="background:#d4b882"></span><span>Almond</span></div>
+          </div>
+          <div class="cb-nav"><button class="btn ghost" onclick="cbBack()" data-en>← Back</button><button class="btn ghost" onclick="cbBack()" data-el>← Πίσω</button><button class="btn cb-btn-next" onclick="cbNext()" data-en>Next →</button><button class="btn cb-btn-next" onclick="cbNext()" data-el>Επόμενο →</button></div>
         </div>
-        <div class="opt-group">
-          <h4 data-en>Frosting</h4><h4 data-el>Κρέμα</h4>
-          <div class="swatches" id="frostings"></div>
+        <!-- STEP 3: Filling & Frosting -->
+        <div class="cb-panel" data-panel="3">
+          <div class="cb-step-label" data-en>Step 3 of 5 — Filling & Frosting</div>
+          <div class="cb-step-label" data-el>Βήμα 3 από 5 — Γέμιση & Επικάλυψη</div>
+          <div class="cb-field-label" data-en>Cream filling between layers</div>
+          <div class="cb-field-label" data-el>Κρέμα γεμίσματος</div>
+          <div class="cb-cards" id="cbFilling"></div>
+          <div class="cb-field-label" data-en>Frosting colour & style</div>
+          <div class="cb-field-label" data-el>Χρώμα & στυλ επικάλυψης</div>
+          <div class="cb-cards" id="cbFrosting"></div>
+          <div class="cb-nav"><button class="btn ghost" onclick="cbBack()" data-en>← Back</button><button class="btn ghost" onclick="cbBack()" data-el>← Πίσω</button><button class="btn cb-btn-next" onclick="cbNext()" data-en>Next →</button><button class="btn cb-btn-next" onclick="cbNext()" data-el>Επόμενο →</button></div>
         </div>
-        <div class="opt-group">
-          <h4 data-en>Toppings <span class="tcount" id="tcount"></span></h4><h4 data-el>Τόπινγκ <span class="tcount" id="tcountEl"></span></h4>
-          <input class="top-search" id="topSearch" placeholder="Search toppings…" oninput="renderToppingList()">
-          <div class="top-cats" id="topCats"></div>
-          <div class="top-list" id="toppings"></div>
-          <div class="top-chosen" id="topChosen"></div>
+        <!-- STEP 4: Decorations -->
+        <div class="cb-panel" data-panel="4">
+          <div class="cb-step-label" data-en>Step 4 of 5 — Decorations</div>
+          <div class="cb-step-label" data-el>Βήμα 4 από 5 — Διακόσμηση</div>
+          <p class="cb-hint" data-en>Pick as many as you like — all are 100% gluten-free</p>
+          <p class="cb-hint" data-el>Διάλεξε όσα θέλεις — όλα είναι 100% χωρίς γλουτένη</p>
+          <div class="cb-deco-tabs" id="cbDecoTabs"></div>
+          <div class="cb-deco-grid" id="cbDecoGrid"></div>
+          <div class="cb-chosen-wrap" id="cbChosenDecos"></div>
+          <div class="cb-nav"><button class="btn ghost" onclick="cbBack()" data-en>← Back</button><button class="btn ghost" onclick="cbBack()" data-el>← Πίσω</button><button class="btn cb-btn-next" onclick="cbNext()" data-en>Next →</button><button class="btn cb-btn-next" onclick="cbNext()" data-el>Επόμενο →</button></div>
         </div>
-        <div class="opt-group">
-          <h4 data-en>Message on cake</h4><h4 data-el>Μήνυμα στην τούρτα</h4>
-          <input class="msg-input" id="cakeMsg" maxlength="22" placeholder="Happy Birthday!" oninput="render()">
-        </div>
-        <div class="kids-note">
-          🎂 <span data-en><b>Kids &amp; birthday cakes</b> (characters, themes, figures) are made by hand — <a href="#" onclick="callNow(event);return false;">call Evridiki directly</a> and she'll create exactly what you want.</span>
-          <span data-el><b>Παιδικές τούρτες &amp; γενεθλίων</b> (ήρωες, θέματα, φιγούρες) φτιάχνονται στο χέρι — <a href="#" onclick="callNow(event);return false;">κάλεσε την Ευρυδίκη</a> και θα φτιάξει ακριβώς ό,τι θες.</span>
-        </div>
-        <div class="summary" id="summary"></div>
-        <div class="builder-cta">
-          <button class="btn" onclick="sendToForm()"><span data-en>Use this design →</span><span data-el>Χρήση σχεδίου →</span></button>
-          <button class="btn ghost" onclick="callNow(event)"><span data-en>Or just call</span><span data-el>Ή κάλεσε</span></button>
+        <!-- STEP 5: Message & Send -->
+        <div class="cb-panel" data-panel="5">
+          <div class="cb-step-label" data-en>Step 5 of 5 — Final Details</div>
+          <div class="cb-step-label" data-el>Βήμα 5 από 5 — Τελευταίες Λεπτομέρειες</div>
+          <div class="cb-field-label" data-en>Message on the cake (optional, max 30 chars)</div>
+          <div class="cb-field-label" data-el>Μήνυμα στην τούρτα (προαιρετικό, έως 30 χαρακτήρες)</div>
+          <input class="cb-input" id="cbMsg" maxlength="30" placeholder="Happy Birthday Maria!">
+          <div class="cb-field-label" data-en>Preferred collection / delivery date</div>
+          <div class="cb-field-label" data-el>Επιθυμητή ημερομηνία παραλαβής</div>
+          <input class="cb-input" id="cbDate" type="date">
+          <div class="cb-field-label" data-en>Extra notes for Evridiki (allergies, colour preferences…)</div>
+          <div class="cb-field-label" data-el>Επιπλέον σημειώσεις (αλλεργίες, χρώματα…)</div>
+          <textarea class="cb-textarea" id="cbNotes" rows="3" placeholder="e.g. No nuts, extra gold leaf, pale pink frosting…"></textarea>
+          <div class="cb-summary-card" id="cbSummaryCard"></div>
+          <div class="cb-cta-group">
+            <a class="btn cb-wa-btn" id="cbWaLink" href="#" target="_blank" rel="noopener" data-en>Send to Evridiki via WhatsApp →</a>
+            <a class="btn cb-wa-btn" id="cbWaLinkEl" href="#" target="_blank" rel="noopener" data-el>Στείλε στην Ευρυδίκη μέσω WhatsApp →</a>
+            <a class="btn ghost cb-email-btn" id="cbEmailLink" href="#" data-en>Or send via email</a>
+            <a class="btn ghost cb-email-btn" id="cbEmailLinkEl" href="#" data-el>Ή στείλε email</a>
+          </div>
+          <div class="cb-nav"><button class="btn ghost" onclick="cbBack()" data-en>← Back</button><button class="btn ghost" onclick="cbBack()" data-el>← Πίσω</button></div>
         </div>
       </div>
     </div>
