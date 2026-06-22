@@ -1321,17 +1321,25 @@
   // ===== PRODUCT STORE (editable from portal, persists) =====
   const PRODUCTS_KEY='byevridiki_products';
   const MENU_IMAGE_OVERRIDES = {
-    // --- CAKES (your photos) ---
-    'Geography Cake 150g': '/images/img06.png',
-    // --- DESSERTS (your photos) ---
-    'Apple Pie 180g': '/images/img10.png',
-    'Profiterole Dubai 180g': '/images/img12.png',
+    // --- CAKES ---
+    'Orange Cake 150g':            '/images/img07.png',
+    'Chocolate Cake 150g':         '/images/img06.png',
+    'Geography Cake 150g':         '/images/img08.png',
+    // --- DESSERTS ---
+    'Cheesecake':                  '/images/img09.png',
+    'Apple Pie 180g':              '/images/img11.png',
+    'Profiterole Dubai 180g':      '/images/img12.png',
+    'Strawberry Panna Cotta 180g': '/images/img13.png',
     'Duchess Milk Chocolate 180g': '/images/img14.png',
-    // --- SAVOURY (your photos) ---
+    'Chocolate Ganache 180g':      '/images/img15.png',
+    'Carrot Cake':                 '/images/img16.png',
+    // --- SAVOURY ---
     'Sausage Pie Kourou w/ Philadelphia 140g': '/images/img02.png',
-    'Tahini Pie 270g': '/images/img04.png',
+    'Kourou Cheese Pie 140g':      '/images/img03.png',
+    'Tahini Pie 270g':             '/images/img04.png',
+    'Cheese, Bacon & Tomato Peinirli': '/images/img05.png',
     // --- POPULAR ---
-    'Make Your Own GF Sandwich': '/images/img01.png',
+    'Make Your Own GF Sandwich':   '/images/img01.png',
   };
   function loadProducts(){
     try{ const s=localStorage.getItem(PRODUCTS_KEY); if(s){ const a=JSON.parse(s); if(Array.isArray(a)&&a.length) return a; } }catch(e){}
@@ -1366,7 +1374,6 @@
       if(!src) return;
       const img = new Image();
       img.decoding = 'async';
-      img.loading = 'lazy';
       img.onload = ()=>{
         card.style.backgroundImage = `url('${src.replace(/'/g, "%27")}')`;
         card.dataset.loaded = '1';
@@ -1391,13 +1398,14 @@
       const price = /from|request|από|αίτημα/i.test(p.price) ? p.price : '€'+p.price;
       const imgUrl = resolveImage(p);
       const safeImg = imgUrl ? escHtml(imgUrl) : '';
-      const imgClass = imgUrl ? 'card-img has-photo loading-photo' : 'card-img '+(p.g||'g2');
+      const imgClass = imgUrl ? 'card-img has-photo' : 'card-img '+(p.g||'g2');
+      const bgStyle = imgUrl ? ` style="background-image:url('${safeImg.replace(/'/g,'%27')}')"` : '';
       const popBadge = p.pop ? `<span class="pop-badge">★ ${el?'Δημοφιλές':'Popular'}</span>` : '';
       const name = el?escHtml(p.el):escHtml(p.en);
       const desc = el?escHtml(p.del):escHtml(p.den);
       return `
       <article class="card" data-testid="menu-card-${escHtml(p.id||p.en||'item').toLowerCase().replace(/[^a-z0-9]+/g,'-')}">
-        <div class="${imgClass}"${imgUrl?` data-bg="${safeImg}"`:''}>
+        <div class="${imgClass}"${bgStyle}>
           ${popBadge}
           <span class="gf-tag">${tag}</span>
           ${imgUrl?'':`<span class="ph-label">${name}</span>`}
