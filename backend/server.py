@@ -3,6 +3,8 @@ load_dotenv()
 
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
@@ -14,6 +16,7 @@ from pydantic import BaseModel, Field
 from typing import Optional, List
 
 ROOT_DIR = Path(__file__).parent
+FRONTEND_DIR = ROOT_DIR.parent / "frontend" / "public"
 
 # MongoDB
 client = AsyncIOMotorClient(os.environ["MONGO_URL"])
@@ -216,3 +219,14 @@ async def toggle_pop(pid: str):
     return {"id": pid, "pop": new_pop}
 
 app.include_router(api_router)
+
+# ─────────────── Serve frontend static files ───────────────
+# Mount images folder, then fall back to index.html for all other routes
+if FRONTEND_DIR.exists():
+    images_dir = FRONTEND_DIR / "images"
+    if images_dir.exists():
+        app.mount("/images", StaticFiles(directory=str(images_dir)), name="images")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def serve_frontend(full_path: str):
+        return FileResponse(str(FRONTEND_DIR / "index.html"))
