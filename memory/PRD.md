@@ -22,13 +22,6 @@ The user has a bakery website and wants to fix layout/design issues, mobile view
 - Applied initial layout/design structural patches
 - Verified frontend running via screenshot
 
-## What's Been Implemented
-
-### Session 1 (Previous Fork)
-- Fixed frontend dev server crash: patched react-scripts webpack-dev-server for `setupMiddlewares` incompatibility
-- Applied initial layout/design structural patches
-- Verified frontend running via screenshot
-
 ### Session 2 (June 22, 2026)
 - Received and extracted user's zip of 16 custom bakery photos
 - Renamed images from screenshot filenames to `img01.png`–`img16.png`
@@ -46,6 +39,21 @@ The user has a bakery website and wants to fix layout/design issues, mobile view
 - Updated all portal product operations (add/edit/delete/toggle-pop) to use API
 - Products now persist across devices and browsers via MongoDB
 - Chef's Portal: login, product list with thumbnails, add/edit/delete — all working
+
+### Session 4 (June 22, 2026 — Cake Customizer v2)
+- Completely redesigned Cake Customizer to a 5-step wizard at `#builder`
+- Removed ALL old customizer code (SVG drawing, FLAVOURS, FROSTINGS, old event listeners)
+- Added full CSS for `.cb-*` classes: progress bar, selection cards, cake preview, navigation
+- **Step 1**: Occasion (Birthday, Wedding, Baptism, Anniversary, Other) + Size (15/20/25/30 cm)
+- **Step 2**: Tiers (1/2/3) + Sponge Flavour (14 GF options: Chocolate, Vanilla, Lemon, Orange, Carrot, Red Velvet, Pistachio, Almond, Banana, Coconut, Cinnamon, Hazelnut, Coffee, Blueberry)
+- **Step 3**: Filling (10 GF options) + Frosting (9 colours/styles) — dynamically generated
+- **Step 4**: Decorations with category tabs (All/Fruit/Creams/Nuts/Chocolate/Finishing). Removed expensive items: no gold leaf, no isomalt, no macarons, no edible roses, no ruby chocolate
+- **Step 5**: Message on cake + Date + Special notes + "Call Evridiki to order" CTA (not WhatsApp)
+- Live cake preview: CSS tier divs update colour based on sponge/frosting choices
+- Live summary bar updates at every step
+- Progress dots (1→5) animate correctly (done=green, active=rose)
+- Back navigation and language switch (EN/EL) both work
+- Tested: 95% pass rate (all core flows verified, no JS console errors)
 
 ## Backlog / Future Tasks
 
