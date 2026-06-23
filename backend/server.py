@@ -49,6 +49,10 @@ class LoginRequest(BaseModel):
 class LoginResponse(BaseModel):
     token: str
 
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str
+
 class ProductIn(BaseModel):
     en: str
     el: str = ""
@@ -271,10 +275,39 @@ async def health():
 
 @api_router.post("/admin/login", response_model=LoginResponse)
 async def admin_login(req: LoginRequest):
-    admin_pw = os.environ.get("ADMIN_PASSWORD", "evridiki2025")
+    admin_pw = await _get_current_admin_password()
     if req.password != admin_pw:
         raise HTTPException(status_code=401, detail="Wrong password")
     return LoginResponse(token=create_admin_token())
+
+
+async def _get_current_admin_password() -> str:
+    """Returns the currently active admin password. Prefers DB override (set via
+    /admin/change-password), falls back to the ADMIN_PASSWORD env var, then to a
+    development default. This lets the owner change the password from the portal
+    without redeploying."""
+    try:
+        doc = await db.settings.find_one({"_id": "admin_password"}, {"_id": 0, "value": 1})
+        if doc and doc.get("value"):
+            return doc["value"]
+    except Exception:
+        pass
+    return os.environ.get("ADMIN_PASSWORD", "evridiki2025")
+
+
+@api_router.post("/admin/change-password", dependencies=[Depends(require_admin)])
+async def change_admin_password(req: ChangePasswordRequest):
+    current = await _get_current_admin_password()
+    if req.current_password != current:
+        raise HTTPException(status_code=401, detail="Current password is wrong")
+    if len(req.new_password) < 6:
+        raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
+    await db.settings.update_one(
+        {"_id": "admin_password"},
+        {"$set": {"value": req.new_password, "updated_at": datetime.now(timezone.utc).isoformat()}},
+        upsert=True,
+    )
+    return {"ok": True}
 
 @api_router.get("/products")
 async def list_products():
