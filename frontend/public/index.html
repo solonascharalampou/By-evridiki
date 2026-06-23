@@ -78,9 +78,11 @@
   .brand-text{display:flex;flex-direction:column}
   .brand b{font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;letter-spacing:.02em}
   .brand-text>span{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--rose-deep);margin-top:4px;font-weight:600}
-  .nav-links{display:flex;gap:clamp(18px,2.4vw,40px);align-items:center;justify-content:center;flex:1 1 auto}
+  .nav-links{display:flex;gap:clamp(14px,2vw,32px);align-items:center;justify-content:center;flex:1 1 auto}
   .nav-links a{font-size:.86rem;font-weight:600;color:var(--cocoa-soft);transition:color .2s;white-space:nowrap}
   .nav-links a:hover{color:var(--rose-deep)}
+  .nav-sep{display:none;width:1px;height:18px;background:var(--line);margin:0 4px}
+  .nav-mobile-call{display:none}
   .nav-right{display:flex;align-items:center;gap:12px;flex:none}
   .lang{display:flex;border:1px solid var(--line);border-radius:30px;overflow:hidden;font-size:.72rem;font-weight:700}
   .lang button{background:none;border:none;padding:6px 12px;cursor:pointer;color:var(--cocoa-soft);font-weight:700;font-family:inherit}
@@ -304,6 +306,50 @@
   .portal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}
   .portal-logout{background:none;border:1px solid var(--line);border-radius:20px;padding:6px 14px;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--cocoa-soft)}
   .portal-empty{color:var(--cocoa-soft);text-align:center;padding:30px;background:var(--cream);border-radius:14px}
+
+  /* portal: remember me + secondary actions */
+  .portal-remember{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--cocoa-soft);margin:6px 0 14px;cursor:pointer;user-select:none}
+  .portal-remember input{width:16px;height:16px;accent-color:var(--rose-deep);cursor:pointer}
+  .portal-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .portal-action-btn{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:6px 14px;font-weight:700;font-size:.78rem;cursor:pointer;color:var(--cocoa);font-family:inherit;transition:.18s}
+  .portal-action-btn:hover{background:var(--rose);color:#fff;border-color:var(--rose)}
+
+  /* portal: partners management */
+  .partner-row{display:flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+  .partner-row .p-emoji{font-size:1.8rem;flex:none;width:48px;height:48px;display:grid;place-items:center;background:var(--paper);border-radius:12px}
+  .partner-row .p-info{flex:1;min-width:0}
+  .partner-row .p-info b{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:1rem;color:var(--cocoa);margin-bottom:2px}
+  .partner-row .p-info small{color:var(--cocoa-soft);font-size:.8rem;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .partner-row .p-del{background:none;border:1px solid var(--line);border-radius:10px;width:34px;height:34px;cursor:pointer;color:#c0314a;font-weight:800;flex:none}
+  .partner-row .p-del:hover{background:#c0314a;color:#fff;border-color:#c0314a}
+  .partner-add-form{background:var(--cream);border:1px dashed var(--line);border-radius:14px;padding:16px;margin-top:8px;display:flex;flex-direction:column;gap:10px}
+  .partner-add-form .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .partner-add-form label{font-size:.74rem;font-weight:700;color:var(--cocoa-soft);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px}
+
+  /* change password modal */
+  .pw-modal{position:fixed;inset:0;z-index:340;background:rgba(40,22,16,.62);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:30px 16px}
+  .pw-modal.show{display:flex}
+  .pw-box{background:var(--paper);border-radius:20px;max-width:420px;width:100%;padding:28px;box-shadow:var(--shadow);position:relative;animation:portalIn .4s cubic-bezier(.2,.9,.2,1)}
+  .pw-box h3{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;margin-bottom:6px}
+  .pw-box p{color:var(--cocoa-soft);font-size:.88rem;margin-bottom:14px}
+  .pw-msg{font-weight:700;font-size:.86rem;margin-top:6px;display:none}
+  .pw-msg.err{color:#c0314a;display:block}
+  .pw-msg.ok{color:#5e7a3a;display:block}
+
+  /* contact form section */
+  .contact-sec{padding:78px 0;background:linear-gradient(180deg,var(--cream),var(--paper))}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;max-width:1000px;margin:0 auto}
+  .contact-copy h2{font-size:clamp(2rem,4vw,2.6rem);margin-bottom:16px}
+  .contact-copy p{color:var(--cocoa-soft);margin-bottom:14px;line-height:1.7}
+  .contact-meta{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+  .contact-meta-item{display:flex;align-items:center;gap:12px;font-size:.92rem;color:var(--cocoa)}
+  .contact-meta-item span{font-size:1.4rem;width:36px;height:36px;display:grid;place-items:center;background:var(--blush);border-radius:10px;flex:none}
+  .contact-meta-item a{color:var(--rose-deep);font-weight:700}
+  .contact-meta-item a:hover{text-decoration:underline}
+  @media(max-width:780px){
+    .contact-grid{grid-template-columns:1fr;gap:30px}
+    .partner-add-form .field-row{grid-template-columns:1fr}
+  }
   .orders-list{display:flex;flex-direction:column;gap:14px;max-height:60vh;overflow-y:auto}
   .order-card{border:1px solid var(--line);border-left:4px solid var(--terra);border-radius:14px;padding:16px;background:var(--cream)}
   .order-card.status-confirmed{border-left-color:var(--sage)}
@@ -441,7 +487,11 @@
   @media(max-width:1040px){
     .nav-links{display:none}
     .burger{display:flex}
-    .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:var(--cream);flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);z-index:80;max-height:calc(100vh - 68px);overflow:auto}
+    .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:var(--cream);flex-direction:column;padding:22px 24px;gap:14px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);z-index:80;max-height:calc(100vh - 68px);overflow:auto;align-items:stretch}
+    .nav-links.open a{text-align:center;padding:10px 12px;border-radius:12px;font-size:1rem}
+    .nav-links.open a:hover{background:rgba(217,121,154,.08)}
+    .nav-links.open .nav-sep{display:block;width:100%;height:1px;margin:6px 0}
+    .nav-links.open .nav-mobile-call{display:block;background:linear-gradient(135deg,var(--rose),var(--terra));color:#fff!important;font-weight:800;padding:14px 12px;box-shadow:0 8px 18px -10px rgba(189,90,126,.6)}
     .nav-links.open .nav-portal{display:block;text-align:center;animation:none}
     .nav-links.open .nav-portal::after{display:none}
   }
@@ -518,8 +568,10 @@
     body{padding-bottom:70px}
 
     /* hamburger dropdown menu */
-    .nav-links.open{display:flex;position:absolute;top:60px;left:0;right:0;background:var(--cream);flex-direction:column;padding:18px 22px;gap:18px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);z-index:80;max-height:calc(100vh - 60px);overflow:auto}
-    .nav-links.open a{font-size:1rem}
+    .nav-links.open{display:flex;position:absolute;top:60px;left:0;right:0;background:var(--cream);flex-direction:column;padding:20px 22px;gap:12px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);z-index:80;max-height:calc(100vh - 60px);overflow:auto;align-items:stretch}
+    .nav-links.open a{font-size:1rem;text-align:center;padding:10px 12px;border-radius:12px}
+    .nav-links.open .nav-sep{display:block;width:100%;height:1px;margin:4px 0}
+    .nav-links.open .nav-mobile-call{display:block}
   }
 
   @media(max-width:380px){
@@ -763,8 +815,8 @@
 
 <!-- PARTNERSHIP BANNER -->
 <a class="promo-bar" href="#" onclick="showBurger();return false;" data-testid="promo-bar-link">
-  <span data-en>🍔 Now partnering with <b>The Burger Project</b> — gluten-free burgers, available on Foody &nbsp;→</span>
-  <span data-el>🍔 Σε συνεργασία με το <b>The Burger Project</b> — burgers χωρίς γλουτένη, στο Foody &nbsp;→</span>
+  <span data-en>🍔 Now partnering with <b>The Burger Project</b> — gluten-free burgers &nbsp;→</span>
+  <span data-el>🍔 Σε συνεργασία με το <b>The Burger Project</b> — burgers χωρίς γλουτένη &nbsp;→</span>
 </a>
 
 <!-- HEADER -->
@@ -806,7 +858,10 @@
       <a href="#reviews" data-en>Reviews</a><a href="#reviews" data-el>Κριτικές</a>
       <a href="#locations" data-en>Locations</a><a href="#locations" data-el>Σημεία</a>
       <a href="#partners" data-en>Partners</a><a href="#partners" data-el>Συνεργάτες</a>
-      <a href="#" class="nav-burger" onclick="showBurger();return false;"><span data-en>🍔 Burger Project</span><span data-el>🍔 Burger Project</span></a>
+      <a href="#contact" data-en>Contact</a><a href="#contact" data-el>Επικοινωνία</a>
+      <span class="nav-sep" aria-hidden="true"></span>
+      <a href="tel:+35799299980" onclick="callNow(event)" class="nav-mobile-call" data-en>📞 Call to order</a>
+      <a href="tel:+35799299980" onclick="callNow(event)" class="nav-mobile-call" data-el>📞 Παραγγελία</a>
       <a href="#" class="nav-portal" onclick="openPortal();return false;"><span data-en>👩‍🍳 Chef's Portal</span><span data-el>👩‍🍳 Πύλη Σεφ</span></a>
     </nav>
     <div class="nav-right">
@@ -837,8 +892,6 @@
       <div class="hero-cta">
         <a href="tel:+35799299980" onclick="callNow(event)" class="btn" data-en>Call &amp; order</a>
         <a href="tel:+35799299980" onclick="callNow(event)" class="btn" data-el>Κάλεσε &amp; παράγγειλε</a>
-        <a href="https://www.foody.com.cy/delivery/leykosia/by-evridiki-a-gluten-free-sweet-project-2000629507" target="_blank" rel="noopener" class="btn foody" data-en>Order via Foody</a>
-        <a href="https://www.foody.com.cy/delivery/leykosia/by-evridiki-a-gluten-free-sweet-project-2000629507" target="_blank" rel="noopener" class="btn foody" data-el>Foody delivery</a>
         <a href="#custom" class="btn ghost" data-en>Custom cake request</a>
         <a href="#custom" class="btn ghost" data-el>Τούρτα κατά παραγγελία</a>
       </div>
@@ -874,7 +927,7 @@
   <div class="wrap trust-row">
     <div class="trust-item"><b>4.7 ★</b><span data-en>Customer rating</span><span data-el>Αξιολόγηση</span></div>
     <div class="trust-item"><b data-en>100% Dedicated</b><b data-el>100% Αποκλειστική</b><span data-en>Gluten &amp; lactose-free</span><span data-el>Χωρίς γλουτένη &amp; λακτόζη</span></div>
-    <div class="trust-item"><b data-en>Nicosia</b><b data-el>Λευκωσία</b><span data-en>Pickup, Foody &amp; delivery</span><span data-el>Παραλαβή, Foody &amp; delivery</span></div>
+    <div class="trust-item"><b data-en>Nicosia</b><b data-el>Λευκωσία</b><span data-en>Pickup &amp; delivery</span><span data-el>Παραλαβή &amp; delivery</span></div>
     <div class="trust-item"><b data-en>Made by hand</b><b data-el>Χειροποίητα</b><span data-en>By Evridiki, daily</span><span data-el>Από την Ευρυδίκη, καθημερινά</span></div>
   </div>
 </section>
@@ -897,6 +950,8 @@
   </div>
 </div>
 
+<!-- WHAT WE ARE -->
+<section class="intro" id="whatweare">
   <div class="wrap intro-grid">
     <div>
       <div class="sec-eyebrow" data-en>What we are</div>
@@ -938,8 +993,8 @@
     </div>
     <div class="menu-grid" id="menugrid" data-testid="menu-grid"></div>
     <p class="menu-foot">
-      <span data-en>Live prices &amp; full menu on Foody · all items 100% gluten-free</span>
-      <span data-el>Τιμές &amp; πλήρες μενού στο Foody · όλα 100% χωρίς γλουτένη</span>
+      <span data-en>Prices &amp; full menu · all items 100% gluten-free</span>
+      <span data-el>Τιμές &amp; πλήρες μενού · όλα 100% χωρίς γλουτένη</span>
     </p>
   </div>
 </section>
@@ -1011,8 +1066,8 @@
       <div class="loc-card">
         <h3><span data-en>Nicosia</span><span data-el>Λευκωσία</span> <span class="tag" data-en>Our shop</span><span class="tag" data-el>Το κατάστημα</span></h3>
         <p>Lemesou Avenue 46, Nicosia 2014, Cyprus</p>
-        <p data-en>Open from 8:00 AM · Pickup, Foody delivery &amp; phone orders</p>
-        <p data-el>Ανοιχτά από 8:00 π.μ. · Παραλαβή, Foody &amp; τηλεφωνικές παραγγελίες</p>
+        <p data-en>Open from 8:00 AM · Pickup &amp; phone orders</p>
+        <p data-el>Ανοιχτά από 8:00 π.μ. · Παραλαβή &amp; τηλεφωνικές παραγγελίες</p>
         <p data-en><a href="tel:+35799299980" style="color:var(--rose-deep);font-weight:700">+357 99 299980</a></p>
         <p data-el><a href="tel:+35799299980" style="color:var(--rose-deep);font-weight:700">+357 99 299980</a></p>
       </div>
@@ -1232,6 +1287,61 @@
   </div>
 </section>
 
+<!-- CONTACT FORM -->
+<section class="contact-sec" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-copy">
+        <div class="sec-eyebrow" data-en>Get in touch</div>
+        <div class="sec-eyebrow" data-el>Επικοινωνία</div>
+        <h2 data-en>Send us a <em>message</em>.</h2>
+        <h2 data-el>Στείλε μας <em>μήνυμα</em>.</h2>
+        <p data-en>Questions about ingredients, allergens, wholesale, or just want to say hi? Drop us a line and Evridiki will get back to you.</p>
+        <p data-el>Έχεις απορίες για υλικά, αλλεργιογόνα, χονδρική ή απλά θες να πεις ένα γεια; Γράψε μας και η Ευρυδίκη θα σου απαντήσει.</p>
+        <div class="contact-meta">
+          <div class="contact-meta-item"><span>📞</span><div><b data-en>Phone</b><b data-el>Τηλέφωνο</b><br><a href="tel:+35799299980" onclick="callNow(event)">+357 99 299980</a></div></div>
+          <div class="contact-meta-item"><span>📍</span><div><b data-en>Visit</b><b data-el>Επισκέψου</b><br>Lemesou Avenue 46, Nicosia 2014</div></div>
+          <div class="contact-meta-item"><span>🕐</span><div><b data-en>Hours</b><b data-el>Ώρες</b><br><span data-en>Daily from 8:00 AM</span><span data-el>Καθημερινά από 8:00 π.μ.</span></div></div>
+        </div>
+      </div>
+      <form id="contactform" onsubmit="return submitContact(event)">
+        <div class="field">
+          <label data-en>Your name</label><label data-el>Το όνομά σου</label>
+          <input required type="text" name="cname" placeholder="Maria">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label data-en>Email</label><label data-el>Email</label>
+            <input required type="email" name="cemail" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label data-en>Phone (optional)</label><label data-el>Τηλέφωνο (προαιρ.)</label>
+            <input type="tel" name="cphone" placeholder="+357 …">
+          </div>
+        </div>
+        <div class="field">
+          <label data-en>Subject</label><label data-el>Θέμα</label>
+          <select name="csubject">
+            <option data-en>General question</option><option data-el>Γενική ερώτηση</option>
+            <option data-en>Allergen / ingredient question</option><option data-el>Αλλεργιογόνα / υλικά</option>
+            <option data-en>Wholesale enquiry</option><option data-el>Χονδρική</option>
+            <option data-en>Feedback</option><option data-el>Feedback</option>
+            <option data-en>Other</option><option data-el>Άλλο</option>
+          </select>
+        </div>
+        <div class="field">
+          <label data-en>Message</label><label data-el>Μήνυμα</label>
+          <textarea required name="cmessage" placeholder="How can we help?" style="min-height:120px"></textarea>
+        </div>
+        <button class="btn" type="submit"><span data-en>Send message</span><span data-el>Στείλε μήνυμα</span></button>
+        <p class="form-note" data-en>We'll get back to you within 1–2 working days.</p>
+        <p class="form-note" data-el>Θα σου απαντήσουμε σε 1–2 εργάσιμες.</p>
+        <div class="form-ok" id="contactok"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- OUR PARTNERS -->
 <section class="partners" id="partners">
   <div class="wrap">
@@ -1243,36 +1353,14 @@
       <p data-en>Trusted names we work with to bring you more safe, gluten-free options.</p>
       <p data-el>Έμπιστα ονόματα μαζί με τα οποία σου προσφέρουμε ασφαλείς, gluten-free επιλογές.</p>
     </div>
-    <div class="partner-grid">
-      <div class="partner-card">
-        <div class="partner-logo">🍔</div>
-        <h3>The Burger Project</h3>
-        <p data-en>Gluten-free burgers, made with the same care for coeliac-safe food. Available on Foody.</p>
-        <p data-el>Burgers χωρίς γλουτένη, με την ίδια φροντίδα για ασφαλές φαγητό. Στο Foody.</p>
-        <div class="partner-cta">
-          <a href="#" onclick="showBurger();return false;" class="btn ghost" data-en>Learn more</a>
-          <a href="#" onclick="showBurger();return false;" class="btn ghost" data-el>Μάθε περισσότερα</a>
-          <a href="https://www.foody.com.cy/delivery/leykosia/the-burger-project-gluten-free-burgerskaibites-2000717679" target="_blank" rel="noopener" class="btn foody" data-en>Order on Foody</a>
-          <a href="https://www.foody.com.cy/delivery/leykosia/the-burger-project-gluten-free-burgerskaibites-2000717679" target="_blank" rel="noopener" class="btn foody" data-el>Foody</a>
-        </div>
-      </div>
-      <div class="partner-card partner-soon">
-        <div class="partner-logo">🤝</div>
-        <h3 data-en>Your business here?</h3>
-        <h3 data-el>Η επιχείρησή σου εδώ;</h3>
-        <p data-en>Interested in partnering with BY EVRIDIKI? We'd love to hear from you.</p>
-        <p data-el>Θες να συνεργαστείς με το BY EVRIDIKI; Θα χαρούμε να μιλήσουμε.</p>
-        <div class="partner-cta">
-          <a href="tel:+35799299980" onclick="callNow(event)" class="btn" data-en>Get in touch</a>
-          <a href="tel:+35799299980" onclick="callNow(event)" class="btn" data-el>Επικοινώνησε</a>
-        </div>
-      </div>
+    <div class="partner-grid" id="partnerGrid">
+      <!-- partners rendered by renderPublicPartners() -->
     </div>
   </div>
 </section>
 
 <!-- FOOTER / CONTACT -->
-<footer id="foody">
+<footer id="footer">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
@@ -1283,7 +1371,7 @@
         <p data-el>Αποκλειστικό ζαχαροπλαστείο χωρίς γλουτένη &amp; λακτόζη στη Λευκωσία. Χειροποίητα, με φροντίδα, κάθε μέρα.</p>
         <div class="foot-cta">
           <a href="tel:+35799299980" onclick="callNow(event)" class="btn"><span data-en>Call to order</span><span data-el>Τηλεφώνησε</span></a>
-          <a href="https://www.foody.com.cy/delivery/leykosia/by-evridiki-a-gluten-free-sweet-project-2000629507" target="_blank" rel="noopener" class="btn foody">Foody</a>
+          <a href="#contact" class="btn ghost"><span data-en>Contact</span><span data-el>Επικοινωνία</span></a>
         </div>
       </div>
       <div class="foot-col">
@@ -1297,9 +1385,10 @@
         <h4 data-en>Order &amp; follow</h4><h4 data-el>Παράγγειλε &amp; ακολούθησε</h4>
         <a href="tel:+35799299980" onclick="callNow(event)" data-en>Phone / online order</a>
         <a href="tel:+35799299980" onclick="callNow(event)" data-el>Τηλεφωνική παραγγελία</a>
-        <a href="https://www.foody.com.cy/delivery/leykosia/by-evridiki-a-gluten-free-sweet-project-2000629507" target="_blank" rel="noopener">Foody delivery</a>
         <a href="#custom" data-en>Custom cake request</a>
         <a href="#custom" data-el>Τούρτα κατά παραγγελία</a>
+        <a href="#contact" data-en>Send us a message</a>
+        <a href="#contact" data-el>Στείλε μας μήνυμα</a>
         <a href="https://www.tiktok.com/@by_evridiki" target="_blank" rel="noopener">TikTok @by_evridiki</a>
       </div>
     </div>
@@ -1321,12 +1410,10 @@
     <p class="burger-lead" data-el>Συνεργαστήκαμε με το <b>The Burger Project</b> για να σου προσφέρουμε αληθινά <b>burgers χωρίς γλουτένη</b> — με την ίδια φροντίδα για ασφαλές φαγητό που βάζουμε σε κάθε τούρτα. Ζουμερά, χορταστικά, χωρίς γλουτένη.</p>
     <div class="burger-features">
       <div class="bf"><span class="bf-i">🌾</span><b data-en>Gluten-free</b><b data-el>Χωρίς γλουτένη</b></div>
-      <div class="bf"><span class="bf-i">🛵</span><b data-en>On Foody</b><b data-el>Στο Foody</b></div>
+      <div class="bf"><span class="bf-i">🍔</span><b data-en>Delivery available</b><b data-el>Με delivery</b></div>
       <div class="bf"><span class="bf-i">✅</span><b data-en>Coeliac-friendly</b><b data-el>Φιλικό για κοιλιοκάκη</b></div>
     </div>
     <div class="burger-cta">
-      <a href="https://www.foody.com.cy/delivery/leykosia/the-burger-project-gluten-free-burgerskaibites-2000717679" target="_blank" rel="noopener" class="btn foody" data-en>Order on Foody →</a>
-      <a href="https://www.foody.com.cy/delivery/leykosia/the-burger-project-gluten-free-burgerskaibites-2000717679" target="_blank" rel="noopener" class="btn foody" data-el>Παράγγειλε στο Foody →</a>
       <button class="btn ghost" onclick="hideBurger()" data-en>Back to bakery</button>
       <button class="btn ghost" onclick="hideBurger()" data-el>Πίσω στο ζαχαροπλαστείο</button>
     </div>
@@ -1343,6 +1430,10 @@
       <p class="portal-sub" data-en>Enter your password to see custom cake orders.</p>
       <p class="portal-sub" data-el>Βάλε τον κωδικό σου για να δεις τις παραγγελίες.</p>
       <input type="password" id="portalPw" class="portal-input" placeholder="Password" onkeydown="if(event.key==='Enter')portalLogin()">
+      <label class="portal-remember">
+        <input type="checkbox" id="portalRemember">
+        <span data-en>Remember me on this device</span><span data-el>Θύμησέ με σ' αυτή τη συσκευή</span>
+      </label>
       <p id="portalErr" class="portal-err" style="display:none"><span data-en>Wrong password. Try again.</span><span data-el>Λάθος κωδικός. Δοκίμασε ξανά.</span></p>
       <button class="btn" style="width:100%;justify-content:center" onclick="portalLogin()" data-en>Open portal</button>
       <button class="btn" style="width:100%;justify-content:center" onclick="portalLogin()" data-el>Άνοιγμα πύλης</button>
@@ -1350,12 +1441,17 @@
     <div id="portalBody" style="display:none">
       <div class="portal-head">
         <h3 class="portal-title">👩‍🍳 <span data-en>Chef's Portal</span><span data-el>Πύλη Σεφ</span></h3>
-        <button class="portal-logout" onclick="portalLogout()" data-en>Log out</button>
-        <button class="portal-logout" onclick="portalLogout()" data-el>Έξοδος</button>
+        <div class="portal-actions">
+          <button class="portal-action-btn" onclick="openChangePassword()"><span data-en>🔑 Change password</span><span data-el>🔑 Αλλαγή κωδικού</span></button>
+          <button class="portal-logout" onclick="portalLogout()" data-en>Log out</button>
+          <button class="portal-logout" onclick="portalLogout()" data-el>Έξοδος</button>
+        </div>
       </div>
       <div class="portal-tabs">
         <button class="ptab on" data-ptab="orders" onclick="switchPortalTab('orders')">📋 <span data-en>Orders</span><span data-el>Παραγγελίες</span> (<span id="orderCount">0</span>)</button>
         <button class="ptab" data-ptab="products" onclick="switchPortalTab('products')">🧁 <span data-en>Products</span><span data-el>Προϊόντα</span> (<span id="prodCount">0</span>)</button>
+        <button class="ptab" data-ptab="partners" onclick="switchPortalTab('partners')">🤝 <span data-en>Partners</span><span data-el>Συνεργάτες</span> (<span id="partnerCount">0</span>)</button>
+        <button class="ptab" data-ptab="messages" onclick="switchPortalTab('messages')">✉️ <span data-en>Messages</span><span data-el>Μηνύματα</span> (<span id="msgCount">0</span>)</button>
         <button class="ptab" data-ptab="customizer" onclick="switchPortalTab('customizer')">🎂 <span data-en>Customizer</span><span data-el>Customizer</span></button>
       </div>
 
@@ -1366,6 +1462,57 @@
       <div id="ptab-products" style="display:none">
         <button class="btn" style="width:100%;justify-content:center;margin-bottom:14px" onclick="openProductEditor()">＋ <span data-en>Add new product</span><span data-el>Νέο προϊόν</span></button>
         <div id="prodList" class="prod-list"></div>
+      </div>
+
+      <div id="ptab-partners" style="display:none">
+        <div id="partnerList"></div>
+        <div class="partner-add-form">
+          <div style="font-size:.78rem;font-weight:700;color:var(--cocoa-soft);letter-spacing:.1em;text-transform:uppercase" data-en>＋ Add new partner</div>
+          <div style="font-size:.78rem;font-weight:700;color:var(--cocoa-soft);letter-spacing:.1em;text-transform:uppercase" data-el>＋ Νέος συνεργάτης</div>
+          <div class="field-row">
+            <div>
+              <label data-en>Emoji / Icon</label><label data-el>Emoji / Εικονίδιο</label>
+              <input class="portal-input" id="partEmoji" placeholder="🍔" maxlength="4" style="margin-bottom:0">
+            </div>
+            <div>
+              <label data-en>CTA link (optional)</label><label data-el>Σύνδεσμος (προαιρ.)</label>
+              <input class="portal-input" id="partUrl" placeholder="https://..." style="margin-bottom:0">
+            </div>
+          </div>
+          <div class="field-row">
+            <div>
+              <label data-en>Name (English)</label><label data-el>Όνομα (Αγγλικά)</label>
+              <input class="portal-input" id="partNameEn" placeholder="The Burger Project" style="margin-bottom:0">
+            </div>
+            <div>
+              <label data-en>Name (Greek)</label><label data-el>Όνομα (Ελληνικά)</label>
+              <input class="portal-input" id="partNameEl" placeholder="The Burger Project" style="margin-bottom:0">
+            </div>
+          </div>
+          <div>
+            <label data-en>Description (English)</label><label data-el>Περιγραφή (Αγγλικά)</label>
+            <textarea class="portal-input" id="partDescEn" placeholder="Short description shown on the partners section..." style="min-height:60px;margin-bottom:0"></textarea>
+          </div>
+          <div>
+            <label data-en>Description (Greek)</label><label data-el>Περιγραφή (Ελληνικά)</label>
+            <textarea class="portal-input" id="partDescEl" placeholder="Σύντομη περιγραφή..." style="min-height:60px;margin-bottom:0"></textarea>
+          </div>
+          <div class="field-row">
+            <div>
+              <label data-en>Button label (EN)</label><label data-el>Κουμπί (EN)</label>
+              <input class="portal-input" id="partCtaEn" placeholder="Learn more" style="margin-bottom:0">
+            </div>
+            <div>
+              <label data-en>Button label (EL)</label><label data-el>Κουμπί (EL)</label>
+              <input class="portal-input" id="partCtaEl" placeholder="Μάθε περισσότερα" style="margin-bottom:0">
+            </div>
+          </div>
+          <button class="btn" style="width:100%;justify-content:center" onclick="addPartner()">＋ <span data-en>Add partner</span><span data-el>Προσθήκη συνεργάτη</span></button>
+        </div>
+      </div>
+
+      <div id="ptab-messages" style="display:none">
+        <div id="msgList" class="orders-list"></div>
       </div>
 
       <div id="ptab-customizer" style="display:none">
@@ -1440,10 +1587,27 @@
   </div>
 </div>
 
+<!-- CHANGE PASSWORD MODAL -->
+<div class="pw-modal" id="pwModal">
+  <div class="pw-box">
+    <button class="portal-close" onclick="closeChangePassword()" aria-label="Close">✕</button>
+    <h3 data-en>Change password</h3>
+    <h3 data-el>Αλλαγή κωδικού</h3>
+    <p data-en>Update the password used to enter the Chef's Portal.</p>
+    <p data-el>Άλλαξε τον κωδικό για την Πύλη της Σεφ.</p>
+    <input type="password" id="pwCurrent" class="portal-input" placeholder="Current password">
+    <input type="password" id="pwNew" class="portal-input" placeholder="New password (min 6 chars)">
+    <input type="password" id="pwConfirm" class="portal-input" placeholder="Confirm new password">
+    <p class="pw-msg" id="pwMsg"></p>
+    <button class="btn" style="width:100%;justify-content:center" onclick="submitChangePassword()" data-en>Update password</button>
+    <button class="btn" style="width:100%;justify-content:center" onclick="submitChangePassword()" data-el>Ενημέρωση κωδικού</button>
+  </div>
+</div>
+
 <!-- STICKY MOBILE BAR -->
 <div class="mobile-bar">
   <a href="tel:+35799299980" onclick="callNow(event)" class="btn"><span data-en>Call</span><span data-el>Κάλεσε</span></a>
-  <a href="https://www.foody.com.cy/delivery/leykosia/by-evridiki-a-gluten-free-sweet-project-2000629507" target="_blank" rel="noopener" class="btn foody">Foody</a>
+  <a href="#menu" class="btn ghost"><span data-en>Menu</span><span data-el>Μενού</span></a>
   <a href="#custom" class="btn ghost"><span data-en>Cakes</span><span data-el>Τούρτες</span></a>
 </div>
 
@@ -1529,7 +1693,7 @@
   // ===== API HELPERS =====
   const API = '';  // same-origin, routes via /api prefix
   const TOKEN_KEY = 'byevridiki_token';
-  const getToken = () => sessionStorage.getItem(TOKEN_KEY);
+  const getToken = () => localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY);
   const authHeaders = () => ({ 'Authorization': 'Bearer ' + getToken(), 'Content-Type': 'application/json' });
 
   // ===== PRODUCT STORE (loaded from backend API) =====
@@ -1548,6 +1712,7 @@
   }
 
   function escHtml(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+  const esc = escHtml;
   function normalizeKey(v){ return String(v||'').trim().toLowerCase(); }
   function safeImageUrl(v){
     const s = String(v||'').trim();
@@ -1682,17 +1847,24 @@
 
   function openPortal(){ document.getElementById('portal').classList.add('show'); syncBodyLock(); portalGate(); }  function closePortal(){ document.getElementById('portal').classList.remove('show'); syncBodyLock(); }
   function portalGate(){
-    const authed=sessionStorage.getItem('byevridiki_admin')==='1';
+    const authed=getAdminFlag();
     document.getElementById('portalLogin').style.display=authed?'none':'block';
     document.getElementById('portalBody').style.display=authed?'block':'none';
-    if(authed){ renderOrders(); renderProdList(); }
+    // pre-check remember-me if it was previously set
+    const rem=document.getElementById('portalRemember');
+    if(rem) rem.checked=isRemembered();
+    if(authed){ renderOrders(); renderProdList(); renderPartnerList(); renderMessages(); }
   }
   function switchPortalTab(t){
     document.querySelectorAll('.ptab').forEach(b=>b.classList.toggle('on',b.dataset.ptab===t));
     document.getElementById('ptab-orders').style.display=t==='orders'?'block':'none';
     document.getElementById('ptab-products').style.display=t==='products'?'block':'none';
+    document.getElementById('ptab-partners').style.display=t==='partners'?'block':'none';
+    document.getElementById('ptab-messages').style.display=t==='messages'?'block':'none';
     document.getElementById('ptab-customizer').style.display=t==='customizer'?'block':'none';
     if(t==='products') renderProdList();
+    if(t==='partners') renderPartnerList();
+    if(t==='messages') renderMessages();
     if(t==='customizer') loadCustomizerOpts(true);
   }
 
@@ -1912,20 +2084,243 @@
     }catch(e){alert('Error saving product. Please try again.');}
   }
 
+  // ===== AUTH HELPERS (remember-me aware) =====
+  const REMEMBER_KEY='byevridiki_remember';
+  function isRemembered(){ return localStorage.getItem(REMEMBER_KEY)==='1'; }
+  function getAdminFlag(){ return localStorage.getItem('byevridiki_admin')==='1' || sessionStorage.getItem('byevridiki_admin')==='1'; }
+  function setAuth(token, remember){
+    if(remember){
+      localStorage.setItem(REMEMBER_KEY,'1');
+      localStorage.setItem(TOKEN_KEY,token);
+      localStorage.setItem('byevridiki_admin','1');
+      sessionStorage.removeItem(TOKEN_KEY);
+      sessionStorage.removeItem('byevridiki_admin');
+    } else {
+      localStorage.removeItem(REMEMBER_KEY);
+      sessionStorage.setItem(TOKEN_KEY,token);
+      sessionStorage.setItem('byevridiki_admin','1');
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem('byevridiki_admin');
+    }
+  }
+  function clearAuth(){
+    localStorage.removeItem(REMEMBER_KEY);
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem('byevridiki_admin');
+    sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem('byevridiki_admin');
+  }
+
   async function portalLogin(){
     const v=document.getElementById('portalPw').value;
+    const remember=document.getElementById('portalRemember')?.checked;
     try{
       const resp=await fetch(API+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:v})});
       if(resp.ok){
         const data=await resp.json();
-        sessionStorage.setItem(TOKEN_KEY,data.token);
-        sessionStorage.setItem('byevridiki_admin','1');
+        setAuth(data.token, !!remember);
         document.getElementById('portalErr').style.display='none';
+        document.getElementById('portalPw').value='';
         portalGate();
       } else { document.getElementById('portalErr').style.display='block'; }
     }catch(e){ document.getElementById('portalErr').style.display='block'; }
   }
-  function portalLogout(){ sessionStorage.removeItem('byevridiki_admin'); sessionStorage.removeItem(TOKEN_KEY); portalGate(); }
+  function portalLogout(){ clearAuth(); portalGate(); }
+
+  // ===== PARTNERS (portal management + public render) =====
+  const PARTNERS_KEY='byevridiki_partners';
+  const DEFAULT_PARTNERS=[
+    {id:'seed_burger', emoji:'🍔', name_en:'The Burger Project', name_el:'The Burger Project',
+     desc_en:'Gluten-free burgers, made with the same care for coeliac-safe food.',
+     desc_el:'Burgers χωρίς γλουτένη, με την ίδια φροντίδα για ασφαλές φαγητό.',
+     cta_en:'Learn more', cta_el:'Μάθε περισσότερα',
+     url:'#contact'},
+    {id:'seed_yours', emoji:'🤝', name_en:'Your business here?', name_el:'Η επιχείρησή σου εδώ;',
+     desc_en:"Interested in partnering with BY EVRIDIKI? We'd love to hear from you.",
+     desc_el:'Θες να συνεργαστείς με το BY EVRIDIKI; Θα χαρούμε να μιλήσουμε.',
+     cta_en:'Get in touch', cta_el:'Επικοινώνησε',
+     url:'tel:+35799299980'}
+  ];
+  function loadPartners(){
+    try{
+      const raw=localStorage.getItem(PARTNERS_KEY);
+      if(raw===null){ localStorage.setItem(PARTNERS_KEY,JSON.stringify(DEFAULT_PARTNERS)); return DEFAULT_PARTNERS.slice(); }
+      return JSON.parse(raw)||[];
+    }catch(e){ return DEFAULT_PARTNERS.slice(); }
+  }
+  function savePartners(list){ try{localStorage.setItem(PARTNERS_KEY, JSON.stringify(list));}catch(e){} }
+
+  function addPartner(){
+    const p={
+      id:'p_'+Date.now(),
+      emoji:(document.getElementById('partEmoji').value||'🤝').trim(),
+      name_en:document.getElementById('partNameEn').value.trim(),
+      name_el:document.getElementById('partNameEl').value.trim(),
+      desc_en:document.getElementById('partDescEn').value.trim(),
+      desc_el:document.getElementById('partDescEl').value.trim(),
+      cta_en:(document.getElementById('partCtaEn').value||'Learn more').trim(),
+      cta_el:(document.getElementById('partCtaEl').value||'Μάθε περισσότερα').trim(),
+      url:document.getElementById('partUrl').value.trim()
+    };
+    if(!p.name_en && !p.name_el){ toast(document.body.classList.contains('el')?'Δώσε όνομα':'Add a name'); return; }
+    if(!p.name_en) p.name_en=p.name_el;
+    if(!p.name_el) p.name_el=p.name_en;
+    if(!p.desc_en) p.desc_en=p.desc_el||'';
+    if(!p.desc_el) p.desc_el=p.desc_en||'';
+    const list=loadPartners();
+    list.push(p);
+    savePartners(list);
+    ['partEmoji','partUrl','partNameEn','partNameEl','partDescEn','partDescEl','partCtaEn','partCtaEl'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    renderPartnerList();
+    renderPublicPartners();
+    toast(document.body.classList.contains('el')?'Προστέθηκε':'Partner added');
+  }
+  function deletePartner(id){
+    const isEl=document.body.classList.contains('el');
+    if(!confirm(isEl?'Διαγραφή συνεργάτη;':'Delete this partner?'))return;
+    savePartners(loadPartners().filter(p=>p.id!==id));
+    renderPartnerList();
+    renderPublicPartners();
+  }
+  function renderPartnerList(){
+    const list=loadPartners();
+    const el=document.getElementById('partnerList');
+    const cnt=document.getElementById('partnerCount');
+    if(cnt) cnt.textContent=list.length;
+    if(!el) return;
+    el.innerHTML=list.length
+      ? list.map(p=>`<div class="partner-row">
+          <div class="p-emoji">${escHtml(p.emoji||'🤝')}</div>
+          <div class="p-info">
+            <b>${escHtml(p.name_en||p.name_el)}</b>
+            <small>${escHtml(p.desc_en||p.desc_el||'')}</small>
+          </div>
+          <button class="p-del" onclick="deletePartner('${p.id}')" title="Delete">✕</button>
+        </div>`).join('')
+      : '<p class="portal-empty">No partners yet. Add one below.</p>';
+  }
+  function renderPublicPartners(){
+    const grid=document.getElementById('partnerGrid');
+    if(!grid) return;
+    const list=loadPartners();
+    if(!list.length){
+      grid.innerHTML='<p style="text-align:center;color:var(--cocoa-soft);grid-column:1/-1">More partners coming soon.</p>';
+      return;
+    }
+    grid.innerHTML=list.map(p=>{
+      const isSoon=/your business|επιχείρησή σου/i.test(p.name_en+' '+p.name_el);
+      const urlAttr=p.url?`href="${escHtml(p.url)}"${p.url.startsWith('http')?' target="_blank" rel="noopener"':''}`:'href="#contact"';
+      return `<div class="partner-card${isSoon?' partner-soon':''}">
+        <div class="partner-logo">${escHtml(p.emoji||'🤝')}</div>
+        <h3 data-en>${escHtml(p.name_en||p.name_el)}</h3>
+        <h3 data-el>${escHtml(p.name_el||p.name_en)}</h3>
+        <p data-en>${escHtml(p.desc_en||p.desc_el||'')}</p>
+        <p data-el>${escHtml(p.desc_el||p.desc_en||'')}</p>
+        <div class="partner-cta">
+          <a ${urlAttr} class="btn"><span data-en>${escHtml(p.cta_en||'Learn more')}</span><span data-el>${escHtml(p.cta_el||'Μάθε περισσότερα')}</span></a>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // ===== CONTACT MESSAGES =====
+  const MSGS_KEY='byevridiki_messages';
+  function loadMessages(){ try{return JSON.parse(localStorage.getItem(MSGS_KEY)||'[]');}catch(e){return [];} }
+  function saveMessages(list){ try{localStorage.setItem(MSGS_KEY,JSON.stringify(list));}catch(e){} }
+  function submitContact(e){
+    e.preventDefault();
+    const f=e.target;
+    const msg={
+      id:Date.now(),
+      created:new Date().toISOString(),
+      read:false,
+      name:f.cname.value.trim(),
+      email:f.cemail.value.trim(),
+      phone:f.cphone.value.trim(),
+      subject:f.csubject.value,
+      message:f.cmessage.value.trim()
+    };
+    const list=loadMessages();
+    list.unshift(msg);
+    saveMessages(list);
+    const ok=document.getElementById('contactok');
+    const isEl=document.body.classList.contains('el');
+    ok.textContent=isEl
+      ? '✓ Το μήνυμά σου εστάλη! Θα σου απαντήσουμε σύντομα.'
+      : "✓ Your message is sent! We'll get back to you shortly.";
+    ok.style.display='block';
+    f.reset();
+    ok.scrollIntoView({behavior:'smooth',block:'center'});
+    return false;
+  }
+  function deleteMessage(id){
+    const isEl=document.body.classList.contains('el');
+    if(!confirm(isEl?'Διαγραφή;':'Delete this message?'))return;
+    saveMessages(loadMessages().filter(m=>m.id!==id));
+    renderMessages();
+  }
+  function renderMessages(){
+    const list=loadMessages();
+    const wrap=document.getElementById('msgList');
+    const cnt=document.getElementById('msgCount');
+    if(cnt) cnt.textContent=list.length;
+    if(!wrap) return;
+    if(!list.length){ wrap.innerHTML='<p class="portal-empty">No messages yet. Submissions from the contact form will appear here.</p>'; return; }
+    wrap.innerHTML=list.map(m=>{
+      const d=new Date(m.created);
+      const dateStr=d.toLocaleString();
+      return `<div class="order-card status-new">
+        <div class="order-top">
+          <strong>${esc(m.name||'—')}</strong>
+          <span class="order-badge" style="background:#7C8A6A">${esc(m.subject||'')}</span>
+        </div>
+        <div class="order-meta">
+          <span>✉️ <a href="mailto:${esc(m.email)}" style="color:var(--rose-deep)">${esc(m.email)}</a></span>
+          ${m.phone?`<span>📞 <a href="tel:${esc(m.phone)}" style="color:var(--rose-deep)">${esc(m.phone)}</a></span>`:''}
+          <span>📅 ${esc(dateStr)}</span>
+        </div>
+        <div class="order-notes" style="margin-top:8px;white-space:pre-wrap">${esc(m.message)}</div>
+        <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end">
+          <button class="portal-action-btn" onclick="deleteMessage(${m.id})">🗑 <span data-en>Delete</span><span data-el>Διαγραφή</span></button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // ===== CHANGE PASSWORD =====
+  function openChangePassword(){
+    document.getElementById('pwModal').classList.add('show');
+    ['pwCurrent','pwNew','pwConfirm'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    const msg=document.getElementById('pwMsg'); msg.textContent=''; msg.className='pw-msg';
+  }
+  function closeChangePassword(){ document.getElementById('pwModal').classList.remove('show'); }
+  async function submitChangePassword(){
+    const isEl=document.body.classList.contains('el');
+    const cur=document.getElementById('pwCurrent').value;
+    const np=document.getElementById('pwNew').value;
+    const cf=document.getElementById('pwConfirm').value;
+    const msg=document.getElementById('pwMsg');
+    if(!cur||!np||!cf){ msg.className='pw-msg err'; msg.textContent=isEl?'Συμπλήρωσε όλα τα πεδία.':'Fill in all fields.'; return; }
+    if(np.length<6){ msg.className='pw-msg err'; msg.textContent=isEl?'Τουλάχιστον 6 χαρακτήρες.':'Min 6 characters.'; return; }
+    if(np!==cf){ msg.className='pw-msg err'; msg.textContent=isEl?'Οι κωδικοί δεν ταιριάζουν.':'Passwords don\'t match.'; return; }
+    try{
+      const r=await fetch(API+'/api/admin/change-password',{method:'POST',headers:authHeaders(),body:JSON.stringify({current_password:cur,new_password:np})});
+      if(r.ok){
+        msg.className='pw-msg ok';
+        msg.textContent=isEl?'✓ Ο κωδικός άλλαξε.':'✓ Password updated.';
+        setTimeout(closeChangePassword,1400);
+      } else if(r.status===401){
+        msg.className='pw-msg err'; msg.textContent=isEl?'Λάθος τρέχων κωδικός.':'Current password is wrong.';
+      } else if(r.status===404){
+        msg.className='pw-msg err'; msg.textContent=isEl?'Το backend δεν υποστηρίζει αλλαγή κωδικού. Πρόσθεσε /api/admin/change-password.':'Backend doesn\'t support password change yet. Add /api/admin/change-password endpoint.';
+      } else {
+        msg.className='pw-msg err'; msg.textContent=isEl?'Σφάλμα. Δοκίμασε ξανά.':'Error. Try again.';
+      }
+    }catch(e){ msg.className='pw-msg err'; msg.textContent=isEl?'Σφάλμα δικτύου.':'Network error.'; }
+  }
+
+  // initial render of public partners
+  renderPublicPartners();
   function setStatus(id,status){ const l=loadOrders(); const o=l.find(x=>x.id===id); if(o){o.status=status; saveOrders(l); renderOrders();} }
   function deleteOrder(id){ if(!confirm('Delete this order?')) return; saveOrders(loadOrders().filter(x=>x.id!==id)); renderOrders(); }
   function renderOrders(){
